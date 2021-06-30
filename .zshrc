@@ -1,4 +1,5 @@
 export ZSH="/home/ahnaf/.oh-my-zsh"
+
 ZSH_THEME="robbyrussell"
 
 plugins=(
@@ -6,6 +7,8 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+source $ZSH/oh-my-zsh.sh
 
 # Aliases
 #alias ls='ls -lah'

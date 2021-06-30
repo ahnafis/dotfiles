@@ -4,6 +4,9 @@ super + Return
 super + p
 	dmenu_run -p Run:
 
+shift + super + c:
+	code
+
 super + e
 	thunar
 
