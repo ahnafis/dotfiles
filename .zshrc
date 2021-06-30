@@ -48,3 +48,5 @@ alias c='clear'
 alias e='exit'
 
 eval "$(starship init zsh)"
+alias pip='pip3'
+source ~/powerlevel10k/powerlevel10k.zsh-theme
