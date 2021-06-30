@@ -1,7 +1,3 @@
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 export ZSH="/home/ahnaf/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
@@ -10,13 +6,6 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
-
-source $ZSH/oh-my-zsh.sh
-
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Aliases
 #alias ls='ls -lah'
@@ -42,11 +31,10 @@ alias yi='yay -S'
 alias yr='yay -R'
 alias ys='yay -Ss'
 alias py='python3'
+alias pip='pip3'
 alias h='htop'
 alias neo='neofetch'
 alias c='clear'
 alias e='exit'
 
 eval "$(starship init zsh)"
-alias pip='pip3'
-source ~/powerlevel10k/powerlevel10k.zsh-theme
