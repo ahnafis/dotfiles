@@ -26,5 +26,5 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
-eval "$(starship init zsh)"
+eval "$(starship init bash)"
 cat ~/.cache/wal/sequences
