@@ -36,3 +36,4 @@ alias c='clear'
 alias e='exit'
 
 eval "$(starship init zsh)"
+cat ~/.cache/wal/sequences
