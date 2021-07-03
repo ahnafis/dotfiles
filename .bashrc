@@ -2,7 +2,7 @@
 PS1='[\u@\h \W]\$ '
 
 ## Aliases
-alias ls='ls --color=auto'
+alias ls='ls -la --color=auto'
 alias s='sudo'
 alias a='cd /a/'
 alias vz='vim ~/.zshrc'
