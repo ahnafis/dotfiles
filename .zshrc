@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 #alias ls='ls -lah'
+alias ls='ls -la --color=auto'
 alias s='sudo'
 alias a='cd /a/'
 alias acode='cd /a/Code'
@@ -36,4 +37,4 @@ alias c='clear'
 alias e='exit'
 
 eval "$(starship init zsh)"
-cat ~/.cache/wal/sequences
+#cat ~/.cache/wal/sequences
