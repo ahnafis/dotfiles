@@ -1,6 +1,8 @@
 [[ $- != *i* ]] && return
-PS1='[\u@\h \W]\$ '
-
+#PS1='[\u@\h \W]\$ '
+#PS1='\W:$(__git_ps1 " (%s)")\n~> '
+#PS1='\u@\h:\w $ '
+#source ~/.git-prompt.sh
 ## Aliases
 alias ls='ls -la --color=auto'
 alias s='sudo'
@@ -20,6 +22,9 @@ alias yr='yay -R'
 alias ys='yay -Ss'
 alias py='python3'
 alias pip='pip3'
+alias pi='pip install'
+alias pr='pip uninstall'
+alias pu='pip install --upgrade'
 alias h='htop'
 alias n='neofetch'
 alias c='clear'
