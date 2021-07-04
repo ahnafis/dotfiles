@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 picom -f &
-redshift -l 23.707310:90.415482 -m randr -t 4500:3500 &
+#redshift -l 23.707310:90.415482 -m randr -t 4500:3500 &
 #python $HOME/.config/pygen/pygen.py &
 nitrogen --restore &
 $HOME/.config/polybar/launch.sh

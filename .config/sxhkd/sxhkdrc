@@ -12,7 +12,9 @@ super + e
 
 super + print
 	xfce4-screenshooter
-	
+
+super + k
+rofi -show drun	
 
 # make sxhkd reload its configuration files:
 super + Escape
