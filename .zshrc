@@ -1,13 +1,20 @@
-[[ $- != *i* ]] && return
-#PS1='[\u@\h \W]\$ '
-#PS1='\W:$(__git_ps1 " (%s)")\n~> '
-#PS1='\u@\h:\w $ '
-#source ~/.git-prompt.sh
+export ZSH="/home/ahnaf/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
 ## Aliases
 alias ls='ls -la --color=auto'
 alias s='sudo'
 alias a='cd /a/'
-alias vc='vim ~/.bashrc'
+alias vz='vim ~/.config/zsh/.zshrc'
 alias vk='vim ~/.config/kitty/kitty.conf'
 alias vb='vim ~/.config/bspwm/bspwmrc'
 alias vs='vim ~/.config/sxhkd/sxhkdrc'
@@ -30,5 +37,5 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
 #cat ~/.cache/wal/sequences
