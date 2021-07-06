@@ -11,10 +11,10 @@ super + e
 	thunar
 
 super + print
-	xfce4-screenshooter
+	flameshot gui
 
-super + k
-rofi -show drun	
+super + r
+	rofi -show drun	
 
 # make sxhkd reload its configuration files:
 super + Escape
