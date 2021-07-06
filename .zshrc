@@ -14,6 +14,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls='ls -la --color=auto'
 alias s='sudo'
 alias a='cd /a/'
+alias v='nvim'
 alias vz='nvim ~/.zshrc'
 alias vk='nvim ~/.config/kitty/kitty.conf'
 alias vb='nvim ~/.config/bspwm/bspwmrc'
@@ -38,4 +39,4 @@ alias c='clear'
 alias e='exit'
 
 eval "$(starship init zsh)"
-#cat ~/.cache/wal/sequences
+cat ~/.cache/wal/sequences
