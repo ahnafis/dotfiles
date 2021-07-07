@@ -6,7 +6,6 @@ ZSH_THEME='ys'
 plugins=(
     git
     zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -15,6 +14,7 @@ source $ZSH/oh-my-zsh.sh
 alias ls='ls -la'
 alias s='sudo'
 alias a='cd /a/'
+alias vim='nvim'
 alias v='nvim'
 alias vz='nvim ~/.zshrc'
 alias vk='nvim ~/.config/kitty/kitty.conf'
@@ -39,5 +39,5 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
-#eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences
