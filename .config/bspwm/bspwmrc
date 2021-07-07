@@ -28,12 +28,12 @@ bspc config pointer_action2 resize_side
 # Mouse 3 button (right mouse) resize by corner
 bspc config pointer_action2 resize_corner
 
-## Desktop rules
+## Desktop rules & Window States rules
 bspc rule -a Google-chrome desktop='^3'
 bspc rule -a Code desktop='^4' follow=on
 bspc rule -a Thunar desktop='^5' follow=on
-
-## Window States rules
+bspc rule -a kitty desktop='^2' follow=on state=floating center=on
+bspc rule -a Xfce4-terminal state=floating center=on
 bspc rule -a Lxappearance state=floating focus=on
 bspc rule -a Nitrogen state=floating focus=on
 bspc rule -a Pavucontrol state=floating focus=on center=on

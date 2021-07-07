@@ -1,6 +1,9 @@
 super + Return
 	kitty
 
+super + k
+	xfce4-terminal
+
 super + p
 	dmenu_run -p Run:
 
