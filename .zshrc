@@ -1,6 +1,7 @@
 export ZSH="/home/ahnaf/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME='ys'
 
 plugins=(
     git
@@ -11,7 +12,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ## Aliases
-alias ls='ls -la --color=auto'
+alias ls='ls -la'
 alias s='sudo'
 alias a='cd /a/'
 alias v='nvim'
@@ -38,5 +39,5 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences
