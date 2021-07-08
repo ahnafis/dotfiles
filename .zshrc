@@ -1,11 +1,9 @@
-#
-# ~/.bashrc
-#
+export ZSH="/home/ahnaf/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+plugins=(git)
 
-PS1='[\u@\h \W]\$ '
+source $ZSH/oh-my-zsh.sh
 
 ## Aliases
 alias ls='ls -la -F --file-type'
@@ -14,6 +12,7 @@ alias sv='sudo nvim'
 alias vim='nvim'
 alias v='nvim'
 alias vc='nvim ~/.bashrc'
+alias vz='nvim ~/.zshrc'
 alias vk='nvim ~/.config/kitty/kitty.conf'
 alias vb='nvim ~/.config/bspwm/bspwmrc'
 alias vs='nvim ~/.config/sxhkd/sxhkdrc'
@@ -35,7 +34,7 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences
 
 export PATH='/a/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH'
