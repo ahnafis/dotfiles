@@ -1,16 +1,25 @@
-## General Settings
-set number
-set smartindent
-set tabstop=4
+syntax on
+set noerrorbells
+set tabstop=4 softtabstop=4
 set shiftwidth=4
-set textwidth=80
-set autochdir
-set laststatus=2
-set encoding=utf-8
+set expandtab
+set smartindent
+set nu
+set noswapfile
+set nobackup
+set undodir=~/.tmp/undodir
+set undofile
+set incsearch
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-## Plugins
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'itchyny/lightline.vim'
-  Plug 'preservim/nerdtree'
+
+call plug#begin('~/.config/nvim/plugins')
+
+Plug 'Valloric/YouCompleteMe'
+
 call plug#end()
+
+let g:netrw_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
