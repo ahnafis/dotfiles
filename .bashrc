@@ -37,5 +37,5 @@ alias e='exit'
 
 eval "$(starship init bash)"
 cat ~/.cache/wal/sequences
-export PATH='/a/Downloads/Applications/Arch/'
-export PATH='/home/ahnaf/.local/bin'
+
+export PATH='/a/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH'
