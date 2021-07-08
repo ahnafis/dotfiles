@@ -11,9 +11,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ## Aliases
-alias ls='ls -la'
-alias s='sudo'
+alias ls='ls -la -F --file-type'
 alias a='cd /a/'
+alias sv='sudo nvim'
 alias vim='nvim'
 alias v='nvim'
 alias vz='nvim ~/.zshrc'

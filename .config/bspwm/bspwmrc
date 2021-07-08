@@ -32,8 +32,8 @@ bspc config pointer_action2 resize_corner
 bspc rule -a Google-chrome desktop='^3'
 bspc rule -a Code desktop='^4' follow=on
 bspc rule -a Thunar desktop='^5' follow=on
-bspc rule -a kitty desktop='^2' follow=on state=floating center=on
-bspc rule -a Xfce4-terminal state=floating center=on
+#bspc rule -a kitty desktop='^2' follow=on state=floating center=on
+#bspc rule -a Xfce4-terminal state=floating center=on
 bspc rule -a Lxappearance state=floating focus=on
 bspc rule -a Nitrogen state=floating focus=on
 bspc rule -a Pavucontrol state=floating focus=on center=on
