@@ -1,9 +1,14 @@
 export ZSH="/home/ahnaf/.oh-my-zsh"
+
 ZSH_THEME="robbyrussell"
 
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+
+__git_files () { 
+    _wanted files expl 'local files' _files     
+}
 
 ## Aliases
 alias ls='ls -la -F --file-type'
@@ -11,7 +16,6 @@ alias a='cd /a/'
 alias sv='sudo nvim'
 alias vim='nvim'
 alias v='nvim'
-alias vc='nvim ~/.bashrc'
 alias vz='nvim ~/.zshrc'
 alias vk='nvim ~/.config/kitty/kitty.conf'
 alias vb='nvim ~/.config/bspwm/bspwmrc'
@@ -34,7 +38,7 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences
 
 export PATH='/a/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH'
