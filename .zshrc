@@ -2,7 +2,10 @@ export ZSH="/home/ahnaf/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(
+    git
+    zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -17,6 +20,7 @@ alias sv='sudo nvim'
 alias vim='nvim'
 alias v='nvim'
 alias vz='nvim ~/.zshrc'
+alias va='nvim ~/.config/alacritty/alacritty.yml'
 alias vk='nvim ~/.config/kitty/kitty.conf'
 alias vb='nvim ~/.config/bspwm/bspwmrc'
 alias vs='nvim ~/.config/sxhkd/sxhkdrc'
@@ -41,4 +45,4 @@ alias e='exit'
 #eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences
 
-export PATH='/a/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH'
+export PATH='/a/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/ahnaf/.cargo/bin:$PATH'
