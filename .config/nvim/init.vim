@@ -10,18 +10,13 @@ set nobackup
 set undodir=~/.tmp/undodir
 set undofile
 set incsearch
-"set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Plugins
 call plug#begin('~/.config/nvim/plugins')
-"Plug 'vimsence/vimsence'
-Plug 'pucka906/vdrpc'
 Plug 'morhetz/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim' 
+Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -36,9 +31,6 @@ let g:netrw_winsize = 25
 let g:deoplete#enable_at_startup = 1
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-" Discord presence
-autocmd VimEnter * StartDiscordRpc
-let g:vdrpc_filesize = 1
 
 " Colorscheme
 set bg=dark

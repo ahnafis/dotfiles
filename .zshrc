@@ -15,8 +15,9 @@ __git_files () {
     _wanted files expl 'local files' _files     
 }
 
-[[ $TERM != "screen" ]] && exec tmux
-
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
 
 ## Aliases
 alias ls='ls -la -F --file-type'

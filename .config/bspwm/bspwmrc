@@ -29,7 +29,8 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
 
 ## Desktop rules & Window States rules
-bspc rule -a Google-chrome desktop='^3'
+bspc rule -a Google-chrome desktop='^3' follow=on
+bspc rule -a firefox desktop='^3' follow=on
 bspc rule -a Code desktop='^4' follow=on state=fullscreen
 bspc rule -a Thunar desktop='^5' follow=on
 bspc rule -a kitty desktop='^2' follow=on state=fullscreen
@@ -37,6 +38,7 @@ bspc rule -a kitty desktop='^2' follow=on state=fullscreen
 bspc rule -a Lxappearance state=floating focus=on
 bspc rule -a Nitrogen state=floating focus=on
 bspc rule -a Pavucontrol state=floating focus=on center=on
+bspc rule -a Discord desktop='^1' state=fullscreen follow=on
 
 
 ######### BSPWM DEFAULTS (USELESS THINGS) ############
