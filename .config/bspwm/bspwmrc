@@ -1,6 +1,6 @@
 #! /bin/sh
 pgrep -x sxhkd > /dev/null || sxhkd &
-pkill -9 ibus-daemon &
+pkill -9 ibus-daemon flameshot redshift nitrogen polybar picom &
 flameshot &
 #picom -f &
 redshift -l 23.707310:90.415482 -m randr -t 4500:3500 &
@@ -34,6 +34,7 @@ bspc rule -a firefox desktop='^3' follow=on
 bspc rule -a Code desktop='^4' follow=on state=fullscreen
 bspc rule -a Thunar desktop='^5' follow=on
 bspc rule -a kitty desktop='^2' follow=on state=fullscreen
+#bspc rule -a alacritty desktop='^2' follow=on state=fullscreen
 #bspc rule -a Xfce4-terminal state=floating center=on
 bspc rule -a Lxappearance state=floating focus=on
 bspc rule -a Nitrogen state=floating focus=on
