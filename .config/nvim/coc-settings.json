@@ -1,13 +1,17 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown","html", "json", "python"],
-
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-
-  "snippets.ultisnips.directories":
-  [
-    "UltiSnips",
-    "~/.config/nvim/utils/snips"
-  ]
-
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "markdown",
+        "html",
+        "json",
+        "python",
+        "sh"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "/usr/local/bin/python3.8",
+    "snippets.ultisnips.directories": [
+        "UltiSnips",
+        "~/.config/nvim/utils/snips"
+    ]
 }

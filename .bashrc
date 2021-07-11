@@ -13,6 +13,7 @@ alias a='cd /a/'
 alias sv='sudo nvim'
 alias vim='nvim'
 alias v='nvim'
+alias vimc='nvim ~/.config/nvim/init.vim'
 alias vc='nvim ~/.bashrc'
 alias vk='nvim ~/.config/kitty/kitty.conf'
 alias va='nvim ~/.config/alacritty/alacritty.yml'
@@ -39,4 +40,4 @@ alias e='exit'
 #eval "$(starship init bash)"
 cat ~/.cache/wal/sequences
 
-export PATH='/a/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH'
+source ~/.env
