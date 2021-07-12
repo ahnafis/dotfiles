@@ -2,6 +2,7 @@ export ZSH="/home/ahnaf/.oh-my-zsh"
 
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="jispwoso"
+#ZSH_THEME="ys"
 
 plugins=(
     git
@@ -20,7 +21,8 @@ __git_files () {
 #fi
 
 ## Aliases
-alias ls='ls -la -F --file-type'
+#alias ls='ls -la -F --file-type'
+alias ls='exa --icons -la'
 alias a='cd /a/'
 alias sv='sudo nvim'
 alias vim='nvim'
