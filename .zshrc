@@ -1,8 +1,9 @@
 export ZSH="/home/ahnaf/.oh-my-zsh"
 
-#ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 ZSH_THEME="jispwoso"
-#ZSH_THEME="ys"
+# ZSH_THEME="ys"
+# ZSH_THEME="aan"
 
 plugins=(
     git
@@ -15,6 +16,8 @@ source $ZSH/oh-my-zsh.sh
 __git_files () { 
     _wanted files expl 'local files' _files     
 }
+
+export TERM=xterm-256color
 
 #if [[ ! $TERM =~ screen ]]; then
 #    exec tmux
@@ -52,6 +55,8 @@ alias n='neofetch'
 alias c='clear'
 alias e='exit'
 
+### Void Linux
+alias void="sudo arch-chroot /mnt/void"
+
 #eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences
-
