@@ -15,6 +15,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 " Plugins
 call plug#begin('~/.config/nvim/plugins')
 Plug 'morhetz/gruvbox'
+"Plug 'https://github.com/joshdick/onedark.vim'
 Plug 'itchyny/lightline.vim' 
 Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'

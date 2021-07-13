@@ -1,14 +1,15 @@
 export ZSH="/home/ahnaf/.oh-my-zsh"
 
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="jispwoso"
+ZSH_THEME="robbyrussell"
+#  printf "\n ❯";
+#}
+#ZSH_THEME="jispwoso"
 # ZSH_THEME="ys"
 # ZSH_THEME="aan"
 
 plugins=(
     git
     zsh-autosuggestions
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -19,13 +20,15 @@ __git_files () {
 
 export TERM=xterm-256color
 
+source ~/.env
+
 #if [[ ! $TERM =~ screen ]]; then
 #    exec tmux
 #fi
 
 ## Aliases
 #alias ls='ls -la -F --file-type'
-alias ls='exa --icons -la'
+alias ls='exa --icons -la -la'
 alias a='cd /a/'
 alias sv='sudo nvim'
 alias vim='nvim'
@@ -57,6 +60,9 @@ alias e='exit'
 
 ### Void Linux
 alias void="sudo arch-chroot /mnt/void"
+
+### Ubuntu
+alias deb="sudo arch-chroot /mnt/ubuntu"
 
 #eval "$(starship init zsh)"
 cat ~/.cache/wal/sequences

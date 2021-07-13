@@ -104,19 +104,19 @@
 # Font configuration
 font:
   normal:
-    family: SF Mono
+    family: Fira Mono
     style: Regular
   
   bold:
-    family: SF Mono
+    family: Fira Mono
     style: Bold
 
   italic:
-    family: SF Mono
+    family: Fira Mono
     style: italic
 
   bold_italic:
-    family: SF Mono
+    family: Fira Mono
     style: Bold Italic
 
   # Point size

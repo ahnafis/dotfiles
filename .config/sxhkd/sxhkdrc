@@ -1,6 +1,6 @@
 super + Return
-    kitty
-
+#    kitty
+    alacritty
 super + p
 	dmenu_run -p Run:
 
