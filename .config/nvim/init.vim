@@ -55,3 +55,5 @@ map <C-k> :wincmd k<CR>
 map <C-l> :wincmd l<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+vmap cc <plug>NERDCommenterToggle
+nmap cc <plug>NERDCommenterToggle

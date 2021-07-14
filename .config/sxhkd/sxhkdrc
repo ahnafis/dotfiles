@@ -1,6 +1,6 @@
 super + Return
-#    kitty
     alacritty
+
 super + p
 	dmenu_run -p Run:
 
@@ -10,7 +10,7 @@ shift + super + c:
 super + e
 	thunar
 
-super + print
+print
 	flameshot gui
 
 super + r

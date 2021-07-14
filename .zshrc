@@ -1,11 +1,11 @@
 export ZSH="/home/ahnaf/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
-#  printf "\n ❯";
-#}
+#ZSH_THEME="robbyrussell"
+#❯
 #ZSH_THEME="jispwoso"
 # ZSH_THEME="ys"
 # ZSH_THEME="aan"
+ZSH_THEME="refined"
 
 plugins=(
     git
