@@ -1,0 +1,1 @@
+ttf-droid-sans-mono-dotted-powerline-git ttf-droid-sans-mono-slashed-powerline-git
