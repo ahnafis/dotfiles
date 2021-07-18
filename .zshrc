@@ -5,7 +5,8 @@ export ZSH="/home/ahnaf/.oh-my-zsh"
 #ZSH_THEME="jispwoso"
 # ZSH_THEME="ys"
 # ZSH_THEME="aan"
-ZSH_THEME="refined"
+#ZSH_THEME="refined"
+ZSH_THEME="zshfish"
 
 plugins=(
     git
@@ -19,16 +20,17 @@ __git_files () {
 }
 
 export TERM=xterm-256color
+export EDITOR=nvim
 
 source ~/.env
 
-#if [[ ! $TERM =~ screen ]]; then
-#    exec tmux
+#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    #tmux attach -t default || tmux new -s default
 #fi
 
 ## Aliases
 #alias ls='ls -la -F --file-type'
-alias ls='exa --icons -la -la'
+alias ls='exa -la -la'
 alias a='cd /a/'
 alias sv='sudo nvim'
 alias vim='nvim'
@@ -39,6 +41,7 @@ alias vk='vim ~/.config/kitty/kitty.conf'
 alias vb='vim ~/.config/bspwm/bspwmrc'
 alias vs='vim ~/.config/sxhkd/sxhkdrc'
 alias vg='vim ~/.config/pygen/pygen.py'
+alias sc='python3.8 ~/scroll/scroll.py'
 alias st='sudo thunar'
 alias i='sudo pacman -S'
 alias r='sudo pacman -Rsn'
