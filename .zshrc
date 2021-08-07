@@ -22,7 +22,7 @@ __git_files () {
 export TERM=xterm-256color
 export EDITOR=nvim
 
-source ~/.env
+# source ~/.env
 
 #if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     #tmux attach -t default || tmux new -s default
@@ -62,10 +62,10 @@ alias c='clear'
 alias e='exit'
 
 ### Void Linux
-alias void="sudo arch-chroot /mnt/void"
+# alias void="sudo arch-chroot /mnt/void"
 
 ### Ubuntu
-alias deb="sudo arch-chroot /mnt/ubuntu"
+# alias deb="sudo arch-chroot /mnt/ubuntu"
 
 #eval "$(starship init zsh)"
-cat ~/.cache/wal/sequences
+# cat ~/.cache/wal/sequences
