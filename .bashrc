@@ -38,6 +38,6 @@ alias c='clear'
 alias e='exit'
 
 #eval "$(starship init bash)"
-cat ~/.cache/wal/sequences
+#cat ~/.cache/wal/sequences
 
 source ~/.env
