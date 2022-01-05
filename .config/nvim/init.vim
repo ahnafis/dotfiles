@@ -1,59 +1,153 @@
+" Settings"""""""""""""""""""""""""""
+set nocompatible
+filetype off
+
+set encoding=UTF-8
+
 syntax on
-set noerrorbells
+set termguicolors
+
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
-set smartindent
-set nu
+set autoindent smartindent
+
+set number
+set relativenumber
+
+set noerrorbells
+
 set noswapfile
 set nobackup
 set undodir=~/.tmp/undodir
 set undofile
-set incsearch
-highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" Plugins
+set smartcase
+set incsearch
+set nohlsearch
+
+set spell
+
+set scrolloff=10
+
+set clipboard=unnamed
+
+set splitbelow
+set splitright
+
+set showtabline=2
+
+set signcolumn=yes
+"""""""""""""""""""""""""""""""""""""
+
+
+" Plugins""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugins')
-Plug 'morhetz/gruvbox'
-"Plug 'https://github.com/joshdick/onedark.vim'
-Plug 'itchyny/lightline.vim' 
+
+Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'itchyny/lightline.vim'
+
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'mbbill/undotree'
+
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'davidhalter/jedi-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
 
-" Plugins Settings
-let g:netrw_browse_split = 2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let g:deoplete#enable_at_startup = 1
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sbdchd/neoformat'
+
+Plug 'tpope/vim-fugitive'
+Plug 'sheerun/vim-polyglot'
+
+"Plug 'dense-analysis/ale'
+"Plug 'vim-python/python-syntax'
+
+Plug 'ap/vim-css-color'
+Plug 'terryma/vim-multiple-cursors'
+
+call plug#end()
+"""""""""""""""""""""""""""""""""""""
+
+"Python Settings""""""""""""""""""""
+
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-
-" Colorscheme
+"Colorscheme""""""""""""""""""""""""
 set bg=dark
-colorscheme gruvbox
-"colorscheme onedark
+colorscheme onedark
+"""""""""""""""""""""""""""""""""""""  
 
-" Keymaps
-"<Leader>cc <Plug>
-"<Leader>cu <
-map <C-b> :NERDTreeToggle<CR>
-map <C-s> :w<CR>
-map <C-q> :q<CR>
-map <C-r> :source %<CR>
-map <Enter> C-n<CR>
+" Plugin settings""""""""""""""""""""
+"NERDTree
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
+"Lightline
+let g:lightline = {
+    \ 'colorscheme': 'onedark',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'modified' ] ],
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \   },
+    \ }
+
+
+" Rainbow brackets
+let g:rainbow#max_level = 100
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+autocmd FileType * RainbowParentheses
+"""""""""""""""""""""""""""""""""""""
+
+" Keybindings""""""""""""""""""""""""
+let mapleader = " "
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <space> za
+
+" Tab
+nnoremap <C-T> :tabnew<CR>
+
+" Tab navigations
 map <C-left> :tabp<CR>
 map <C-right> :tabn<CR>
 map <C-w> :tabclose<CR>
-map <C-h> :wincmd h<CR>
-map <C-j> :wincmd j<CR>
-map <C-k> :wincmd k<CR>
-map <C-l> :wincmd l<CR>
+
+" Nerdtree toggling
+map <C-b> :NERDTreeToggle<CR>
+
+" Undotree
+map <C-u> :UndotreeToggle<CR>
+
+" Tab complete
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-vmap cc <plug>NERDCommenterToggle
-nmap cc <plug>NERDCommenterToggle
+"inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+
+" Commenting
+nmap + <plug>NERDCommenterToggle
+
+" Zooming stuff
+nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+
+" Editing stuff
+nnoremap <C-A> ggVG
+
+noremap y "+y
+noremap p "+p
+vnoremap d "+d
+noremap yy V"+y
+
+map <C-p> :Files<CR>
+"""""""""""""""""""""""""""""""""""""

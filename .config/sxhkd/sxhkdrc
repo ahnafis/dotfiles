@@ -1,16 +1,13 @@
 super + Return
-    alacritty
+	kitty
 
 super + p
-	dmenu_run -p Run:
-
-shift + super + c:
-	code
+	dmenu_run -p "Run:" -fn "Fira Mono-11"
 
 super + e
 	thunar
 
-print
+super + print
 	flameshot gui
 
 super + r
