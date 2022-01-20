@@ -28,7 +28,7 @@ set smartcase
 set incsearch
 set nohlsearch
 
-set spell
+"set spell
 
 set scrolloff=10
 
@@ -54,26 +54,14 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 "Colorscheme""""""""""""""""""""""""
 set background=dark
-colorscheme gruvbox
 "colorscheme onedark
-"colorscheme sonokai
+"colorscheme tokyonight
+colorscheme sonokai
 """""""""""""""""""""""""""""""""""""  
 
 " Plugin settings""""""""""""""""""""
-lua << EOF
-require('nvim-tree').setup{
-view = {
-    side = 'left',
-    width = 30,
-    auto_resize = true
-    }
-}
-require('nvim-web-devicons').setup()
-EOF
-
-"let g:lightline = { 'colorscheme' : 'sonokai' }
-let g:lightline = { 'colorscheme' : 'gruvbox' }
 "let g:lightline = { 'colorscheme' : 'onedark' }
+let g:lightline = { 'colorscheme' : 'sonokai' }
 
 let g:coc_global_extensions = [
     \ 'coc-snippets',
@@ -89,5 +77,3 @@ let g:coc_global_extensions = [
     \ 'coc-html-css-support'
     \ ]
 
-nmap <F2> :call CocAction('jumpDefinition', 'drop')<CR>
-"""""""""""""""""""""""""""""""""""""

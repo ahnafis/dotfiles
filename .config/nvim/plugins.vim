@@ -1,10 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
+"Plug 'joshdick/onedark.vim'
+"Plug 'folke/tokyonight.nvim'
 Plug 'sainnhe/sonokai'
-Plug 'joshdick/onedark.vim'
-Plug '/a/projects/vim-plugins/colorschemes/onedark'
 
 "Plug 'rcarriga/nvim-notify'
 "Plug 'romgrk/barbar.nvim'
@@ -21,8 +20,8 @@ Plug 'mbbill/undotree'
 
 Plug 'scrooloose/nerdcommenter'
 "Plug 'scrooloose/nerdtree'
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons'
+"Plug 'kyazdani42/nvim-tree.lua'
+"Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'

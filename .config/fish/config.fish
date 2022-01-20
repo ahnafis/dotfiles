@@ -1,6 +1,3 @@
-# Setting theme for terminal
-cat ~/.cache/wal/sequences
-
 # Tmux
 if status is-interactive
 and not set -q TMUX
@@ -35,8 +32,10 @@ alias live='browser-sync'
 alias c='clear'
 alias e='exit'
 
+alias tmux="TERM=screen-256color-bce tmux"
+
 source ~/.env
 
 ## Starship Prompt
 #starship init fish | source
-cat ~/.cache/wal/sequences
+#cat ~/.cache/wal/sequences

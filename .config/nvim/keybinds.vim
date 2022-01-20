@@ -17,7 +17,7 @@ map <C-right> :tabn<CR>
 map <C-w> :tabclose<CR>
 
 " NvimTree toggling
-map <C-k> :NvimTreeToggle<CR>
+"map <C-e> :NvimTreeToggle<CR>
 
 " Undotree
 map <C-u> :UndotreeToggle<CR>
@@ -38,8 +38,9 @@ nnoremap <Leader>- :vertical resize -5<CR>
 " Editing stuff
 nnoremap <C-A> ggVG
 
-map <C-e> :W<CR>
-map <C-p> :Files<CR>
-
+"map <C-e> :W<CR>
+map <C-e> :Files<CR>
+map <C-p> :W<CR>
 nmap <F8> :TagBar
 
+nmap <F2> :call CocAction('jumpDefinition', 'drop')<CR>
