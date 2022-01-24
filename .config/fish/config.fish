@@ -16,7 +16,8 @@ function fish_prompt
 end
 
 ## Aliases
-alias ll='exa -laH --git --icons'
+#alias ll='exa -laH --git --icons'
+alias ll='ls -a -F --file-type'
 alias ls='ls -a -F --file-type' #--color=tty'
 alias vimc='vim ~/.config/nvim/init.vim'
 alias vk='vim ~/.config/kitty/kitty.conf'

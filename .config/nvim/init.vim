@@ -56,12 +56,14 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 set background=dark
 "colorscheme onedark
 "colorscheme tokyonight
-colorscheme sonokai
+"colorscheme sonokai
+colorscheme ayu
 """""""""""""""""""""""""""""""""""""  
 
 " Plugin settings""""""""""""""""""""
 "let g:lightline = { 'colorscheme' : 'onedark' }
-let g:lightline = { 'colorscheme' : 'sonokai' }
+"let g:lightline = { 'colorscheme' : 'sonokai' }
+let g:lightline = { 'colorscheme' : 'ayu' }
 
 let g:coc_global_extensions = [
     \ 'coc-snippets',

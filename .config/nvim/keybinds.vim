@@ -39,7 +39,8 @@ nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <C-A> ggVG
 
 "map <C-e> :W<CR>
-map <C-e> :Files<CR>
+"map <C-e> :Files<CR>
+map <C-e> :NERDTreeToggle<CR>
 map <C-p> :W<CR>
 nmap <F8> :TagBar
 
