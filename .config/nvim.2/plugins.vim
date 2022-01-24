@@ -1,9 +1,11 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'itchyny/lightline.vim'
-"Plug 'joshdick/onedark.vim'
-"Plug 'folke/tokyonight.nvim'
+Plug 'joshdick/onedark.vim'
+Plug 'folke/tokyonight.nvim'
 Plug 'sainnhe/sonokai'
+Plug 'tomasiser/vim-code-dark'
+Plug 'ayu-theme/ayu-vim'
 
 "Plug 'rcarriga/nvim-notify'
 "Plug 'romgrk/barbar.nvim'
@@ -19,7 +21,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'
 
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 "Plug 'kyazdani42/nvim-tree.lua'
 "Plug 'kyazdani42/nvim-web-devicons'
 
@@ -41,3 +43,5 @@ Plug 'preservim/tagbar'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
+
+
