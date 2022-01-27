@@ -1,17 +1,15 @@
 {
   "suggest.noselect": false,
   "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown",
     "html",
-    "json",
-    "python",
-    "sh",
+    "css",
     "javascript",
-    "jsx",
-    "tsx",
-    "ts",
-    "js"
+    "javascriptx",
+    "typessctpt",
+    "typessctptx",
+    "json",
+    "markdown",
+    "python"
   ],
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
@@ -20,17 +18,5 @@
   "python.autoComplete.addBrackets": true,
   "snippets.ultisnips.usePythonx": false,
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
-"coc.preferences.jumpCommand": "drop",
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
-      }
-    }
-  }
+  "coc.preferences.jumpCommand": "drop"
 }
