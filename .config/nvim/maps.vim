@@ -1,62 +1,38 @@
-" Mapleader
-let mapleader = " "
+" Set mapleader
+let mapleader = ','
 
-" Splitting
-"nnoremap ,h :wincmd h <ESC> :sp 
-"nnoremap ,l wincmd l <ESC> :sp 
-"nnoremap ,k :wincmd k <ESC> :vs 
-"nnoremap ,j :wincmd j <ESC> :vs 
+" Split navigation
+nnoremap <C-h> <Cmd>wincmd h<Cr>
+nnoremap <C-l> <Cmd>wincmd l<Cr>
+nnoremap <C-k> <Cmd>wincmd k<Cr>
+nnoremap <C-j> <Cmd>wincmd j<Cr>
 
-" Split navigations
-nnoremap <C-h> :wincmd h<CR>
-nnoremap <C-l> :wincmd l<CR>
-nnoremap <C-k> :wincmd k<CR>
-nnoremap <C-j> :wincmd j<CR>
+" Toggle undotree
+map <C-u> <Cmd>UndotreeToggle<Cr>
 
-" Tab
-nnoremap <C-T> :tabnew<CR>
-
-" Tab navigations
-"map <C-left> :tabp<CR>
-map <C-right> :tabn<CR>
-"map <C-TAB> :tabn<CR>
-map <C-w> :tabclose<CR>
-
-" Undotree
-map <C-u> :UndotreeToggle<CR>
-
-" Tab complete
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-
-" Commenting
-nmap ;; <plug>NERDCommenterToggle
-vmap ;; <plug>NERDCommenterToggle
+" Tab completion
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>": "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>": "\<S-Tab>"
 
 " Resizing stuff
-nnoremap ,= :vertical resize +5<CR>
-nnoremap ,- :vertical resize -5<CR>
-nnoremap ,] :resize +5<CR>
-nnoremap ,[ :resize -5<CR>
+nnoremap <Leader>= <Cmd>vertical resize +5<Cr>
+nnoremap <Leader>- <Cmd>vertical resize -5<Cr>
+nnoremap <Leader>[ <Cmd>resize +5<Cr>
+nnoremap <Leader>] <Cmd>resize -5<Cr>
 
-" Editing stuff
-"nnoremap <C-A> ggVG
-nnoremap ,a ggVG
+" Selection stuff
+nnoremap <Leader>a ggVG
 
-"map <C-e> :W<CR>
-"map <C-e> :Files<CR>
-map <C-p> :W<CR>
-nmap <F8> :TagBar
-map <C-e> :NERDTreeToggle<CR>
-
-nmap <F2> :call CocAction('jumpDefinition', 'drop')<CR>
+" File navigation stiff
+map <C-p> <Cmd>W<Cr>
 
 " Line moving stuff
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <A-k> <Cmd>m .-2<CR>==
+inoremap <A-j> <Esc><Cmd>m .+1<CR>==gi
+nnoremap <A-j> <Cmd>m .+1<CR>==
+inoremap <A-k> <Esc><Cmd>m .-2<CR>==gi
+"vnoremap <A-j> <Cmd>m '>+1<CR>gv=gv
+"vnoremap <A-k> <Cmd>m '<-2<CR>gv=gv
 
+
+nmap <F2> :call CocAction('jumpDefinition', 'drop')<CR>
