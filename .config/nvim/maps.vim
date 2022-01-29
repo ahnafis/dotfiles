@@ -2,37 +2,48 @@
 let mapleader = ','
 
 " Split navigation
-nnoremap <C-h> <Cmd>wincmd h<Cr>
-nnoremap <C-l> <Cmd>wincmd l<Cr>
-nnoremap <C-k> <Cmd>wincmd k<Cr>
-nnoremap <C-j> <Cmd>wincmd j<Cr>
+nnoremap <c-h> <cmd>wincmd h<cr>
+nnoremap <c-l> <cmd>wincmd l<cr>
+nnoremap <c-k> <cmd>wincmd k<cr>
+nnoremap <c-j> <cmd>wincmd j<cr>
 
 " Toggle undotree
-map <C-u> <Cmd>UndotreeToggle<Cr>
+map <c-u> <cmd>UndotreeToggle<cr>
 
 " Tab completion
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>": "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>": "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<c-n>": "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>": "\<S-Tab>"
 
 " Resizing stuff
-nnoremap <Leader>= <Cmd>vertical resize +5<Cr>
-nnoremap <Leader>- <Cmd>vertical resize -5<Cr>
-nnoremap <Leader>[ <Cmd>resize +5<Cr>
-nnoremap <Leader>] <Cmd>resize -5<Cr>
+nnoremap <leader>= <cmd>vertical resize +5<cr>
+nnoremap <leader>- <cmd>vertical resize -5<cr>
+nnoremap <leader>[ <cmd>resize +5<cr>
+nnoremap <leader>] <cmd>resize -5<cr>
 
 " Selection stuff
-nnoremap <Leader>a ggVG
+nnoremap <leader>a ggVG
 
 " File navigation stiff
-map <C-p> <Cmd>W<Cr>
+map <c-p> <cmd>W<cr>
 
 " Line moving stuff
-nnoremap <A-k> <Cmd>m .-2<CR>==
-inoremap <A-j> <Esc><Cmd>m .+1<CR>==gi
-nnoremap <A-j> <Cmd>m .+1<CR>==
-inoremap <A-k> <Esc><Cmd>m .-2<CR>==gi
-"vnoremap <A-j> <Cmd>m '>+1<CR>gv=gv
-"vnoremap <A-k> <Cmd>m '<-2<CR>gv=gv
+nnoremap <a-k> <cmd>m .-2<cr>==
+inoremap <a-j> <esc><cmd>m .+1<cr>==gi
+nnoremap <a-j> <cmd>m .+1<cr>==
+inoremap <a-k> <esc><cmd>m .-2<cr>==gi
+"vnoremap <a-j> <cmd>m '>+1<cr>gv=gv
+"vnoremap <a-k> <cmd>m '<-2<cr>gv=gv
 
 
-nmap <F2> :call CocAction('jumpDefinition', 'drop')<CR>
+"nmap <F2> :call CocAction('jumpDefinition', 'drop')<cr>
+
+
+" LSP mappings
+"nnoremap <silent> <space>e <cmd>lua vim.diagnostic.open_float()<cr>
+"nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev()<cr>
+"nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next()<cr>
+"nnoremap <space>f <cmd>lua vim.lsp.buf.formatting()<cr>
+"
+"nnoremap gD <cmd>lua vim.lsp.buf.declaration()<cr>
+"nnoremap gd <cmd>lua vim.lsp.buf.definition()<cr>
+"nnoremap K <cmd>lua vim.lsp.buf.hover()<cr>

@@ -72,7 +72,7 @@ set splitbelow
 set splitright
 
 " Extra column
-set signcolumn=yes
+"set signcolumn=yes
 " }
 
 " Plugin settings {
