@@ -66,10 +66,10 @@ set incsearch
 set nohlsearch
 
 " Check spelling
-set spell
-set spelllang=en_us
-set spellfile=~/.config/nvim/spell/en_us.utf-8.add
-set complete+=kspell
+"set spell
+"set spelllang=en_us
+"set spellfile=~/.config/nvim/spell/en_us.utf-8.add
+"set complete+=kspell
 
 " Keep space between cursor and screen
 set scrolloff=10
@@ -95,15 +95,12 @@ set statusline+=%=\ %y\ %l:%c\ %p%%/%L\ [%n]
 
 " Pop-up menu height
 set pumheight=10
-
-" Complete options
-set completeopt=menu,menuone,noinsert
 " ---------------------------- [General settings] ---------------------------
 
 " ---------------------------- [Plugin settings] ----------------------------
 " Color scheme
 set background=dark
-colorscheme gruvbox
+colorscheme onedark
 
 " COC settings
 let g:coc_global_extensions = [
