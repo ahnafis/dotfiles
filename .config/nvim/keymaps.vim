@@ -35,15 +35,10 @@ inoremap <a-k> <esc><cmd>m .-2<cr>==gi
 "vnoremap <a-k> <cmd>m '<-2<cr>gv=gv
 
 
-"nmap <F2> :call CocAction('jumpDefinition', 'drop')<cr>
+" COC: Jump to definition
+nmap gd <cmd>call CocAction('jumpDefinition', 'drop')<cr>
 
+" Commenting
+nmap <C-_> <plug>NERDCommenterToggle
+vmap <C-_> <plug>NERDCommenterToggle
 
-" LSP mappings
-"nnoremap <silent> <space>e <cmd>lua vim.diagnostic.open_float()<cr>
-"nnoremap <silent> [d <cmd>lua vim.diagnostic.goto_prev()<cr>
-"nnoremap <silent> ]d <cmd>lua vim.diagnostic.goto_next()<cr>
-"nnoremap <space>f <cmd>lua vim.lsp.buf.formatting()<cr>
-"
-"nnoremap gD <cmd>lua vim.lsp.buf.declaration()<cr>
-"nnoremap gd <cmd>lua vim.lsp.buf.definition()<cr>
-"nnoremap K <cmd>lua vim.lsp.buf.hover()<cr>

@@ -14,4 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
+
 call plug#end()
