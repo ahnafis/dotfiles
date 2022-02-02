@@ -15,17 +15,16 @@ inoremap <expr> <Tab> pumvisible() ? "\<c-n>": "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>": "\<S-Tab>"
 
 " Resizing stuff
-nnoremap <up> <cmd>resize +2<cr>
-nnoremap <down> <cmd>resize -2<cr>
-nnoremap <left> <cmd>vertical resize +2<cr>
-nnoremap <right> <cmd>vertical resize -2<cr>
+nnoremap <leader>= <cmd>vertical resize +5<cr>
+nnoremap <leader>- <cmd>vertical resize -5<cr>
+nnoremap <leader>[ <cmd>resize +5<cr>
+nnoremap <leader>] <cmd>resize -5<cr>
 
 " Selection stuff
 nnoremap <leader>a ggVG
 
 " File navigation stiff
 map <c-p> <cmd>W<cr>
-map <c-e> <cmd>Lex<cr>
 
 " Line moving stuff
 nnoremap <a-k> <cmd>m .-2<cr>==
@@ -35,8 +34,11 @@ inoremap <a-k> <esc><cmd>m .-2<cr>==gi
 "vnoremap <a-j> <cmd>m '>+1<cr>gv=gv
 "vnoremap <a-k> <cmd>m '<-2<cr>gv=gv
 
+
+" COC: Jump to definition
+nmap gd <cmd>call CocAction('jumpDefinition', 'drop')<cr>
+
 " Commenting
 nmap <C-_> <plug>NERDCommenterToggle
-imap <C-_> <plug>NERDCommenterToggle
 vmap <C-_> <plug>NERDCommenterToggle
 

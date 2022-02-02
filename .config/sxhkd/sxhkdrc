@@ -2,7 +2,7 @@ super + Return
 	kitty
 
 super + p
-	dmenu_run -p "Run:" -fn "Fira Mono-11"
+        dmenu_run -fn "Fira Code-11.5" -p "Run:"
 
 super + e
 	thunar

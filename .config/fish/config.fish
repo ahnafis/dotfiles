@@ -1,14 +1,13 @@
 # Tmux
 if status is-interactive
 and not set -q TMUX
+    cat ~/.cache/wal/sequences
     exec tmux
 end
 
 set fish_greeting
 
-#export TERM=xterm-256color
 set -x TERM xterm-256color
-#set -x VIMINIT 'source ~/.config/vim/init.vim'
 
 ## Prompt Customizations:
 function fish_prompt
@@ -19,7 +18,7 @@ end
 #alias ll='exa -laH --git --icons'
 alias ll='ls -a -F --file-type'
 alias ls='ls -a -F --file-type' #--color=tty'
-alias vimc='vim ~/.config/nvim/init.vim'
+alias vimc='vim ~/.vim/vimrc'
 alias vk='vim ~/.config/kitty/kitty.conf'
 alias vb='vim ~/.config/bspwm/bspwmrc'
 alias vs='vim ~/.config/sxhkd/sxhkdrc'
@@ -33,9 +32,9 @@ alias live='browser-sync'
 alias c='clear'
 alias e='exit'
 
-alias tmux="TERM=screen-256color-bce tmux"
+#alias tmux="TERM=screen-256color-bce tmux"
 
-source ~/.env
+#source ~/.env
 
 ## Starship Prompt
 #starship init fish | source

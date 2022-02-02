@@ -95,14 +95,26 @@ set statusline+=%=\ %y\ %l:%c\ %p%%/%L\ [%n]
 
 " Pop-up menu height
 set pumheight=10
-
-" Complete options
-set completeopt=menu,menuone,noinsert
 " ---------------------------- [General settings] ---------------------------
 
 " ---------------------------- [Plugin settings] ----------------------------
 " Color scheme
 set background=dark
-colorscheme codedark
+colorscheme onedark
 
-"let g:lightline = { 'colorscheme': 'codedark' }
+" COC settings
+let g:coc_global_extensions = [
+    \ 'coc-snippets',
+    \ 'coc-html-css-support',
+    \ 'coc-html',
+    \ 'coc-css',
+    \ 'coc-emmet',
+    \ 'coc-prettier',
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-python',
+    \ 'coc-sh',
+    \ 'coc-fish',
+    \ 'coc-vimlsp'
+    \ ]
+

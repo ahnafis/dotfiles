@@ -7,7 +7,8 @@ SETUVAR Z_DATA_DIR:/home/ahnaf/\x2elocal/share/z
 SETUVAR Z_EXCLUDE:\x5e/home/ahnaf\x24
 SETUVAR __fish_initialized:3100
 SETUVAR _fisher_jethrokuan_2F_z_files:/home/ahnaf/\x2econfig/fish/functions/__z\x2efish\x1e/home/ahnaf/\x2econfig/fish/functions/__z_add\x2efish\x1e/home/ahnaf/\x2econfig/fish/functions/__z_clean\x2efish\x1e/home/ahnaf/\x2econfig/fish/functions/__z_complete\x2efish\x1e/home/ahnaf/\x2econfig/fish/conf\x2ed/z\x2efish
-SETUVAR _fisher_plugins:jethrokuan/z
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/ahnaf/\x2econfig/fish/functions/fisher\x2efish\x1e/home/ahnaf/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_plugins:jethrokuan/z\x1ejorgebucaran/fisher
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
