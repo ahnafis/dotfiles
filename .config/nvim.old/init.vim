@@ -1,12 +1,3 @@
-" ----------------------------- [Loading stuff] -----------------------------
-" Plugins
-runtime plugins.vim
-
-" Keymaps
-runtime keymaps.vim
-
-" ----------------------------- [Loading stuff] -----------------------------
-
 " ---------------------------- [General settings] ---------------------------
 if &compatible
     set nocompatible
@@ -65,12 +56,6 @@ set incsearch
 " Don't highlight patterns
 set nohlsearch
 
-" Check spelling
-"set spell
-"set spelllang=en_us
-"set spellfile=~/.config/nvim/spell/en_us.utf-8.add
-"set complete+=kspell
-
 " Keep space between cursor and screen
 set scrolloff=10
 
@@ -97,6 +82,31 @@ set statusline+=%=\ %y\ %l:%c\ %p%%/%L\ [%n]
 set pumheight=10
 " ---------------------------- [General settings] ---------------------------
 
+" -------------------------------- [Plugins] --------------------------------
+let g:plug_home = stdpath('data') . '/plugged/'
+
+call plug#begin()
+
+" Colorscheme
+Plug 'joshdick/onedark.vim'
+
+" Utilities
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'cohama/lexima.vim'
+Plug 'mbbill/undotree'
+Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdcommenter'
+
+" Syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+" -------------------------------- [Plugins] --------------------------------
+
 " ---------------------------- [Plugin settings] ----------------------------
 " Color scheme
 set background=dark
@@ -117,4 +127,49 @@ let g:coc_global_extensions = [
     \ 'coc-fish',
     \ 'coc-vimlsp'
     \ ]
+
+" -------------------------- [Keyboard shortcuts] ---------------------------
+" Set mapleader
+let mapleader = ','
+
+" Split navigation
+nnoremap <c-h> <cmd>wincmd h<cr>
+nnoremap <c-l> <cmd>wincmd l<cr>
+nnoremap <c-k> <cmd>wincmd k<cr>
+nnoremap <c-j> <cmd>wincmd j<cr>
+
+" Toggle undotree
+map <c-u> <cmd>UndotreeToggle<cr>
+
+" Tab completion
+inoremap <expr> <Tab> pumvisible() ? "\<c-n>": "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>": "\<S-Tab>"
+
+" Resizing stuff
+nnoremap <leader>= <cmd>vertical resize +5<cr>
+nnoremap <leader>- <cmd>vertical resize -5<cr>
+nnoremap <leader>[ <cmd>resize +5<cr>
+nnoremap <leader>] <cmd>resize -5<cr>
+
+" Selection stuff
+nnoremap <leader>a ggVG
+
+" File navigation stiff
+map <c-p> <cmd>W<cr>
+
+" Line moving stuff
+nnoremap <a-k> <cmd>m .-2<cr>==
+inoremap <a-j> <esc><cmd>m .+1<cr>==gi
+nnoremap <a-j> <cmd>m .+1<cr>==
+inoremap <a-k> <esc><cmd>m .-2<cr>==gi
+"vnoremap <a-j> <cmd>m '>+1<cr>gv=gv
+"vnoremap <a-k> <cmd>m '<-2<cr>gv=gv
+
+
+" COC: Jump to definition
+nmap gd <cmd>call CocAction('jumpDefinition', 'drop')<cr>
+
+" Commenting
+nmap <C-_> <plug>NERDCommenterToggle
+vmap <C-_> <plug>NERDCommenterToggle
 
