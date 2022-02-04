@@ -2,7 +2,7 @@ super + Return
 	kitty
 
 super + p
-        dmenu_run -fn "Fira Code-11.5" -p "Run:"
+        dmenu_run -p "Run:" -fn "Menlo-10.5"
 
 super + e
 	thunar

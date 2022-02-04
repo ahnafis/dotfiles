@@ -1,13 +1,14 @@
 # Tmux
 if status is-interactive
 and not set -q TMUX
-    cat ~/.cache/wal/sequences
+    #cat ~/.cache/wal/sequences
     exec tmux
 end
 
 set fish_greeting
 
 set -x TERM xterm-256color
+set -x EDITOR vim
 
 ## Prompt Customizations:
 function fish_prompt
@@ -15,15 +16,9 @@ function fish_prompt
 end
 
 ## Aliases
-#alias ll='exa -laH --git --icons'
-alias ll='ls -a -F --file-type'
+alias ll='exa -laH --icons'
 alias ls='ls -a -F --file-type' #--color=tty'
 alias vimc='vim ~/.vim/vimrc'
-alias vk='vim ~/.config/kitty/kitty.conf'
-alias vb='vim ~/.config/bspwm/bspwmrc'
-alias vs='vim ~/.config/sxhkd/sxhkdrc'
-alias vc='vim ~/.config/fish/config.fish'
-
 alias sf='source ~/.config/fish/config.fish'
 
 alias open='xdg-open'
