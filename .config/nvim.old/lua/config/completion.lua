@@ -1,6 +1,17 @@
 local cmp = require('cmp')
+local types = require('cmp.types')
 
 cmp.setup({
+    completion = {
+        autocomplete = {
+            types.cmp.TriggerEvent.InsertEnter,
+            types.cmp.TriggerEvent.TextChanged
+        },
+        completeopt = "menu,menuone,noinsert",
+        keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+        keyword_length = 1
+    },
+    preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body)
@@ -43,7 +54,7 @@ cmp.setup.cmdline('/', {
 
 cmp.setup.cmdline(':', {
     sources = {
-        { name = 'path' },
+        --{ name = 'path' },
         { name = 'cmdline' }
     }
 })

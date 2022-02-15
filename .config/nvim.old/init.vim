@@ -1,173 +1,144 @@
 " ---------------------------- [General settings] ---------------------------
-if &compatible
-    set nocompatible
-endif
+filetype on
+filetype plugin on
+filetype indent on
 
-" Detect file type
-filetype indent plugin on
-
-" Encoding
-set encoding=utf-8
-
-" Enable syntax highlighting
-syntax enable
-
-" Enable 24-bit RGB color
+syntax on
 set termguicolors
-
-" Enable 256 color support
 set t_Co=256
 
-" Enable tab stuff
 set tabstop=8
-
-" Set indentation rules according to file type
 autocmd BufNewFile,BufRead *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.json,*.c,*.cpp,*.h*,*.hpp setlocal softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.py,*.vim,*.lua,*.sh,*.bash,*.fish setlocal softtabstop=4 shiftwidth=4
-
-" Convert tabs into spaces
 set expandtab
-
-" Be smart when indenting
 set autoindent
 set smartindent
+set copyindent
 
-" Line number
 set number
 set relativenumber
-
-" Disable beep or screen flash
 set noerrorbells
-
-" Disable backups
 set noswapfile
 set nobackup
-
-" Enable undo
 set undofile
 set undodir=~/.tmp/undodir
-
-" Be smart when searching
-set smartcase
-
-" Enable incremental search
-set incsearch
-
-" Don't highlight patterns
-set nohlsearch
-
-" Keep space between cursor and screen
-set scrolloff=10
-
-" Use system clipboard
 set clipboard=unnamedplus
 
-" Split rules
+set smartcase
+set incsearch
+set nohlsearch
+
+set scrolloff=10
 set splitbelow
 set splitright
-
-" Extra column
 set signcolumn=yes
-
-" Netrw
-let g:netrw_winsize = 20
-let g:netrw_wiw = 20
-
-" Status bar customization
-set statusline=
-set statusline+=\ %F\ %r%M
-set statusline+=%=\ %y\ %l:%c\ %p%%/%L\ [%n]
-
-" Pop-up menu height
 set pumheight=10
+
 " ---------------------------- [General settings] ---------------------------
 
-" -------------------------------- [Plugins] --------------------------------
+" ---------------------- [Plugins and plguins settings] ---------------------
+let g:python_host_prog = 'python3'
+
 let g:plug_home = stdpath('data') . '/plugged/'
 
 call plug#begin()
 
-" Colorscheme
 Plug 'joshdick/onedark.vim'
-
-" Utilities
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'sainnhe/sonokai'
+Plug 'morhetz/gruvbox'
+Plug 'tomasiser/vim-code-dark'
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
-
-" Syntax highlighting
+Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'sheerun/vim-polyglot'
-
-" LSP
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sbdchd/neoformat'
+Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 call plug#end()
-" -------------------------------- [Plugins] --------------------------------
 
-" ---------------------------- [Plugin settings] ----------------------------
+lua << EOF
+-- Configurations
+require('config.lsp')
+require('config.completion')
+--require('config.treesitter')
+EOF
+
 " Color scheme
 set background=dark
-colorscheme onedark
 
-" COC settings
-let g:coc_global_extensions = [
-    \ 'coc-snippets',
-    \ 'coc-html-css-support',
-    \ 'coc-html',
-    \ 'coc-css',
-    \ 'coc-emmet',
-    \ 'coc-prettier',
-    \ 'coc-tsserver',
-    \ 'coc-json',
-    \ 'coc-python',
-    \ 'coc-sh',
-    \ 'coc-fish',
-    \ 'coc-vimlsp'
-    \ ]
+"colorscheme onedark
+"let g:lightline = {'colorscheme': 'onedark'}
 
+"let g:sonokai_style = 'atlantis'
+"let g:sonokai_style = 'andromeda'
+"let g:sonokai_style = 'shusia'
+"let g:sonokai_style = 'maia'
+"let g:sonokai_style = 'espresso'
+"colorscheme sonokai
+"let g:lightline = {'colorscheme': 'sonokai'}
+
+let g:gruvbox_termcolors = 16
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_bold = 0
+colorscheme gruvbox
+let g:lightline = {'colorscheme': 'gruvbox'}
+
+"colorscheme codedark
+"let g:lightline = {'colorscheme': 'codedark'}
+
+" Prettier
+autocmd BufWritePre *.html,*.css,*.scss,*.js,*.jsx,*.ts,*.tsx,*.json,*.md Neoformat
 " -------------------------- [Keyboard shortcuts] ---------------------------
 " Set mapleader
 let mapleader = ','
 
 " Split navigation
-nnoremap <c-h> <cmd>wincmd h<cr>
-nnoremap <c-l> <cmd>wincmd l<cr>
-nnoremap <c-k> <cmd>wincmd k<cr>
-nnoremap <c-j> <cmd>wincmd j<cr>
+nnoremap <C-h> <Cmd>wincmd h<CR>
+nnoremap <C-l> <Cmd>wincmd l<CR>
+nnoremap <C-k> <Cmd>wincmd k<CR>
+nnoremap <C-j> <Cmd>wincmd j<CR>
 
 " Toggle undotree
-map <c-u> <cmd>UndotreeToggle<cr>
+map <C-u> <Cmd>UndotreeToggle<CR>
 
 " Tab completion
-inoremap <expr> <Tab> pumvisible() ? "\<c-n>": "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<c-p>": "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>": "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>": "\<S-Tab>"
 
 " Resizing stuff
-nnoremap <leader>= <cmd>vertical resize +5<cr>
-nnoremap <leader>- <cmd>vertical resize -5<cr>
-nnoremap <leader>[ <cmd>resize +5<cr>
-nnoremap <leader>] <cmd>resize -5<cr>
+nnoremap <Leader>= <Cmd>vertical resize +5<CR>
+nnoremap <Leader>- <Cmd>vertical resize -5<CR>
+nnoremap <Leader>[ <Cmd>resize +5<CR>
+nnoremap <Leader>] <Cmd>resize -5<CR>
 
 " Selection stuff
-nnoremap <leader>a ggVG
+"nnoremap <Leader>a ggVG
+nnoremap <C-a> ggVG
+"inoremap <C-a> <Esc>ggVG
 
-" File navigation stiff
-map <c-p> <cmd>W<cr>
+" File navigation stuff
+map <C-p> <Cmd>Telescope find_files<CR>
+map <C-e> <Cmd>NERDTreeToggle<CR>
 
 " Line moving stuff
-nnoremap <a-k> <cmd>m .-2<cr>==
-inoremap <a-j> <esc><cmd>m .+1<cr>==gi
-nnoremap <a-j> <cmd>m .+1<cr>==
-inoremap <a-k> <esc><cmd>m .-2<cr>==gi
-"vnoremap <a-j> <cmd>m '>+1<cr>gv=gv
-"vnoremap <a-k> <cmd>m '<-2<cr>gv=gv
-
-
-" COC: Jump to definition
-nmap gd <cmd>call CocAction('jumpDefinition', 'drop')<cr>
+nnoremap <A-k> <Cmd>m .-2<CR>==
+inoremap <A-j> <esc><Cmd>m .+1<CR>==gi
+nnoremap <A-j> <Cmd>m .+1<CR>==
+inoremap <A-k> <esc><Cmd>m .-2<CR>==gi
+"vnoremap <A-j> <Cmd>m '>+1<CR>gv=gv
+"vnoremap <A-k> <Cmd>m '<-2<CR>gv=gv
 
 " Commenting
 nmap <C-_> <plug>NERDCommenterToggle
