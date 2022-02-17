@@ -9,7 +9,7 @@ set t_Co=256
 
 set tabstop=8
 autocmd BufNewFile,BufRead *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.json,*.c,*.cpp,*.h*,*.hpp setlocal softtabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead *.py,*.vim,*.lua,*.sh,*.bash,*.fish setlocal softtabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.py,*.vim,*.lua,*.sh,*.bash,*.bashrc,*.fish setlocal softtabstop=4 shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
@@ -43,6 +43,8 @@ call plug#begin()
 
 " Colorscheme
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/sonokai'
 
 " Utilities
 Plug 'cohama/lexima.vim'
@@ -50,7 +52,8 @@ Plug 'mbbill/undotree'
 Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -67,8 +70,14 @@ call plug#end()
 " Color scheme
 set background=dark
 
-colorscheme onedark
-let g:lightline = {'colorscheme': 'onedark'}
+"colorscheme onedark
+"let g:lightline = {'colorscheme': 'onedark'}
+
+let g:gruvbox_italic = 1
+let g:gruvbox_bold = 0
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+"let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " COC settings
 let g:python_host_prog = 'python3'
@@ -87,6 +96,7 @@ let g:coc_global_extensions = [
     \ 'coc-vimlsp'
     \ ]
 
+"lua require('lualine').setup()
 " -------------------------- [Keyboard shortcuts] ---------------------------
 " Set mapleader
 let mapleader = ','

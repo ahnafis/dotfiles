@@ -22,6 +22,7 @@ end
 ## Aliases
 alias ls='exa -a --icons'
 alias ll='exa -laH --icons'
+#alias ls='ls -a --color=tty'
 #alias ls='ls -a -F --file-type' #--color=tty'
 
 alias open='xdg-open'
