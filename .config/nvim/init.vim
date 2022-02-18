@@ -31,8 +31,11 @@ set nohlsearch
 set scrolloff=10
 set splitbelow
 set splitright
-set signcolumn=yes
+set signcolumn=number
 set pumheight=10
+
+"" Distraction free
+"set laststatus=0
 
 " ---------------------------- [General settings] ---------------------------
 
@@ -42,20 +45,22 @@ let g:plug_home = stdpath('data') . '/plugged/'
 call plug#begin()
 
 " Colorscheme
-Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/sonokai'
+Plug 'ayu-theme/ayu-vim'
 
 " Utilities
 Plug 'cohama/lexima.vim'
 Plug 'mbbill/undotree'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
-"Plug 'itchyny/lightline.vim'
+"Plug 'glepnir/galaxyline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+"Plug 'itchyny/lightline.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ryanoasis/vim-devicons'
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
@@ -70,18 +75,21 @@ call plug#end()
 " Color scheme
 set background=dark
 
-"colorscheme onedark
-"let g:lightline = {'colorscheme': 'onedark'}
-
 let g:gruvbox_italic = 1
 let g:gruvbox_bold = 0
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
-"let g:lightline = { 'colorscheme': 'gruvbox' }
+
+"let g:sonokai_style = 'shusia'
+"colorscheme sonokai
+
+"let g:lightline = {'colorscheme': colors_name}
+lua require('lualine').setup()
 
 " COC settings
 let g:python_host_prog = 'python3'
 let g:coc_global_extensions = [
+    \ 'coc-marketplace',
     \ 'coc-snippets',
     \ 'coc-html-css-support',
     \ 'coc-html',
@@ -90,13 +98,14 @@ let g:coc_global_extensions = [
     \ 'coc-prettier',
     \ 'coc-tsserver',
     \ 'coc-json',
-    \ 'coc-python',
+    \ 'coc-jedi',
     \ 'coc-sh',
     \ 'coc-fish',
-    \ 'coc-vimlsp'
+    \ 'coc-highlight',
+    \ 'coc-git',
+    \ 'coc-lists'
     \ ]
 
-"lua require('lualine').setup()
 " -------------------------- [Keyboard shortcuts] ---------------------------
 " Set mapleader
 let mapleader = ','
@@ -121,8 +130,7 @@ nnoremap <Leader>[ <Cmd>resize +5<CR>
 nnoremap <Leader>] <Cmd>resize -5<CR>
 
 " Selection stuff
-"nnoremap <Leader>a ggVG
-nnoremap <C-a> ggVG
+nnoremap <Leader>a ggVG
 "inoremap <C-a> <Esc>ggVG
 
 " File navigation stuff
@@ -137,10 +145,44 @@ inoremap <A-k> <esc><Cmd>m .-2<CR>==gi
 "vnoremap <A-j> <Cmd>m '>+1<CR>gv=gv
 "vnoremap <A-k> <Cmd>m '<-2<CR>gv=gv
 
-" COC: Jump to definition
-nmap gd <Cmd>call CocAction('jumpDefinition', 'drop')<CR>
-
 " Commenting
 nmap <C-_> <plug>NERDCommenterToggle
 vmap <C-_> <plug>NERDCommenterToggle
 
+" Keymaps for distraction free mode
+if &laststatus == 0
+    nnoremap ++ <Cmd>echo &filetype<CR>
+    nnoremap __ <Cmd>echo expand("%:r")<CR>
+endif
+
+" COC mappings {{{
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<CR>
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<CR>
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Coc marketplace
+nnoremap <C-S-e> <Cmd>CocList marketplace<CR>
+"}}}

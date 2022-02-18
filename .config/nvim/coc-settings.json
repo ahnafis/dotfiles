@@ -18,5 +18,18 @@
   "python.autoComplete.addBrackets": true,
   "snippets.ultisnips.usePythonx": false,
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
-  "coc.preferences.jumpCommand": "drop"
+  "coc.preferences.jumpCommand": "drop",
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+          "cache": {
+            "directory": "/tmp/ccls"
+          }
+        }
+    }
+  }
+
 }

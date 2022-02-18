@@ -2,7 +2,7 @@ super + Return
 	kitty
 
 super + p
-        dmenu_run -p "Run:"
+	dmenu_run -p "Run:"
 
 super + e
 	thunar
