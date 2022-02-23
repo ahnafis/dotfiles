@@ -11,8 +11,9 @@ source ~/.env
 set fish_greeting
 
 # Exports
-set -x TERM xterm-256color
+#set -x TERM xterm-256color
 set -x EDITOR vim
+set -x TERM alacritty
 
 ## Prompt Customizations:
 function fish_prompt
@@ -27,5 +28,5 @@ alias ll='exa -laH --icons'
 
 alias open='xdg-open'
 alias live='browser-sync'
-
+alias tmux='TERM=screen-256color tmux'
 #starship init fish | source

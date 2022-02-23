@@ -27,6 +27,7 @@ bspc config pointer_action2 resize_corner
 ## Desktop rules & Window States rules
 bspc rule -a vlc desktop='^1' follow=on layer=above border=off
 bspc rule -a kitty desktop='^2' #state=fullscreen
+bspc rule -a Alacritty desktop='^2' follow=on #state=fullscreen
 bspc rule -a Google-chrome desktop='^3' follow=on
 bspc rule -a discord desktop='^7' follow=on state=tiling
 bspc rule -a qutebrowser desktop='^3' follow=on
