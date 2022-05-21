@@ -1,0 +1,8 @@
+[user]
+    name = Ahnaf Al Nafis
+    email = ahnafalnafis@gmail.com
+[core]
+    autocrlf = input
+    editor = vim
+[safe]
+	directory = *

@@ -1,21 +1,39 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  #cat ~/.cache/wal/sequences
+if command -v tmux &> /dev/null && \
+     [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && \
+     [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  # cat ~/.cache/wal/sequences
   exec tmux
 fi
 
-export TERM='xterm-256color'
+## Environement variables:
+source ~/.env
+export TERM="tmux-256color"
+export EDITOR="vim"
+export SUDO_PROMPT="Password 🔑: "
+export vimrc="$HOME/.vim/vimrc"
+# export GOROOT=/usr/
+
+# Vi-mode
+#set -o vi
+
 ## Prompt
-#PS1='[\u@\h \W]\$ '
-PS1='\u@\h:\W\$ '
-#eval "$(starship init bash)"
+PS1='\[\033[0;32m\]\W\[\033[00m\]\$ '
+# PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+## Powerline
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# . /usr/share/powerline/bindings/bash/powerline.sh
 
 ## Shortcuts
-#alias ls="exa -a --icons"
-#alias ll="exa -laH --icons"
-#alias la="exa -laH --icons --tree"
+alias ls="ls -A"
+alias sb="source ~/.bashrc"
+alias grep="grep --color=always"
+alias open="xdg-open"
+alias live="browser-sync"
+alias tmux="TERM=screen-256color tmux"
 
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION
+# alias vi=/usr/bin/vim
+# alias vim=/usr/bin/nvim
