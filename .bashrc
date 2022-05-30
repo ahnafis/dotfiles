@@ -28,12 +28,17 @@ PS1='\[\033[0;32m\]\W\[\033[00m\]\$ '
 # . /usr/share/powerline/bindings/bash/powerline.sh
 
 ## Shortcuts
-alias ls="ls -A"
+# alias ls="ls -A"
+alias ls="exa -a --icons"
+alias la="ls -la"
+alias cat=bat
 alias sb="source ~/.bashrc"
 alias grep="grep --color=always"
 alias open="xdg-open"
 alias live="browser-sync"
 alias tmux="TERM=screen-256color tmux"
+
+alias gs="git status -s"
 
 # alias vi=/usr/bin/vim
 # alias vim=/usr/bin/nvim

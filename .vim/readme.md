@@ -1,5 +1,0 @@
-# DON'T READ THIS README. THIS REPOSITORY IS NOT GOING TO BE MAINTAINED FOR THREE MONTHS (DUE TO EXAM)!
-
-## My VIMRC
-
-Modal Vimrc is made to work with Vim on server where GUI is not available. In other words, in Unix TTY (mostly Linux TTY). Vim works great with TTY's. But the problem is it cannot show 'Glyphs' well. I like to use 'Glyphs' (Icons) in Vim's File explorer and Tab pages, even sometimes Emojis! But TTY can't display those properly. Neither Colorschemes work properly in TTY. That's why the setup (vimrc) will be minimal. There won't be any Glyphs, Emojis and Colorschemes. Even though Colorschemes will be available in the minimal setup, it (the Colorscheme) will be minimal. In other words, less syntax highlighting, only TTY supported colors. In that setup, there will be a Language Server Protocol support hand Dynamic mode is made for work with GUI's. Extended features like 'External File Explorer', 'Gylphs and Icons in File Explorer and Tab pages', 'Modern and Beautiful Colorschemes', 'Dynamic Language Server Protocol support', 'Plug-in Manager' and some other IDE like features are included into the Dynamic mode.

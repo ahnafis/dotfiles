@@ -7,12 +7,17 @@ let g:vim_mode = !empty($DISPLAY) ? 'dynamic' : 'minimal'
 call plug#begin('~/.cache/vim/plugged')
 
 if g:vim_mode == 'dynamic'
-    Plug 'sainnhe/sonokai' 
+    Plug '~/Projects/vim-plugins/dark-plus'
+    Plug 'sainnhe/sonokai'
+    Plug 'joshdick/onedark.vim'
+    " Plug 'itchyny/lightline.vim'
     Plug 'sheerun/vim-polyglot'
+    Plug 'pangloss/vim-javascript'
     Plug 'airblade/vim-gitgutter'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'markonm/traces.vim'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'ap/vim-css-color'
 endif
 
 Plug 'mbbill/undotree'
@@ -41,11 +46,11 @@ set autoindent
 set copyindent
 
 set autoread
-set mouse=n
+" set mouse=n
 set clipboard=unnamedplus
 set backspace=indent,eol,start
 set number
-" set relativenumber
+set relativenumber
 set spell
 set spelllang=en
 set splitright
@@ -62,7 +67,7 @@ set undodir=~/.tmp/undodir
 set undofile
 
 set textwidth=80
-set colorcolumn=+1
+" set colorcolumn=+1
 
 set laststatus=2
 " set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -80,46 +85,80 @@ set pumheight=10
 set scrolloff=10
 set cursorline
 set signcolumn=yes
-set fillchars=vert:\|,fold:-,eob:\ 
+set fillchars=vert:│,fold:-,eob:\ 
 
 syntax on
-set background=dark
 if g:vim_mode == 'dynamic'
     " Turn on true colors
     if has('termguicolors')
-        let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-        let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 
         " Cursor shapes
-        let &t_EI="\<Esc>[2 q"
-        let &t_SI="\<Esc>[6 q"
-        let &t_SR="\<Esc>[3 q"
+        let &t_EI = "\<Esc>[2 q"
+        let &t_SI = "\<Esc>[6 q"
+        let &t_SR = "\<Esc>[3 q"
 
         " Undercurls
-        let &t_Cs="\<Esc>[4:3m"
-        let &t_Ce="\<Esc>[4:0m"
+        let &t_Cs = "\<Esc>[4:3m"
+        let &t_Ce = "\<Esc>[4:0m"
 
         set termguicolors
         set t_Co=256
     endif
 
-    let g:sonokai_style = 'maia'
-    let g:sonokai_disable_italic_comment = 1
-    let g:sonokai_better_performance = 1
-    colorscheme sonokai
+    set background=dark
+    let g:theme = 'dark-plus'
 
-    let s:configuration = sonokai#get_configuration()
-    let s:palette = sonokai#get_palette(s:configuration.style, s:configuration.colors_override)
+    if g:theme == 'dark-plus'
+        let g:vsc_comment = 0
+        let g:vsc_statusline = 1
 
-    call sonokai#highlight('TabLineSel', s:palette.fg, s:palette.bg0)
-    highlight! link netrwDir Blue
-    highlight! link netrwClassify Fg
-    highlight! link netrwExe Green
+    elseif g:theme == 'sonokai'
+        let g:sonokai_style = 'default'
+        let g:sonokai_disable_italic_comment = 1
+        let g:sonokai_better_performance = 1
+
+    elseif g:theme == 'gruvbox'
+        let g:gruvbox_bold = 0
+        let g:gruvbox_italic = 0
+        let g:gruvbox_contrast_dark = 'hard'
+
+    elseif g:theme == 'onedark'
+        let g:onedark_terminal_italics = 0
+    endif
 
 else
     set nospell
     set nocursorline
-    colorscheme default
+    let g:theme = 'default'
+endif
+
+" Finally set the color scheme
+execute 'colorscheme ' . g:theme
+" let g:lightline = { 'colorscheme': g:theme }
+
+" Custom highlight rules
+if g:theme == 'sonokai'
+    let s:configuration = sonokai#get_configuration()
+    let s:palette = sonokai#get_palette(s:configuration.style, s:configuration.colors_override)
+
+    call sonokai#highlight('TabLineSel', s:palette.fg, s:palette.bg0)
+    call sonokai#highlight('Title', s:palette.none, s:palette.none)
+
+    highlight! link netrwDir Blue
+    highlight! link netrwClassify Fg
+    highlight! link netrwExe Green
+
+elseif g:theme == 'onedark'
+    highlight SpellBad guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+                \ gui=undercurl cterm=undercurl
+    highlight SpellCap guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+                \ gui=undercurl cterm=undercurl
+    highlight SpellLocal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+                \ gui=undercurl cterm=undercurl
+    highlight SpellRare guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
+                \ gui=undercurl cterm=undercurl
 endif
 
 " Netrw
@@ -155,6 +194,7 @@ augroup SetFileTypes
     autocmd BufRead,BufNewFile *.asm setlocal filetype=asm
     autocmd BufRead,BufNewFile LICENSE,license,LICENSE.txt,license.txt
                 \ setlocal filetype=license
+    autocmd BufRead,BufNewFile config setlocal filetype=config
 augroup END
 " augroup SetIndent
 "     autocmd!
@@ -180,6 +220,7 @@ let g:mapleader = ','
 nnoremap ^ 0
 nnoremap 0 ^
 nnoremap <Home> ^
+nnoremap <C-I> <C-A>
 
 " Split resizing.
 nnoremap <Leader>] <Cmd>resize +5<CR>
@@ -220,6 +261,10 @@ nnoremap <Space>[ <Cmd>tabprevious<CR>
 nnoremap <Space>] <Cmd>tabNext<CR>
 nnoremap <C-T> <Cmd>Texplore<CR>
 
+" Scroll
+nnoremap <C-K> 5k
+nnoremap <C-J> 5j
+
 " Auto pairs.
 " inoremap " ""<Esc>i
 " inoremap ' ''<Esc>i
@@ -245,6 +290,9 @@ nnoremap <C-E> <Cmd>Lexplore<CR>
 nnoremap <C-U> <Cmd>UndotreeToggle<CR>
 nnoremap ++ <Cmd>set spell!<CR>
 nnoremap _+ <Cmd>set hlsearch!<CR>
+
+" Source Vimrc
+nnoremap <Space>r <Cmd>source $MYVIMRC<CR>
 
 " Commenting.
 nmap <C-_> gcc

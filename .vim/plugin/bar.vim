@@ -1,3 +1,4 @@
+
 if g:vim_mode == 'dynamic'
     let g:mode_alias = {
                 \ 'n': 'normal',
@@ -97,25 +98,25 @@ if g:vim_mode == 'dynamic'
                 \ }
 
     " --> Tab bar
-    "     function TabLine()
-    "         if has_key(g:icon, &ft)
-    "             return ' ' .. g:icon[&ft] .. ' ' .. expand('%:t')
-    "         elseif &ft == ''
-    "             return ' ' .. g:icon['none'] .. ' ' .. expand('%:t')
-    "         else
-    "             return ' ' .. g:icon['none'] .. ' ' .. expand('%:t')
-    "         endif
-    "     endfunction
+    " function TabLine()
+    "     if has_key(g:icons, &ft)
+    "         return ' ' .. g:icons[&ft] .. ' ' .. expand('%:t')
+    "     elseif &ft == ''
+    "         return ' ' .. g:icons['none'] .. ' ' .. expand('%:t')
+    "     else
+    "         return ' ' .. g:icons['none'] .. ' ' .. expand('%:t')
+    "     endif
+    " endfunction
 
-    "     augroup TabLine
-    "         autocmd!
-    "         autocmd FileType * setlocal tabline=%!TabLine()
-    "     augroup END
+    " augroup TabLine
+    "     autocmd!
+    "     autocmd FileType * setlocal tabline=%!TabLine()
+    " augroup END
 
     " --> Status Bar
     function! StatusBar()
         let s = ''
-        let s .= '%#PmenuSel# %#StatusLine#'
+        " let s .= '%#PmenuSel# %#StatusLine#'
         let s .= ' '
 
         " let s .= '%#' . g:modal_hl[s:exact_mode(mode())] . '#'
@@ -133,6 +134,7 @@ if g:vim_mode == 'dynamic'
  
         let s .= 'Lns: %L, Col: %v'
         " let s .= 'Col: %v'
+        " let s .= ' │ '
         let s .= '  '
         let s .= toupper(&enc)
         let s .= '  '
@@ -141,7 +143,7 @@ if g:vim_mode == 'dynamic'
         let s .= s:get_ft_of(&ft)
         let s .= ' '
 
-        let s .= '%#PmenuSel# '
+        " let s .= '%#PmenuSel# '
         return s
     endfunction
     set statusline=%!StatusBar()
