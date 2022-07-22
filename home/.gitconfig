@@ -13,4 +13,4 @@
     tool = vimdiff
 
 [credential]
-	helper = store
+    helper = store
