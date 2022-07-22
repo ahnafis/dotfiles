@@ -1,24 +1,25 @@
 if g:vim_mode == 'dynamic'
-    let g:mode_alias = {
-                \ 'n': 'normal',
-                \ 'i': 'insert',
-                \ 'c': 'command',
-                \ 'v': 'visual',
-                \ '\<C-V>': 'visual',
-                \ 'V': 'visual',
-                \ 'R': 'replace',
-                \ 's': 'select',
-                \ 'S': 'select',
-                \ '': 'none',
-                \ }
+    " Mode:
+    " let g:mode_alias = {
+    "             \ 'n': 'normal',
+    "             \ 'i': 'insert',
+    "             \ 'c': 'command',
+    "             \ 'v': 'visual',
+    "             \ '\<C-V>': 'visual',
+    "             \ 'V': 'visual',
+    "             \ 'R': 'replace',
+    "             \ 's': 'select',
+    "             \ 'S': 'select',
+    "             \ '': 'none',
+    "             \ }
 
-    function s:exact_mode(mode)
-        if has_key(g:mode_alias, a:mode)
-            return g:mode_alias[a:mode]
-        else
-            return g:mode_alias['']
-        endif
-    endfunction
+    " function s:exact_mode(mode)
+    "     if has_key(g:mode_alias, a:mode)
+    "         return g:mode_alias[a:mode]
+    "     else
+    "         return g:mode_alias['']
+    "     endif
+    " endfunction
 
     let g:icons = {
                 \ 'none': '',
@@ -49,9 +50,9 @@ if g:vim_mode == 'dynamic'
                 \}
 
     let g:filetypes = {
-                \ '': '[Untitled]',
+                \ '': '[Unknown]',
                 \ 'text': 'Plain text',
-                \ 'vim': 'Vim',
+                \ 'vim': 'VimScript',
                 \ 'javascript': 'JavaScript',
                 \ 'typescript': 'TypeScript',
                 \ 'c': 'C',
@@ -64,12 +65,25 @@ if g:vim_mode == 'dynamic'
                 \ 'json': 'JSON',
                 \ 'jsonc': 'JSON with comments',
                 \ 'markdown': 'Markdown',
+                \ 'gitconfig': "Git configuration",
+                \ 'gitignore': "Git ignore",
+                \ }
+
+    let g:fname = expand("%:t")
+    let g:exact_fname = {
+                \ '.prettierrc': "Prettier configuration",
+                \ '.vimrc': "Vim configuration",
+                \ 'vimrc': "Vim configuration",
+                \ '.bashrc': "Bash configuration",
+                \ 'kitty.conf': "Kitty configuration",
                 \ }
 
     let g:file_formats = {'unix': 'LF', 'dos': 'CRLF'}
 
     function s:get_ft_of(ft)
-        if has_key(g:filetypes, a:ft)
+        if has_key(g:exact_fname, expand("%:t"))
+            return g:exact_fname[expand("%:t")]
+        elseif has_key(g:filetypes, a:ft)
             return g:filetypes[a:ft]
         else
             return a:ft
@@ -80,21 +94,21 @@ if g:vim_mode == 'dynamic'
                 \ '', '')
 
     " Colors
-    highlight NormalMode guifg=#78cee9 ctermfg=110 guibg=#3a444b ctermbg=237
-    highlight InsertMode guifg=#9cd57b ctermfg=107 guibg=#3a444b ctermbg=237
-    highlight VisualMode guifg=#f3a96a ctermfg=203 guibg=#3a444b ctermbg=237
-    highlight ReplaceMode guifg=#f76c7c ctermfg=203 guibg=#3a444b ctermbg=237
-    highlight CommandMode guifg=#e3d367 ctermfg=179 guibg=#3a444b ctermbg=237
-    highlight UnknownMode guifg=#e1e2e3 ctermfg=250 guibg=#3a444b ctermbg=237
-    let g:modal_hl = {
-                \ 'normal': 'NormalMode',
-                \ 'insert': 'InsertMode',
-                \ 'visual': 'VisualMode',
-                \ 'replace': 'ReplaceMode',
-                \ 'command': 'CommandMode',
-                \ 'none': 'UnknownMode',
-                \ 'select': 'UnknownMode'
-                \ }
+    " highlight NormalMode guifg=#78cee9 ctermfg=110 guibg=#3a444b ctermbg=237
+    " highlight InsertMode guifg=#9cd57b ctermfg=107 guibg=#3a444b ctermbg=237
+    " highlight VisualMode guifg=#f3a96a ctermfg=203 guibg=#3a444b ctermbg=237
+    " highlight ReplaceMode guifg=#f76c7c ctermfg=203 guibg=#3a444b ctermbg=237
+    " highlight CommandMode guifg=#e3d367 ctermfg=179 guibg=#3a444b ctermbg=237
+    " highlight UnknownMode guifg=#e1e2e3 ctermfg=250 guibg=#3a444b ctermbg=237
+    " let g:modal_hl = {
+    "             \ 'normal': 'NormalMode',
+    "             \ 'insert': 'InsertMode',
+    "             \ 'visual': 'VisualMode',
+    "             \ 'replace': 'ReplaceMode',
+    "             \ 'command': 'CommandMode',
+    "             \ 'none': 'UnknownMode',
+    "             \ 'select': 'UnknownMode'
+    "             \ }
 
     " --> Tab bar
     " function TabLine()
@@ -133,12 +147,14 @@ if g:vim_mode == 'dynamic'
  
         let s .= 'Lns: %L, Col: %v'
         " let s .= 'Col: %v'
-        " let s .= ' │ '
-        let s .= '  '
+        let s .= ' │ '
+        " let s .= '  '
         let s .= toupper(&enc)
-        let s .= '  '
+        let s .= ' │ '
+        " let s .= '  '
         let s .= g:file_formats[&ff]
-        let s .= '  '
+        let s .= ' │ '
+        " let s .= '  '
         let s .= s:get_ft_of(&ft)
         let s .= ' '
 

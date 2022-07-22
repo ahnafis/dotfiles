@@ -12,6 +12,8 @@ source ~/.env
 export TERM="tmux-256color"
 export EDITOR=vim
 export SUDO_PROMPT="Password 🔑: "
+export OS_NAME=$(python3 -c "import json;h = json.loads('$(hostnamectl \
+--json=short)');print(h['OperatingSystemPrettyName'])")
 
 # Vi-mode
 #set -o vi
@@ -28,8 +30,8 @@ PS1='\[\033[0;32m\]\W\[\033[00m\]\$ '
 ## Shortcuts
 # alias ls="ls -A"
 alias ls="exa -a --icons"
-alias la="ls -la"
-alias cat=bat
+alias ll="ls -la"
+# alias cat=bat
 alias sb="source ~/.bashrc"
 alias grep="grep --color=always"
 alias open="xdg-open"
@@ -38,3 +40,10 @@ alias tmux="TERM=screen-256color tmux"
 
 alias gs="git status -s"
 
+alias sl='sl -e'
+alias fun="while [ 1 ]; do clear && sl -100;done;exit"
+
+alias serve="http-server ."
+
+# alias vim=/usr/bin/nvim
+# alias vi=/usr/bin/vim

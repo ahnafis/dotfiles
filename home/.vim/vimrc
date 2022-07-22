@@ -7,17 +7,14 @@ let g:vim_mode = !empty($DISPLAY) ? 'dynamic' : 'minimal'
 call plug#begin('~/.cache/vim/plugged')
 
 if g:vim_mode == 'dynamic'
-    Plug '~/Projects/vim-plugins/dark-plus'
-    Plug 'sainnhe/sonokai'
-    Plug 'joshdick/onedark.vim'
-    " Plug 'itchyny/lightline.vim'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'pangloss/vim-javascript'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-    Plug 'markonm/traces.vim'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'ap/vim-css-color'
+   Plug 'ayu-theme/ayu-vim'
+   Plug 'sheerun/vim-polyglot'
+   " Plug 'pangloss/vim-javascript'
+   Plug 'airblade/vim-gitgutter'
+   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+   Plug 'markonm/traces.vim'
+   Plug 'jiangmiao/auto-pairs'
+   Plug 'ap/vim-css-color'
 endif
 
 Plug 'mbbill/undotree'
@@ -46,7 +43,6 @@ set autoindent
 set copyindent
 
 set autoread
-" set mouse=n
 set clipboard=unnamedplus
 set backspace=indent,eol,start
 set number
@@ -85,81 +81,47 @@ set pumheight=10
 set scrolloff=10
 set cursorline
 set signcolumn=yes
-set fillchars=vert:│,fold:-,eob:\ 
+let &fillchars = 'vert:│,fold:-,eob: '
 
 syntax on
 if g:vim_mode == 'dynamic'
-    " Turn on true colors
-    if has('termguicolors')
-        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+   " Turn on true colors
+   if has('termguicolors')
+      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 
-        " Cursor shapes
-        let &t_EI = "\<Esc>[2 q"
-        let &t_SI = "\<Esc>[6 q"
-        let &t_SR = "\<Esc>[3 q"
+      " Cursor shapes
+      let &t_EI = "\<Esc>[2 q"
+      let &t_SI = "\<Esc>[6 q"
+      let &t_SR = "\<Esc>[3 q"
 
-        " Undercurls
-        let &t_Cs = "\<Esc>[4:3m"
-        let &t_Ce = "\<Esc>[4:0m"
+      " Undercurls
+      let &t_Cs = "\<Esc>[4:3m"
+      let &t_Ce = "\<Esc>[4:0m"
 
-        set termguicolors
-        set t_Co=256
-    endif
+      set termguicolors
+      set t_Co=256
+   endif
 
-    set background=dark
-    let g:theme = 'dark-plus'
-
-    if g:theme == 'dark-plus'
-        let g:vsc_comment = 0
-        let g:vsc_statusline = 1
-
-    elseif g:theme == 'sonokai'
-        let g:sonokai_style = 'default'
-        let g:sonokai_disable_italic_comment = 1
-        let g:sonokai_better_performance = 1
-
-    elseif g:theme == 'gruvbox'
-        let g:gruvbox_bold = 0
-        let g:gruvbox_italic = 0
-        let g:gruvbox_contrast_dark = 'hard'
-
-    elseif g:theme == 'onedark'
-        let g:onedark_terminal_italics = 0
-    endif
+   set background=dark
+   let g:theme = 'ayu'
+   let g:dp_default_comment = 0
+   let g:dp_default_statusline = 0
 
 else
-    set nospell
-    set nocursorline
-    let g:theme = 'default'
+   set nospell
+   set nocursorline
+   let g:theme = 'default'
 endif
 
 " Finally set the color scheme
 execute 'colorscheme ' . g:theme
-" let g:lightline = { 'colorscheme': g:theme }
-
-" Custom highlight rules
-if g:theme == 'sonokai'
-    let s:configuration = sonokai#get_configuration()
-    let s:palette = sonokai#get_palette(s:configuration.style, s:configuration.colors_override)
-
-    call sonokai#highlight('TabLineSel', s:palette.fg, s:palette.bg0)
-    call sonokai#highlight('Title', s:palette.none, s:palette.none)
-
-    highlight! link netrwDir Blue
-    highlight! link netrwClassify Fg
-    highlight! link netrwExe Green
-
-elseif g:theme == 'onedark'
-    highlight SpellBad guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
-                \ gui=undercurl cterm=undercurl
-    highlight SpellCap guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
-                \ gui=undercurl cterm=undercurl
-    highlight SpellLocal guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
-                \ gui=undercurl cterm=undercurl
-    highlight SpellRare guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE
-                \ gui=undercurl cterm=undercurl
-endif
+hi SpellBad guifg=NONE guibg=NONE cterm=undercurl gui=undercurl
+hi! link SpellRare SpellBad
+hi! link SpellLocal SpellBad
+hi! link SpellCap SpellBad
+hi! link CocErrorHighlight SpellBad
+hi! link TabLineFill StatusLine
 
 " Netrw
 let g:netrw_winsize = 20
@@ -170,40 +132,57 @@ let g:netrw_home = expand('~/.cache/vim')
 
 " Extensions for COC
 let g:coc_global_extensions = [
-            \ 'coc-snippets',
-            \ 'coc-emmet',
-            \ 'coc-tsserver',
-            \ 'coc-json',
-            \ 'coc-vimlsp',
-            \ 'coc-prettier',
-            \ 'coc-pyright',
-            \ 'coc-sh',
-            \]
+         \ 'coc-snippets',
+         \ 'coc-emmet',
+         \ 'coc-html',
+         \ 'coc-css',
+         \ 'coc-html-css-support',
+         \ 'coc-tsserver',
+         \ 'coc-json',
+         \ 'coc-vimlsp',
+         \ 'coc-prettier',
+         \ 'coc-pyright',
+         \ 'coc-sh',
+         \]
 
 " ==============================================================================
 " |#3| Auto commands
 " ==============================================================================
 
 augroup RememberLastPosition
-    autocmd!
-    autocmd VimEnter * normal gi
+   autocmd!
+   autocmd VimEnter * normal gi
 augroup END
 
 augroup SetFileTypes
-    autocmd!
-    autocmd BufRead,BufNewFile *.asm setlocal filetype=asm
-    autocmd BufRead,BufNewFile LICENSE,license,LICENSE.txt,license.txt
-                \ setlocal filetype=license
-    autocmd BufRead,BufNewFile config setlocal filetype=config
+   autocmd!
+   autocmd BufRead,BufNewFile *.asm setlocal filetype=asm
+   autocmd BufRead,BufNewFile LICENSE,license,LICENSE.txt,license.txt
+            \ setlocal filetype=license
+   autocmd BufRead,BufNewFile config setlocal filetype=config
+   autocmd BufRead,BufNewFile fonts.conf setlocal filetype=xml
+   autocmd BufNewFile,BufRead .prettierrc setlocal filetype=jsonc
 augroup END
-" augroup SetIndent
-"     autocmd!
-"     autocmd FileType html,css,javascript setlocal softtabstop=2 shiftwidth=2
-" augroup END
+
+augroup SetIndent
+   autocmd!
+   autocmd FileType html,css,javascript,typescript,json,jsonc,markdown setlocal softtabstop=2 shiftwidth=2
+   autocmd FileType vim setlocal softtabstop=3 shiftwidth=3
+augroup END
+
+augroup IgnoreNodeModules
+   autocmd!
+   autocmd FileType javascript,typescript setlocal wildignore=*/node_modules/*
+augroup END
 
 " augroup SetJson
 " autocmd!
 " autocmd BufRead,BufNewFile *.json,*.jsonc set filetype=jsonc
+" augroup END
+
+" augroup TSC
+"     autocmd!
+"     autocmd FileType,BufWrite,BufWritePre typescript execute ":!tsc"
 " augroup END
 
 " ==============================================================================
@@ -215,6 +194,8 @@ set timeoutlen=1000
 set ttimeoutlen=50
 
 let g:mapleader = ','
+
+nnoremap gz<CR> z<CR>gi<Esc>
 
 " Swaps
 nnoremap ^ 0
@@ -229,8 +210,11 @@ nnoremap <Leader>= <Cmd>vertical resize +5<CR>
 nnoremap <Leader>- <Cmd>vertical resize -5<CR>
 
 " Editing.
-nnoremap <C-A> ggVG
+nnoremap <Leader>a ggVG
 nnoremap Y y$
+
+" " Selection stuff
+nnoremap gw viwl
 
 " Smart tab and enter.
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -258,12 +242,15 @@ inoremap <C-Left>   <Cmd>echoe 'Use b or B in NORMAL mode'<CR>
 nnoremap <Space>t :tabnew<Space>
 nnoremap <Space>q <Cmd>tabclose<CR>
 nnoremap <Space>[ <Cmd>tabprevious<CR>
-nnoremap <Space>] <Cmd>tabNext<CR>
+nnoremap <Space>] <Cmd>tabnext<CR>
 nnoremap <C-T> <Cmd>Texplore<CR>
 
 " Scroll
 nnoremap <C-K> 5k
 nnoremap <C-J> 5j
+
+" Mouse
+nnoremap <Space>m <Cmd>set mouse=nv<CR>
 
 " Auto pairs.
 " inoremap " ""<Esc>i
@@ -303,7 +290,7 @@ nnoremap <Space>ps <Cmd>PlugInstall<CR>
 nnoremap <Space>pr <Cmd>PlugClean<CR>
 
 " Key mappings for COC.
-nmap <Leader>rn <Plug>(coc-rename)
+nmap <F2> <Plug>(coc-rename)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
@@ -321,13 +308,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-        call CocActionAsync('doHover')
-    else
-        execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
+   if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+   elseif (coc#rpc#ready())
+      call CocActionAsync('doHover')
+   else
+      execute '!' . &keywordprg . " " . expand('<cword>')
+   endif
 endfunction
 
 " ==============================================================================
