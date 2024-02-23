@@ -27,11 +27,8 @@ const DEFAULT_SETTINGS = {
   }
 }
 
-# TODO: Assign properties recursively.
-g:notification_settings = g:->get("notification_settings", DEFAULT_SETTINGS)
-
 def Notify(message: string): void
-  popup_create(message, g:notification_settings->get("opts", {}))
+  popup_create(message, DEFAULT_SETTINGS.opts)
 enddef
 
 command! -nargs=1 Notify Notify(<args>)
