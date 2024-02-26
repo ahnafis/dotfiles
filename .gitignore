@@ -1,4 +1,2 @@
 /home/.config/kitty/themes/index.conf
-*.spl
-/home/.vim/.vim
 plug.vim
