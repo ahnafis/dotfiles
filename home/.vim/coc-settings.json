@@ -35,5 +35,13 @@
     "typeParameter": "",
     "default": "DEFAULT"
   },
-  "suggest.formatItems": ["abbr", "kind", "menu"]
+  "suggest.formatItems": [
+    "abbr",
+    "kind",
+    "menu"
+  ],
+  "cSpell.userWords": [
+    "BSPWM",
+    "Polybar"
+  ]
 }
