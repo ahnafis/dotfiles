@@ -34,8 +34,12 @@ export def OnShiftTab(): string
 enddef
 
 export def OnEnter(): string
-  if IsCocLoaded() && coc#pum#visible()
-    return coc#pum#confirm()
+  if IsCocLoaded() 
+    if coc#pum#visible()
+      return coc#pum#confirm()
+    else
+      return "\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
+    endif
   elseif pumvisible()
     return "\<C-y>"
   endif

@@ -7,22 +7,29 @@ if utils.IsLoaded("statusline")
 endif
 g:loaded_statusline = true
 
+set laststatus=2
+
 def StatusLine(): string
-  var line = " "
+  var line = ' '
+    .. "%t"
+    .. ' '
+    .. "%m"
+    .. "%="
+    .. $"{CocDiagnostics()}"
+    .. '  '
+    .. $"{utils.GetFileType(&filetype)}"
+    .. '  '
+    .. "%l:%v"
 
-  line ..= "%t"
-  line ..= " %m"
+  return line .. ' '
+enddef
 
-  # Separator
-  line ..= "%="
+def CocDiagnostics(): string
+  var info = b:->get("coc_diagnostic_info", {})
+  var errors = info->get("error", 0)
+  var warnings = info->get("warnings", 0)
 
-  # File type
-  line ..= $"{utils.GetFileType(&filetype)}  "
-
-  # Line, column and total lines
-  line ..= "%l:%v (%L lines)"
-
-  return line .. " "
+  return $" {errors}  {warnings}"
 enddef
 
 augroup setup_status_line

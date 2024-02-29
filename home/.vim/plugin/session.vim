@@ -1,5 +1,9 @@
 vim9script noclear
 
+if !g:dev
+  finish
+endif
+
 import autoload "utils.vim"
 
 if utils.IsLoaded("session")
@@ -9,8 +13,14 @@ g:loaded_session = true
 
 set sessionoptions-=options 
 
-var session_dir = "./.vim"
-var session_file = $"{session_dir}/last_session.vim"
+g:session_cache_dir = $"{$HOME}/.cache/vim/session"
+var session_file = getcwd()->substitute("\/", "__", 'g')
+var session = $"{g:session_cache_dir}/{session_file}.vim"
+
+if !isdirectory(g:session_cache_dir)
+  mkdir(g:session_cache_dir)
+  Notify $"Created session directory at {g:session_cache_dir}"
+endif
 
 def SaveSession(): void
   var choice = confirm("Save this session?", "&Yes\n&No")
@@ -18,16 +28,17 @@ def SaveSession(): void
     return
   endif
 
-  if !isdirectory(session_dir) && !filereadable(session_file)
-    mkdir(session_dir)
-  endif
-  execute $"mksession! {session_file}"
+  execute $"mksession! {session}"
 enddef
 
 def RestoreSession(): void
-  if filereadable(session_file)
-    execute $"source {session_file}"
+  if filereadable(session)
+    execute $"source {session}"
   endif
+enddef
+
+def DeleteSession()
+  execute $"Rm {session}"
 enddef
 
 augroup sessionize
@@ -43,3 +54,6 @@ augroup sessionize
     endif
   }
 augroup END
+
+command! DeleteSession  DeleteSession()
+command! Del            DeleteSession()

@@ -2,31 +2,45 @@ vim9script
 
 import autoload "utils.vim"
 
+g:dev = ($DEV == "1")
+
 ###############################################################################
 ################################### PLUGINS ###################################
 ###############################################################################
 
-plug#begin("~/.cache/vim/plugged")
-  Plug "morhetz/gruvbox"
-  Plug "machakann/vim-highlightedyank"
-  Plug "markonm/traces.vim"
-  Plug "ap/vim-css-color", #{ for: [
-        \ "css",
-        \ "typescript",
-        \ "typescriptreact"
-        \ ]}
+if g:dev
+  plug#begin("~/.cache/vim/plugged")
+    Plug "morhetz/gruvbox"
+    Plug "machakann/vim-highlightedyank"
+    Plug "markonm/traces.vim"
+    Plug "ap/vim-css-color", #{ for: [
+          \ "css",
+          \ "typescript",
+          \ "typescriptreact"
+          \ ]}
 
-  Plug "neoclide/coc.nvim", #{ branch: "release" }
-  Plug "wellle/context.vim"
-  Plug "tpope/vim-fugitive"
-  Plug "airblade/vim-gitgutter"
-  Plug "cohama/lexima.vim"
-  Plug "tpope/vim-surround"
-  Plug "tpope/vim-commentary"
-  Plug "junegunn/fzf"
-  Plug "junegunn/fzf.vim"
-  Plug "mbbill/undotree", #{ on: "UndotreeToggle" }
-plug#end()
+    Plug "neoclide/coc.nvim", #{ branch: "release" }
+    Plug "wellle/context.vim"
+    Plug "tpope/vim-fugitive"
+    Plug "airblade/vim-gitgutter"
+    Plug "cohama/lexima.vim"
+    Plug "tpope/vim-surround"
+    Plug "tpope/vim-commentary"
+    Plug "junegunn/fzf"
+    Plug "junegunn/fzf.vim"
+    Plug "mbbill/undotree", #{ on: "UndotreeToggle" }
+  plug#end()
+endif
+
+# Disabling plugins:
+g:loaded_2html_plugin = true
+g:loaded_getscriptPlugin = true
+g:loaded_gzip = true
+g:loaded_logiPat = true
+g:loaded_netrwPlugin = true
+g:loaded_spellfile_plugin = true
+g:loaded_tarPlugin = true
+g:loaded_vimballPlugin = true
 
 ###############################################################################
 ################################### SETTINGS ##################################
@@ -42,22 +56,9 @@ else
   syntax on
 endif
 
-# Indentation:
-set tabstop=2       # Tabs be 2 character width
-set shiftwidth=0    # Follow tabstop
-set smarttab        # Inserts spaces when <Tab> is pressed
-set softtabstop=-1  # Follow shiftwidth
-set expandtab       # Convert tabs into spaces
-set autoindent
-set copyindent
-
 # Line number
 set number
 set relativenumber
-
-# Spell checking
-set spell
-set spelllang=en_us
 
 # Menus:
 set wildmenu
@@ -74,7 +75,7 @@ set ttimeoutlen=50
 set undofile
 set noswapfile
 
-# Searching:
+# Search:
 set ignorecase
 set smartcase
 set incsearch
@@ -91,16 +92,32 @@ set clipboard^=unnamedplus
 set foldenable
 set foldmethod=manual
 
+# Splits:
+set splitright
+set splitbelow
+
+# Auto read and write:
+set autoread
+set noautowrite
+
+# Command line:
+set ruler
+set shortmess=cfilnsxIT
+
+# Disable annoying terminal bells:
+set belloff=all
+
+# Text decorations:
+set textwidth=79
+set nowrap
+
 set display+=lastline
 &fillchars = "vert:│,fold:˗,eob: "
-set lazyredraw
-set shortmess=cfilnsxIT belloff=all
-set splitright splitbelow hidden
-set updatetime=50 nrformats=alpha,hex,bin
-set ttymouse=sgr
-set textwidth=79 nowrap laststatus=2
-set ruler signcolumn=yes
-set autoread noautowrite
+
+set hidden
+set updatetime=50
+set nrformats=alpha,hex,bin
+set signcolumn=yes
 
 augroup fix_format_options
   autocmd!
@@ -128,6 +145,12 @@ nnoremap Y  y$
 nnoremap <silent> <C-k>  <ScriptCmd>append(line('.') - 1, '')<CR>
 nnoremap <silent> <C-j>  <ScriptCmd>append(line('.'), '')<CR>
 
+# Move lines:
+nnoremap <A-k> <Cmd>move . -2<CR>
+nnoremap <A-j> <Cmd>move . +1<CR>
+vnoremap <A-k> :move '< -2<CR>gv
+vnoremap <A-j> :move '> +1<CR>gv
+
 # Tab navigation:
 nnoremap <PageUp>    <Cmd>tabnext<CR>
 nnoremap <PageDown>  <Cmd>tabprevious<CR>
@@ -149,13 +172,13 @@ nnoremap gj  j
 nnoremap <C-d>  <C-d>zz
 nnoremap <C-u>  <C-u>zz
 
-# Searching
+# Search:
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zzzv
 nnoremap # #zzzv
 
-# Clear search
+# Clear search:
 nnoremap <C-l> <Cmd>nohlsearch
       \ <bar>diffupdate
       \ <bar>Notify "Cleared!" 
@@ -172,21 +195,22 @@ nnoremap Q @q
 #################### PLUGIN SPECIFIC SETTINGS AND KEYMAPS #####################
 ###############################################################################
 
-# Color scheme:
-g:gruvbox_bold = false
-g:gruvbox_italic = true
-g:gruvbox_contrast_dark = "hard"
-g:gruvbox_contrast_light = "hard"
-g:gruvbox_sign_column = "bg0"
-
 # Background color:
 &background = $BACKGROUND   # This is set in ~/.bashrc
 
-try
+# Color scheme:
+if g:dev
+  g:gruvbox_bold = false
+  g:gruvbox_italic = true
+  g:gruvbox_contrast_dark = "hard"
+  g:gruvbox_contrast_light = "hard"
+  g:gruvbox_sign_column = "bg0"
+
   colorscheme gruvbox
-catch
+else
   colorscheme habamax
-endtry
+  finish
+endif
 
 # Color scheme overrides:
 highlight! link HighlightedyankRegion Visual

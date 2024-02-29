@@ -10,6 +10,7 @@ This is my Vim configurations aka `vimrc`.
 ├── plugin/                 # Custom plugins
 ├── spell/                  # Spell files
 ├── coc-settings.json       # Coc.nvim's settings
-├── filetype.vim            # File type setup
+├── filetype.vim            # Scripts for all file types.
+├── indent.vim              # Indentation rules for all file types.
 └── vimrc                   # Main configuration
 ```

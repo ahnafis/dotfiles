@@ -11,7 +11,7 @@ fi
 
 # Environemnt:
 export TERM=tmux-256color
-export EDITOR="$(which vim) --clean"
+export EDITOR=$(which vim)
 export SUDO_PROMPT='Password 🔑: '
 export FZF_DEFAULT_OPTS="--layout=reverse --prompt=\ "
 export BAT_THEME='Solarized (dark)'
@@ -46,9 +46,9 @@ rm -rf "$kitty_config_path/themes/index.conf"
 ln -sf $kitty_config_path/themes/$theme_name-$BACKGROUND.conf $kitty_config_path/themes/index.conf
 
 # History:
-HISTFILESIZE=10000
-HISTSIZE=2000
-HISTCONTROL=ignoredups
+HISTFILESIZE=-1
+HISTSIZE=-1
+HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 
 # Colors:
@@ -99,7 +99,7 @@ alias gb='git branch'
 alias gco='git checkout'
 
 # Vim:
-alias vi=$EDITOR
+alias vim="DEV=1 $EDITOR"
 
 # Yarn:
 alias yarn='yarn --emoji true'

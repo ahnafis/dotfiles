@@ -3,7 +3,7 @@
   email = ahnafalnafis@gmail.com
 
 [core]
-  editor = "vim --clean" # -u ~/.vim/minirc"
+  editor = vi
   autocrlf = input
 
 [diff]
