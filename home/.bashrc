@@ -1,7 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Tmux:
+###############################################################################
+#################################### TMUX #####################################
+###############################################################################
 if command -v tmux &> /dev/null && [ -n "$PS1" ] &&\
   [[ ! "$TERM" =~ screen ]] &&\
   [[ ! "$TERM" =~ tmux ]] &&\
@@ -9,103 +11,121 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] &&\
   exec tmux
 fi
 
-# Environemnt:
-export TERM=tmux-256color
-export EDITOR=$(which vim)
-export SUDO_PROMPT='Password 🔑: '
-export FZF_DEFAULT_OPTS="--layout=reverse --prompt=\ "
-export BAT_THEME='Solarized (dark)'
-export PNPM_HOME="/home/ahnaf/.local/share/pnpm"
+###############################################################################
+################################### Basics ####################################
+###############################################################################
+pnpm_home="/home/ahnaf/.local/share/pnpm"
+PATH="$PATH:$pnpm_home"
 
-export CC=/usr/bin/gcc
-export CXX=/usr/bin/clang++
+EDITOR="$(which vim)"
+
+SUDO_PROMPT="Password 🔑: "
+FZF_DEFAULT_OPTS=(--layout=reverse --prompt=\ )
+
+# C/C++ compilers:
+CC="/usr/bin/gcc"
+CXX="/usr/bin/clang++"
 
 # Avro keyboard:
-export GTK_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+GTK_MODULE="ibus"
+XMODIFIERS="@im=ibus"
+QT_IM_MODULE="ibus"
 
 # Background color:
-theme_name=gruvbox
-kitty_config_path="$HOME/.config/kitty"
+TERM_BACKGROUND="dark"
 
-export HOUR=$(date +%H)
-export BACKGROUND=dark
+hour="$(date +%H)"
+sunrise_time=$((6 + 1))
+sunset_time=$((19 - 1))
 
-if [ $HOUR -ge 18 ]; then
-  BACKGROUND=dark
-
-elif [ $HOUR -ge 7 ]; then
-  BACKGROUND=light
-
-elif [ $HOUR -ge 0 ]; then
-  BACKGROUND=dark
+# Use light background during day light.
+if [ "$hour" -ge "$sunrise_time" ] && [ "$hour" -lt "$sunset_time" ]; then
+  TERM_BACKGROUND="light"
 fi
 
-rm -rf "$kitty_config_path/themes/index.conf"
-ln -sf $kitty_config_path/themes/$theme_name-$BACKGROUND.conf $kitty_config_path/themes/index.conf
+# Set color schemes for terminal apps.
+color_scheme="gruvbox"
+BAT_THEME="$color_scheme-$TERM_BACKGROUND"
 
-# History:
-HISTFILESIZE=-1
+theme_src="$HOME/.config/kitty/themes/$color_scheme-$TERM_BACKGROUND.conf"
+theme_dest="$HOME/.config/kitty/themes/index.conf"
+ln -sf "$theme_src" "$theme_dest"
+
+# Bash history. -1 means unlimited records will be stored.
 HISTSIZE=-1
-HISTCONTROL=ignoreboth:erasedups
+HISTFILESIZE=-1
+HISTCONTROL="erasedups:ignoreboth"
 shopt -s histappend
 
-# Colors:
-clr='\[\033[00m\]'       # Reset
+###############################################################################
+################################### Prompt ####################################
+###############################################################################
+reset='\[\033[00m\]'
+blue='\[\033[00;34m\]'
 
-blk='\[\033[00;30m\]'    # Black
-red='\[\033[00;31m\]'    # Red
-grn='\[\033[00;32m\]'    # Green
-ylw='\[\033[00;33m\]'    # Yellow
-blu='\[\033[00;34m\]'    # Blue
-pur='\[\033[00;35m\]'    # Purple
-cyn='\[\033[00;36m\]'    # Cyan
-wht='\[\033[00;37m\]'    # White
+prompt_indicator="❯"
+current_directory="$blue\W$reset"
 
-bblk='\[\033[01;30m\]'   # Bold black
-bred='\[\033[01;31m\]'   # Bold red
-bgrn='\[\033[01;32m\]'   # Bold green
-bylw='\[\033[01;33m\]'   # Bold yellow
-bblu='\[\033[01;34m\]'   # Bold blue
-bpur='\[\033[01;35m\]'   # Bold purple
-bcyn='\[\033[01;36m\]'   # Bold cyan
-bwht='\[\033[01;37m\]'   # Bold white
+PS1="$current_directory $prompt_indicator "
 
-# Prompt:
-# PS1="$grn\u$clr@\h$clr:$blu\W$clr\$ "
-PS1="$blu\W$clr ❯ "
+###############################################################################
+################################### Aliases ###################################
+###############################################################################
+# Directory listing:
+alias ls="ls -AF --color=auto"
+alias ll="tree -alC --dirsfirst --gitignore -I .git"
+alias la="ll -L 1"
 
-# LS:
-alias ls='ls -AF --color=auto'
-alias ll='tree -alC --dirsfirst --gitignore -I .git'
-alias la='ll -L 1'
-
-# Movement:
-alias ..='cd .. && pwd'
-alias ...='cd ../.. && pwd'
-alias ....='cd ../../.. && pwd'
-
-# Misc:
-alias sb='source ~/.bashrc'
-alias mkdir='mkdir -pv'
-alias rm='rm -fv'
+# Easy movement:
+alias ..="cd .. && pwd"
+alias ...="cd ../.. && pwd"
+alias ....="cd ../../.. && pwd"
 
 # Git:
-alias gs='git status -s'
-alias ga='git add'
-alias gm='git commit'
-alias gb='git branch'
-alias gco='git checkout'
+alias gs="git status -s"
+alias ga="git add"
+alias gm="git commit"
+alias gb="git branch"
+alias gco="git checkout"
 
 # Vim:
-alias vim="DEV=1 $EDITOR"
+alias vim='DEV=1 $EDITOR'
 
-# Yarn:
-alias yarn='yarn --emoji true'
+# Misc:
+alias sb="source ~/.bashrc"
+alias mkdir="mkdir -pv"
+alias rm="rm -fv"
 
-# Pnpm:
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+###############################################################################
+################################## Clear ups ##################################
+###############################################################################
+unset pnpm_home
+unset hour
+unset color_scheme
+unset theme_src
+unset theme_dest
+unset prompt_indicator
+unset current_directory
+unset reset
+unset blue
+unset sunrise_time
+unset sunset_time
+
+###############################################################################
+################################### Exports ###################################
+###############################################################################
+export BAT_THEME
+export CC
+export CXX
+export EDITOR
+export FZF_DEFAULT_OPTS
+export GTK_MODULE
+export PATH
+export PS1
+export QT_IM_MODULE
+export SUDO_PROMPT
+export TERM_BACKGROUND
+export XMODIFIERS
+export HISTSIZE
+export HISTFILESIZE
+export HISTCONTROL
