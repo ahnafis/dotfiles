@@ -196,7 +196,7 @@ nnoremap Q @q
 ###############################################################################
 
 # Background color:
-&background = $BACKGROUND   # This is set in ~/.bashrc
+&background = $TERM_BACKGROUND   # This is set in ~/.bashrc
 
 # Color scheme:
 if g:dev

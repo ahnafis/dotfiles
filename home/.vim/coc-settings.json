@@ -7,6 +7,9 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.warningSign": "",
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
   "suggest.completionItemKindLabels": {
     "text": "",
     "method": "",
@@ -35,13 +38,6 @@
     "typeParameter": "",
     "default": "DEFAULT"
   },
-  "suggest.formatItems": [
-    "abbr",
-    "kind",
-    "menu"
-  ],
-  "cSpell.userWords": [
-    "BSPWM",
-    "Polybar"
-  ]
+  "suggest.formatItems": ["abbr", "kind", "menu"],
+  "cSpell.userWords": ["BSPWM", "Polybar"]
 }
