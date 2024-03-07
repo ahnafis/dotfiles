@@ -21,6 +21,7 @@ EDITOR="$(which vim)"
 
 SUDO_PROMPT="Password 🔑: "
 FZF_DEFAULT_OPTS=(--layout=reverse --prompt=\ )
+WALLPAPERS="$HOME/Pictures/Wallpapers/Useless"
 
 # C/C++ compilers:
 CC="/usr/bin/gcc"
@@ -129,3 +130,4 @@ export XMODIFIERS
 export HISTSIZE
 export HISTFILESIZE
 export HISTCONTROL
+export WALLPAPERS
