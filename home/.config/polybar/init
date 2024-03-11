@@ -1,0 +1,6 @@
+include-file = bar.ini
+include-file = settings.ini
+include-file = colors.ini
+include-directory = modules
+
+; vim: ft=dosini

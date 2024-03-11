@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 
-killall -q polybar
-bash ~/.config/polybar/launch.sh &
-
 setxkbmap -option caps:swapescape &
 
 redshift -x
 redshift &
 
-killall -q flameshot
-flameshot &
+# BSPWM specific auto start commands.
+if [ "$GDMSESSION" != "bspwm" ]; then
+  exit
+fi
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bash ~/.config/polybar/launch.sh &
 
 killall -q blueman-applet
 blueman-applet &
 
-killall -q nm-applet
-nm-applet &
+killall -q flameshot
+flameshot &
 
 killall -q walgen
-walgen &
+walgen > /dev/null &
