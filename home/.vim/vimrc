@@ -37,9 +37,11 @@ g:loaded_2html_plugin = true
 g:loaded_getscriptPlugin = true
 g:loaded_gzip = true
 g:loaded_logiPat = true
+g:loaded_netrw = true
 g:loaded_netrwPlugin = true
 g:loaded_spellfile_plugin = true
 g:loaded_tarPlugin = true
+g:loaded_vimball = true
 g:loaded_vimballPlugin = true
 
 ###############################################################################
@@ -131,8 +133,11 @@ augroup END
 # The legend key ;)
 g:mapleader = ";"
 
-# Select all
+# Select all.
 nnoremap <A-a>  msggVG
+
+# Go to last insert.
+nnoremap <Enter>i  gi
 
 # Visual shifting:
 vnoremap <  <gv
