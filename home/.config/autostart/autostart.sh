@@ -5,6 +5,11 @@ setxkbmap -option caps:swapescape &
 redshift -x
 redshift &
 
+# XFCE specific auto start commands.
+if [ "$GDMSESSION" == "xfce" ]; then
+  plank
+fi
+
 # BSPWM specific auto start commands.
 if [ "$GDMSESSION" != "bspwm" ]; then
   exit
