@@ -1,6 +1,6 @@
 vim9script noclear
 
-if !g:dev
+if !g:development
   finish
 endif
 
@@ -54,6 +54,9 @@ augroup sessionize
     endif
   }
 augroup END
+
+command! SaveSession    SaveSession()
+command! Sav            SaveSession()
 
 command! DeleteSession  DeleteSession()
 command! Del            DeleteSession()
