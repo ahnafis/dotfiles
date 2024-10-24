@@ -14,8 +14,11 @@ fi
 ###############################################################################
 ################################### Basics ####################################
 ###############################################################################
-PNPM_HOME="/home/ahnaf/.local/share/pnpm"
-PATH="$PATH:$PNPM_HOME"
+PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) PATH="$PATH:$PNPM_HOME" ;;
+esac
 
 EDITOR="$(which vim)"
 
@@ -35,9 +38,9 @@ QT_IM_MODULE="ibus"
 # Background color:
 TERM_BACKGROUND="dark"
 
-hour="$(date +%H)"
-sunrise_time=$((6 + 1))
-sunset_time=$((19 - 1))
+# hour="$(date +%H)"
+# sunrise_time=$((6 + 1))
+# sunset_time=$((19 - 1))
 
 # Use light background during day light.
 # if [ "$hour" -ge "$sunrise_time" ] && [ "$hour" -lt "$sunset_time" ]; then
@@ -47,10 +50,6 @@ sunset_time=$((19 - 1))
 # Set color schemes for terminal apps.
 color_scheme="gruvbox"
 BAT_THEME="$color_scheme-$TERM_BACKGROUND"
-
-theme_src="$HOME/.config/kitty/themes/$color_scheme-$TERM_BACKGROUND.conf"
-theme_dest="$HOME/.config/kitty/themes/index.conf"
-ln -sf "$theme_src" "$theme_dest"
 
 # Bash history. -1 means unlimited records will be stored.
 HISTSIZE=-1
@@ -108,14 +107,13 @@ alias pn="$(which pnpm)"
 alias sb="source ~/.bashrc"
 alias mkdir="mkdir -pv"
 alias rm="rm -fv"
+alias cf="cf -v"
 
 ###############################################################################
 ################################## Clear ups ##################################
 ###############################################################################
 unset hour
 unset color_scheme
-unset theme_src
-unset theme_dest
 unset prompt_indicator
 unset current_directory
 unset reset

@@ -22,8 +22,8 @@ bash ~/.config/polybar/launch.sh &
 killall -q blueman-applet
 blueman-applet &
 
-killall -q flameshot
-flameshot &
+# killall -q flameshot
+# flameshot &
 
 killall -q walgen
 walgen > /dev/null &
