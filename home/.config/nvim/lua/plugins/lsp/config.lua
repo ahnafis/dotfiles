@@ -29,6 +29,11 @@ local diagnostic_signs = {
 }
 
 vim.diagnostic.config({ virtual_text = false })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+  max_height = vim.opt.pumheight:get(),
+  max_width = vim.opt.pumwidth:get(),
+})
 
 for sign_type, icon in pairs(diagnostic_signs) do
   local group = "DiagnosticSign" .. sign_type
@@ -82,7 +87,7 @@ require("mason-tool-installer").setup({
   ensure_installed = {
     -- Language servers
     "clangd",
-    "tsserver",
+    "typescript-language-server",
     "pyright",
     "lua_ls",
     "bashls",

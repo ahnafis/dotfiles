@@ -4,6 +4,7 @@ local icons = require("utils.icons")
 
 -- TODO: Also set pop up menu width
 vim.opt.pumheight = 15
+vim.opt.pumwidth = 50
 
 cmp.setup({
   snippet = {
