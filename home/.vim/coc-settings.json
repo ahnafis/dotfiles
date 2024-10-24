@@ -8,6 +8,16 @@
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.warningSign": "",
+  // "signature.floatConfig": {
+  // "border": false,
+  // "rounded": false,
+  // "highlight": "CocFloating"
+  // },
+  "diagnostic.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "highlight": "Normal"
+  },
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
   },
@@ -39,7 +49,7 @@
     "typeParameter": "",
     "default": "DEFAULT"
   },
-  "suggest.formatItems": ["abbr", "kind", "menu"],
+  "suggest.formatItems": ["kind", "abbr", "menu"],
   "cSpell.userWords": [
     "Appbar",
     "BSPWM",

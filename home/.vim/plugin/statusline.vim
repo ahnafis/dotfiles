@@ -11,7 +11,7 @@ set laststatus=2
 
 def StatusLine(): string
   var line = ' '
-    .. "%t"
+    .. (g:development ? g:FugitiveHead() : "%t")
     .. ' '
     .. "%m"
     .. "%="
