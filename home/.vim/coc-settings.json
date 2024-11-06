@@ -1,26 +1,23 @@
 {
-  "semanticTokens.enable": true,
-  "signature.enable": false,
   "coc.preferences.formatOnSave": true,
+  "codeLens.enable": true,
   "colors.enable": true,
   "inlayHint.enable": false,
+  "semanticTokens.enable": true,
+  "signature.enable": false,
+
+  // Diagnostics:
   "diagnostic.errorSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.warningSign": "",
-  // "signature.floatConfig": {
-  // "border": false,
-  // "rounded": false,
-  // "highlight": "CocFloating"
-  // },
   "diagnostic.floatConfig": {
     "border": true,
     "rounded": true,
     "highlight": "Normal"
   },
-  "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
-  },
+
+  // Completion menu:
   "suggest.completionItemKindLabels": {
     "text": "",
     "method": "",
@@ -49,14 +46,5 @@
     "typeParameter": "",
     "default": "DEFAULT"
   },
-  "suggest.formatItems": ["kind", "abbr", "menu"],
-  "cSpell.userWords": [
-    "Appbar",
-    "BSPWM",
-    "Polybar",
-    "Pressable",
-    "pnpm",
-    "supabase",
-    "vitest"
-  ]
+  "suggest.formatItems": ["kind", "abbr", "menu"]
 }

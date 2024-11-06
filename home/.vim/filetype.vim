@@ -2,17 +2,19 @@ vim9script noclear
 
 g:file_types = {
   asm: "Assembly",
+  c: "C",
+  cpp: "C++",
   css: "CSS",
   html: "HTML",
   javascript: "JavaScript",
-  javascriptreact: "JavaScript",
+  javascriptreact: "JavaScript React",
   json: "JSON",
   jsonc: "JSON with Comments",
   php: "PHP",
   scss: "S(CSS)",
   typescript: "TypeScript",
-  typescriptreact: "TypeScript",
-  vim: "Vim script",
+  typescriptreact: "TypeScript React",
+  vim: "VimScript",
 }
 
 augroup setup_file_types

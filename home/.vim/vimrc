@@ -15,8 +15,10 @@ if g:development
     Plug "markonm/traces.vim"
     Plug "ap/vim-css-color", #{ for: [
           \ "css",
+          \ "scss",
           \ "typescript",
-          \ "typescriptreact"
+          \ "typescriptreact",
+          \ "vim"
           \ ]}
 
     Plug "neoclide/coc.nvim", #{ branch: "release" }
@@ -25,6 +27,7 @@ if g:development
     Plug "cohama/lexima.vim"
     Plug "tpope/vim-surround"
     Plug "tpope/vim-commentary"
+    Plug "tpope/vim-dispatch"
     Plug "junegunn/fzf"
     Plug "junegunn/fzf.vim"
     Plug "mbbill/undotree", #{ on: "UndotreeToggle" }
@@ -332,8 +335,8 @@ nmap <silent> gcr  <Plug>(coc-codeaction-refactor)
 
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<C-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<C-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<C-r>=coc#float#scroll(1)\<CR>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<C-r>=coc#float#scroll(0)\<CR>" : "\<Left>"
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
