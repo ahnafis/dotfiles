@@ -12,6 +12,7 @@ if g:development
   plug#begin("~/.cache/vim/plugged")
     Plug "morhetz/gruvbox"
     Plug "machakann/vim-highlightedyank"
+    Plug "romainl/vim-cool"
     Plug "markonm/traces.vim"
     Plug "ap/vim-css-color", #{ for: [
           \ "css",
