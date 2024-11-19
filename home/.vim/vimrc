@@ -217,6 +217,11 @@ if g:development
   g:gruvbox_sign_column = "bg0"
 
   colorscheme gruvbox
+
+  # highlight! link TabLine     StatusLine
+  highlight! link TabLineSel  Normal
+  # highlight! link TabLineFill GruvboxBg2
+
 else
   colorscheme habamax
   finish
@@ -248,12 +253,6 @@ g:highlightedyank_highlight_duration = 100
 
 # Fuzzy finder:
 var fzf_options = [ '--prompt= ', '--pointer=', '--layout=reverse' ]
-var fzf_ignore_dirs = [
-  'bin', 'build', 'external', '.git', '.cache', '.expo', 'assets', 'dist',
-  'node_modules', 'package-lock.json', 'yarn.lock', 'pnpm-lock.yml'
-]
-
-$FZF_DEFAULT_COMMAND = $"ls-files -I {fzf_ignore_dirs->join(' -I ')}"
 
 g:fzf_history_dir = $'{$HOME}/.local/share/fzf-history'
 g:fzf_layout = { window: { width: 0.9, height: 0.8, yoffset: 0.4 } }
