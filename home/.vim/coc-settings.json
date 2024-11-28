@@ -5,17 +5,13 @@
   "inlayHint.enable": false,
   "semanticTokens.enable": true,
   "signature.enable": false,
+  "clangd.arguments": ["--function-arg-placeholders=false"],
 
   // Diagnostics:
   "diagnostic.errorSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.warningSign": "",
-  "diagnostic.floatConfig": {
-    "border": true,
-    "rounded": true,
-    "highlight": "Normal"
-  },
 
   // Completion menu:
   "suggest.completionItemKindLabels": {
