@@ -1,15 +1,41 @@
-# Terminal emulator:
+# Launch terminal emulator:
 super + Return
-	alacritty
-	# kitty
+	terminal
 
-# Program launcher:
+# Launch program launcher:
 alt + p
 	dmenu_run -p "Run:" -fn "Rec Mono SemiCasual-13"
+
+# Control volume:
+XF86Audio{RaiseVolume,LowerVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {+,-}5%
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Control audio player:
+XF86Audio{Play,Next,Prev}
+  playerctl {play-pause,next,previous}
+
+# Control brightness:
+XF86MonBrightness{Up,Down}
+  xbacklight -{inc,dec} 10
+
+# Take screenshot:
+Print
+  flameshot gui
+
+# Open web browser:
+XF86HomePage
+   browser
 
 # Reload SXHKD configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+#
+# bspwm
+#
 
 # Quit/restart:
 super + alt + {q,r}
@@ -116,25 +142,3 @@ super + alt + shift + {h,j,k,l}
 # Move a floating window:
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-XF86Audio{Play,Next,Prev}
-  playerctl {play-pause,next,previous}
-
-# Volume control:
-XF86Audio{Mute,RaiseVolume,LowerVolume}
-  amixer -q set Master {toggle,5%+,5%-}
-
-# Brightness control:
-XF86MonBrightness{Up,Down}
-  xbacklight -{inc,dec} 10
-
-# Screenshot:
-Print
-  flameshot gui
-
-# Open browser:
-# XF86HomePage
-#   google-chrome-stabe --profile-directory=Default
-
-# @f5
-#   google-chrome-stabe --profile-directory=Profile\ 1
