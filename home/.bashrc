@@ -1,83 +1,79 @@
+# My Bash configuration for Arch Linux.
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-################################################################################
-#################################### TMUX ######################################
-################################################################################
-if command -v tmux &> /dev/null && [ -n "$PS1" ] &&\
-  [[ ! "$TERM" =~ screen ]] &&\
-  [[ ! "$TERM" =~ tmux ]] &&\
+# Start tmux.
+if command -v tmux &>/dev/null && [ -n "$PS1" ] &&
+  [[ ! "$TERM" =~ screen ]] &&
+  [[ ! "$TERM" =~ tmux ]] &&
   [ -z "$TMUX" ]; then
   exec tmux
 fi
 
-################################################################################
-################################### Basics #####################################
-################################################################################
-PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) PATH="$PATH:$PNPM_HOME" ;;
-esac
+# Append "$1" to $PATH when not already in.
+append_path() {
+  case ":$PATH:" in
+  *:"$1":*) ;;
+  *) PATH="${PATH:+$PATH:}$1" ;;
+  esac
+}
+
+append_path "$HOME/.local/share/pnpm"
+append_path "$HOME/.local/bin"
+
+unset -f append_path
 
 EDITOR="$(which vim)"
-
 SUDO_PROMPT="Password 🔑: "
-FZF_DEFAULT_OPTS=(--layout=reverse --prompt=\ )
-FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden"
-WALLPAPERS="$HOME/Pictures/Wallpapers/Useless"
 
-# C/C++ compilers:
+# Set compilers for C/C++.
 CC="/usr/bin/gcc"
 CXX="/usr/bin/clang++"
 
-# Avro keyboard:
+# Ibus:
 GTK_MODULE="ibus"
 XMODIFIERS="@im=ibus"
 QT_IM_MODULE="ibus"
 
-# Background color:
-TERM_BACKGROUND="dark"
-
-# hour="$(date +%H)"
-# sunrise_time=$((6 + 1))
-# sunset_time=$((19 - 1))
-
-# Use light background during day light.
-# if [ "$hour" -ge "$sunrise_time" ] && [ "$hour" -lt "$sunset_time" ]; then
-#   TERM_BACKGROUND="light"
-# fi
-
-# Set color schemes for terminal apps.
-color_scheme="gruvbox"
-BAT_THEME="$color_scheme-$TERM_BACKGROUND"
+BAT_THEME="gruvbox-dark"
+WALLPAPERS="$HOME/Pictures/Wallpapers/Useless"
 
 # Bash history. -1 means unlimited records will be stored.
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTCONTROL="erasedups:ignoreboth"
-HISTIGNORE="clear:exit:cd:pwd:ls:la:ll"
+HISTIGNORE="clear:exit:cd:pwd:ls:la:ll:gs"
 shopt -s histappend
 
-###############################################################################
-################################ Key bindings #################################
-###############################################################################
+# Fzf:
+FZF_DEFAULT_OPTS="--layout=reverse --prompt= "
+FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude=.git"
+
+# Load Fzf key-bindings.
 source /usr/share/fzf/key-bindings.bash
 
-###############################################################################
-################################### Prompt ####################################
-###############################################################################
+# Colors:
 reset='\[\033[00m\]'
+green='\[\033[00;32m\]'
 blue='\[\033[00;34m\]'
 
-prompt_indicator="❯"
-current_directory="$blue\W$reset"
+# Prompt customizations:
+prompt_indicator="$" #"❯"
+user="$green\u$reset"
+cwd="$blue\W$reset"
 
-PS1="$current_directory $prompt_indicator "
+PS1="$user:$cwd$prompt_indicator "
 
-###############################################################################
-################################### Aliases ###################################
-###############################################################################
+unset -v prompt_indicator
+unset -v user
+unset -v cwd
+
+# Unset colors.
+unset -v reset
+unset -v blue
+unset -v green
+
 # Unset all of the previous aliases.
 unalias -a
 
@@ -101,30 +97,13 @@ alias gco="git checkout"
 # Vim:
 alias vim='VIM_DEV_MODE=1 $EDITOR'
 
-# Pnpm:
-alias pn="$(which pnpm)"
-
 # Misc:
-alias sb="source ~/.bashrc"
+alias sb='source $HOME/.bashrc'
 alias mkdir="mkdir -pv"
 alias rm="rm -fv"
 alias cf="cf -p -v"
 
-###############################################################################
-################################## Clear ups ##################################
-###############################################################################
-unset hour
-unset color_scheme
-unset prompt_indicator
-unset current_directory
-unset reset
-unset blue
-unset sunrise_time
-unset sunset_time
-
-###############################################################################
-################################### Exports ###################################
-###############################################################################
+# Export environment variables.
 export BAT_THEME
 export CC
 export CXX
@@ -136,7 +115,6 @@ export HISTCONTROL
 export HISTFILESIZE
 export HISTSIZE
 export PATH
-export PNPM_HOME
 export PS1
 export QT_IM_MODULE
 export SUDO_PROMPT
