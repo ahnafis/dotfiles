@@ -9,15 +9,15 @@ bspc monitor -d \
   Terminal \
   Files
 
-bspc config border_width            0
+bspc config border_width 0
 
 # Binary space layout configs:
-bspc config window_gap              5
-bspc config split_ratio          0.52
+bspc config window_gap 5
+bspc config split_ratio 0.52
 
 # Monocle layout configs:
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config borderless_monocle true
+bspc config gapless_monocle true
 
 # Rules:
 # bspc rule -a <CLASS>
@@ -26,10 +26,17 @@ bspc config gapless_monocle      true
 #     follow=on/off
 #     manage=on/off
 
-bspc rule -a Google-chrome desktop='^2'
+# Web browsers:
+bspc rule -a Brave-browser desktop='^2' follow=off
+bspc rule -a Google-chrome desktop='^2' follow=off
+bspc rule -a Firefox desktop='^2' follow=off
+
+# Terminals:
 bspc rule -a kitty desktop='^3' state=fullscreen
 bspc rule -a Alacritty desktop='^3' state=fullscreen
+
 bspc rule -a Thunar desktop='^4'
 
+# Misc:
 bspc rule -a Blueman-manager state=floating
-bspc rule -a Pavucontrol state=floating
+bspc rule -a pavucontrol state=floating
