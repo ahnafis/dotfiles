@@ -35,7 +35,7 @@ if g:development
   plug#end()
 endif
 
-# Disabling plugins:
+# Disable unwanted built-in plugins.
 g:loaded_2html_plugin = true
 g:loaded_getscriptPlugin = true
 g:loaded_gzip = true
@@ -51,72 +51,69 @@ g:loaded_vimballPlugin = true
 ################################### SETTINGS ##################################
 ###############################################################################
 
-# File type detection:
-filetype plugin indent on
+filetype on
+filetype indent on
+filetype plugin on
 
-# Syntax highlighting:
-if has("syntax_on")
-  syntax enable
-else
-  syntax on
-endif
+syntax enable
 
-# Line number
 set number
 set relativenumber
 
-# Menus:
 set wildmenu
 set wildoptions=pum,tagfile
+
+set pumwidth=10
 set pumheight=15
 
-# Key press timeouts:
+# Enable key press timeouts.
 set timeout
-set timeoutlen=1000
 set ttimeout
+
+# Key press timeouts.
+set timeoutlen=1000
 set ttimeoutlen=50
 
-# File backup:
 set undofile
 set noswapfile
 
-# Search:
 set ignorecase
 set smartcase
+
 set incsearch
 set hlsearch
 
-# History:
+# Vim command-line history.
 set history=500
 set viminfo=!,'20,<50,s10,h
 
-# Use system clipboard:
+# Use system clipboard.
 set clipboard^=unnamedplus
 
-# Folds:
+# Enable folding.
 set foldenable
 set foldmethod=manual
 
-# Splits:
+# Window splits.
 set splitright
 set splitbelow
 
-# Auto read and write:
+# Automatically read file's content when it's changed outside of Vim.
 set autoread
+
+# Don't write (unwanted) changes when switching between buffers.
 set noautowrite
 
-# Command line:
-set ruler
-set shortmess=cfilnsxIT
+# Limit command line outputs.
+set shortmess=csxT
 
-# Disable annoying terminal bells:
+# Disable annoying terminal bells.
 set belloff=all
 
 # Text decorations:
 set textwidth=80
 set linebreak
 set breakindent
-# set nowrap
 
 set display+=lastline
 &fillchars = "vert:│,fold:˗,eob: "
@@ -125,11 +122,13 @@ set hidden
 set updatetime=500
 set nrformats=alpha,hex,bin
 set signcolumn=yes
+set spell
 
 augroup fix_format_options
   autocmd!
   autocmd FileType * set formatoptions-=o
 augroup END
+
 
 ###############################################################################
 ############################### GENERAL KEYMAPS ###############################
@@ -141,18 +140,20 @@ g:mapleader = ";"
 # Select all.
 nnoremap <A-a>  msggVG
 
-# Visual shifting:
+# Indent line(s).
+nnoremap < <<
+nnoremap > >>
 vnoremap <  <gv
 vnoremap >  >gv
 
-# Make yanking behave like other commands.
+# Yank until end of the line.
 nnoremap Y  y$
 
-# Add new lines.
+# Add empty lines vertically.
 nnoremap <silent> <C-k>  <ScriptCmd>append(line('.') - 1, '')<CR>
 nnoremap <silent> <C-j>  <ScriptCmd>append(line('.'), '')<CR>
 
-# Move lines:
+# Move lines.
 nnoremap <A-k> <Cmd>move . -2<CR>
 nnoremap <A-j> <Cmd>move . +1<CR>
 vnoremap <A-k> :move '< -2<CR>gv
@@ -172,30 +173,34 @@ nnoremap <Leader>s   <Cmd>tab ball<CR>
 # Delete buffer.
 nnoremap <Leader>d   <Cmd>bdelete<CR>
 
-# Movements:
+# Go to line's starting after indentation.
 nnoremap  0  ^
+
+# Move up and down even through wrapped lines.
 nnoremap  k  gk
 nnoremap  j  gj
 nnoremap gk  k
 nnoremap gj  j
 
-# Scroll:
+# While scrolling with <C-d> and <C-u> keys, keep the view in the middle of the
+# window.
 nnoremap <C-d>  <C-d>zz
 nnoremap <C-u>  <C-u>zz
 
-# Search:
+# Keep the view in the middle of the window while jumping to next/previous
+# search.
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zzzv
 nnoremap # #zzzv
 
-# Clear search:
+# Clear search highlight.
 nnoremap <C-l> <Cmd>nohlsearch
       \ <bar>diffupdate
       \ <bar>Notify "Cleared!" 
       \ <CR>
 
-# Macros:
+# Conveniently macros.
 nnoremap Q @q
 
 # Terminal:
@@ -207,7 +212,7 @@ nnoremap Q @q
 ###############################################################################
 
 # Background color:
-&background = $TERM_BACKGROUND   # This is set in ~/.bashrc
+&background = "dark" # $TERM_BACKGROUND   # This is set in ~/.bashrc
 
 # Color scheme:
 if g:development

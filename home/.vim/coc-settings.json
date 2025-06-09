@@ -5,7 +5,12 @@
   "inlayHint.enable": false,
   "semanticTokens.enable": true,
   "signature.enable": false,
-  "clangd.arguments": ["--function-arg-placeholders=false"],
+  "clangd.arguments": [
+    "--background-index",
+    "--clangd-tidy",
+    "--function-arg-placeholders=false",
+    "--header-insertion=iwyu"
+  ],
 
   // Diagnostics:
   "diagnostic.errorSign": "",
