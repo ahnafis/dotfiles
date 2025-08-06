@@ -6,6 +6,10 @@ super + Return
 alt + p
 	dmenu_run -p "Run:" -fn "Rec Mono SemiCasual-13"
 
+# File manager:
+super + e
+    thunar
+
 # Control volume:
 XF86Audio{RaiseVolume,LowerVolume}
   pactl set-sink-volume @DEFAULT_SINK@ {+,-}5%
