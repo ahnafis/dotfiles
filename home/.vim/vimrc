@@ -9,12 +9,12 @@ g:development = ($VIM_DEV_MODE == "1")
 ###############################################################################
 
 if g:development
-  plug#begin("~/.cache/vim/plugged")
+  plug#begin("~/.cache/vim/plugins")
     Plug "morhetz/gruvbox"
     Plug "machakann/vim-highlightedyank"
     Plug "romainl/vim-cool"
     Plug "markonm/traces.vim"
-    Plug "ap/vim-css-color", #{ for: [
+    Plug "ap/vim-css-color", { "for": [
           \ "css",
           \ "scss",
           \ "typescript",
@@ -22,8 +22,8 @@ if g:development
           \ "vim"
           \ ]}
 
-    Plug "neoclide/coc.nvim", #{ branch: "release" }
-    Plug "tpope/vim-fugitive", #{ on: "Git" }
+    Plug "neoclide/coc.nvim", { "branch": "release" }
+    Plug "tpope/vim-fugitive",
     Plug "airblade/vim-gitgutter"
     Plug "cohama/lexima.vim"
     Plug "tpope/vim-surround"
@@ -31,7 +31,7 @@ if g:development
     Plug "tpope/vim-dispatch"
     Plug "junegunn/fzf"
     Plug "junegunn/fzf.vim"
-    Plug "mbbill/undotree", #{ on: "UndotreeToggle" }
+    Plug "mbbill/undotree", { "on": "UndotreeToggle" }
   plug#end()
 endif
 
@@ -122,7 +122,7 @@ set hidden
 set updatetime=500
 set nrformats=alpha,hex,bin
 set signcolumn=yes
-set spell
+# set spell
 
 augroup fix_format_options
   autocmd!
@@ -228,6 +228,9 @@ if g:development
   highlight! link TabLineSel  Normal
   # highlight! link TabLineFill GruvboxBg2
 
+  hi! link CocSemTypeClass CocSemTypeType
+  hi! link CocSemTypeModifier CocSemTypeKeyword
+
 else
   colorscheme habamax
   finish
@@ -288,7 +291,7 @@ command! -nargs=0 Buffers fzf#vim#buffers(
       \ )
 
 nnoremap <Leader>f   <Cmd>Files<CR>
-nnoremap <Leader>g   <Cmd>GitFiles<CR>
+nnoremap <Leader>gf   <Cmd>GitFiles<CR>
 nnoremap <Leader>b   <Cmd>Buffers<CR>
 
 # Conqueror of completion:

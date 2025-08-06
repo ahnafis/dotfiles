@@ -14,7 +14,7 @@ g:file_types = {
   scss: "S(CSS)",
   typescript: "TypeScript",
   typescriptreact: "TypeScript React",
-  vim: "VimScript",
+  vim: "Vim",
 }
 
 augroup setup_file_types

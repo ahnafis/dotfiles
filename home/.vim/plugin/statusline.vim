@@ -5,9 +5,8 @@ import autoload "utils.vim"
 if utils.IsLoaded("statusline")
   finish
 endif
-g:loaded_statusline = true
 
-set laststatus=2
+g:loaded_statusline = true
 
 def StatusLine(): string
   var line = ' '
@@ -15,7 +14,7 @@ def StatusLine(): string
     .. ' '
     .. "%m"
     .. "%="
-    .. $"{CocDiagnostics()}"
+    .. $"{g:development ? CocDiagnostics() : ""}"
     .. '  '
     .. $"{utils.GetFileType(&filetype)}"
     .. '  '
@@ -31,6 +30,8 @@ def CocDiagnostics(): string
 
   return $" {errors}  {warnings}"
 enddef
+
+set laststatus=2
 
 augroup setup_status_line
   autocmd!

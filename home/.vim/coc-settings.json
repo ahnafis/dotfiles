@@ -5,12 +5,7 @@
   "inlayHint.enable": false,
   "semanticTokens.enable": true,
   "signature.enable": false,
-  "clangd.arguments": [
-    "--background-index",
-    "--clangd-tidy",
-    "--function-arg-placeholders=false",
-    "--header-insertion=iwyu"
-  ],
+  "clangd.arguments": ["--clang-tidy", "--function-arg-placeholders=false"],
 
   // Diagnostics:
   "diagnostic.errorSign": "",
@@ -47,5 +42,10 @@
     "typeParameter": "",
     "default": "DEFAULT"
   },
-  "suggest.formatItems": ["kind", "abbr", "menu"]
+  "suggest.formatItems": [
+    "kind",
+    "abbr",
+    "menu"
+  ],
+  "snippets.ultisnips.pythonPrompt": false
 }

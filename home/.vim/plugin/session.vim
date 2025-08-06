@@ -11,7 +11,8 @@ if utils.IsLoaded("session")
 endif
 g:loaded_session = true
 
-set sessionoptions-=options 
+# set sessionoptions-=options 
+set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
 
 g:session_cache_dir = $"{$HOME}/.cache/vim/session"
 var session_file = getcwd()->substitute("\/", "__", 'g')

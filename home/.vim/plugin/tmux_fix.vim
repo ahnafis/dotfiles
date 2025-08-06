@@ -1,6 +1,6 @@
 vim9script
 
-if has('gui_running') && &term !~ '^\%(screen\|tmux\)'
+if has('gui_running') # && &term !~ '^\%(screen\|tmux\)'
   finish
 endif
 
