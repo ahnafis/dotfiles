@@ -54,3 +54,19 @@ export def ShowDocumentation(): void
         feedkeys('K', "in")
     endif
 enddef
+
+export def ScrollDocumentationNext(): string
+    if coc#float#has_scroll()
+        return coc#float#scroll(1)
+    endif       
+
+    return "\<C-f>"
+enddef
+
+export def ScrollDocumentationPrev(): string
+    if coc#float#has_scroll()
+        return coc#float#scroll(0)
+    endif       
+
+    return "\<C-b>"
+enddef

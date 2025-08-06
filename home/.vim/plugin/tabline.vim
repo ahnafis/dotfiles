@@ -14,8 +14,8 @@ g:tab_close_button = icons.Get("x_mark") .. " "
 def g:TabLine(): string
     var tabline = ""
 
-    for i in range(tabpagenr("$"))
-        var selected_tab = i + 1
+    for tab_nr in range(tabpagenr("$"))
+        var selected_tab = tab_nr + 1
         var window_nr = tabpagewinnr(selected_tab)
         var buffer_list = tabpagebuflist(selected_tab)
         var buffer_nr = buffer_list[window_nr - 1]

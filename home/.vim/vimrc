@@ -50,6 +50,7 @@ g:loaded_vimballPlugin = true
 ###############################################################################
 ################################### SETTINGS ##################################
 ###############################################################################
+
 # Enable plugins and indentation rules based on file type.
 filetype on
 filetype indent on
@@ -216,7 +217,7 @@ nnoremap Q @q
 ###############################################################################
 
 # Background color:
-&background = "dark" # $TERM_BACKGROUND   # This is set in ~/.bashrc
+set background=dark
 
 # Color scheme:
 if g:development
@@ -228,25 +229,38 @@ if g:development
 
     colorscheme gruvbox
 
-    # highlight! link TabLine     StatusLine
-    highlight! link TabLineSel  Normal
-    # highlight! link TabLineFill GruvboxBg2
+    # Color scheme overrides:
+    highlight! link TabLineSel  StatusLine
 
-    hi! link CocSemTypeClass CocSemTypeType
-    hi! link CocSemTypeModifier CocSemTypeKeyword
+    highlight! link Structure GruvboxRed
+    highlight! link StorageClass GruvboxRed
+    highlight! link cStructure GruvboxRed
+    highlight! link cppModifier GruvboxRed
 
+    highlight! link Function GruvboxYellow
+
+    highlight! link Type GruvboxOrange
+    highlight! link TypeDef Type
+    highlight! link CocSemTypeClass Type
+
+    highlight! link HighlightedyankRegion Visual
 else
     colorscheme habamax
     finish
 endif
 
-# Color scheme overrides:
-highlight! link HighlightedyankRegion Visual
-
 # Lexima:
 g:lexima_no_default_rules = v:true
 lexima#set_default_rules()
 lexima#insmode#map_hook('before', '<CR>', '')
+
+# To get auto pair for " in vim files
+lexima#add_rule({
+    char: '"',
+    input_after: '"',
+    filetype: "vim",
+    priority: 1000
+})
 
 # Git:
 g:gitgutter_sign_added = "▌"
@@ -285,11 +299,13 @@ g:fzf_colors = {
     header:  [ "fg", "Comment" ]
 }
 
-command! -bang -nargs=? -complete=dir Files
-            \ fzf#vim#files(<q-args>,
+command! -nargs=? -complete=dir Files
+            \ fzf#vim#files(
+            \   <q-args>,
             \   fzf#vim#with_preview({ options: fzf_options }),
-            \   <bang>0
+            \   false
             \ )
+
 command! -nargs=0 Buffers fzf#vim#buffers(
             \ fzf#vim#with_preview({ options: fzf_options })
             \ )
@@ -300,9 +316,6 @@ nnoremap <Leader>b    <Cmd>Buffers<CR>
 nnoremap <Leader>m    <Cmd>Maps<CR>
 
 # Conqueror of completion:
-g:coc_snippet_next = "<C-j>"
-g:coc_snippet_prev = "<C-k>"
-
 g:coc_global_extensions = [
     "coc-snippets",
     "coc-prettier",
@@ -319,38 +332,31 @@ g:coc_global_extensions = [
     "coc-toml",
 ]
 
-command! -nargs=0 OR
-            \ g:CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-command! -nargs=0 F
-            \ g:CocActionAsync('runCommand', 'editor.action.formatDocument')
+g:coc_snippet_next = "<C-j>"
+g:coc_snippet_prev = "<C-k>"
 
 inoremap <expr> <Tab>     utils.OnTab()
 inoremap <expr> <S-Tab>   utils.OnShiftTab()
 inoremap <expr> <Enter>   utils.OnEnter()
 inoremap <expr> <C-@>     coc#refresh()
 
-nmap <silent> g]   <Plug>(coc-definition)
-nmap <silent> gtd  <Plug>(coc-type-definition)
+# TODO: Open definitions in a new tab.
+nmap <silent> gd   <Plug>(coc-definition)
+nmap <silent> gt   <Plug>(coc-type-definition)
 nmap <silent> gI   <Plug>(coc-implementation)
 nmap <silent> gr   <Plug>(coc-references)
 nmap <silent> gn   <Plug>(coc-rename)
+
 nmap <silent> gca  <Plug>(coc-codeaction-cursor)
 nmap <silent> gcs  <Plug>(coc-codeaction-source)
 nmap <silent> gcf  <Plug>(coc-fix-current)
 nmap <silent> gcl  <Plug>(coc-codelens-action)
 nmap <silent> gcr  <Plug>(coc-codeaction-refactor)
 
-# xmap <Leader>a   <Plug>(coc-codeaction-selected)
-# nmap <Leader>a   <Plug>(coc-codeaction-selected)
-# xmap <silent> <Leader>r  <Plug>(coc-codeaction-refactor-selected)
-# nmap <silent> <Leader>r  <Plug>(coc-codeaction-refactor-selected)
-
-nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<C-r>=coc#float#scroll(1)\<CR>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<C-r>=coc#float#scroll(0)\<CR>" : "\<Left>"
-vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-
 nnoremap K  <ScriptCmd>utils.ShowDocumentation()<CR>
+
+nnoremap <silent><nowait><expr> <C-f> utils.ScrollDocumentationNext()
+nnoremap <silent><nowait><expr> <C-b> utils.ScrollDocumentationPrev()
+
+command! -nargs=0 OR
+            \ g:CocActionAsync('runCommand', 'editor.action.organizeImport')
