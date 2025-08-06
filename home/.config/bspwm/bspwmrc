@@ -31,12 +31,17 @@ bspc rule -a Brave-browser desktop='^2' follow=off
 bspc rule -a Google-chrome desktop='^2' follow=off
 bspc rule -a Firefox desktop='^2' follow=off
 
-# Terminals:
+# Terminal:
 bspc rule -a kitty desktop='^3' state=fullscreen
 bspc rule -a Alacritty desktop='^3' state=fullscreen
 
+# File Manager:
 bspc rule -a Thunar desktop='^4'
+
+# Music player:
+bspc rule -a amberol desktop='^1' follow=off
 
 # Misc:
 bspc rule -a Blueman-manager state=floating
 bspc rule -a pavucontrol state=floating
+bspc rule -a libreoffice desktop='^1' follow=off
