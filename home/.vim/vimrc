@@ -298,21 +298,21 @@ nnoremap <Leader>b   <Cmd>Buffers<CR>
 g:coc_snippet_next = "<C-j>"
 g:coc_snippet_prev = "<C-k>"
 
-g:coc_global_extensions =<< trim END
-  coc-snippets
-  coc-prettier
-  coc-cmake
-  coc-clangd
-  coc-tsserver
-  coc-pyright
-  coc-tailwindcss
-  coc-emmet
-  coc-sh
-  coc-markdownlint
-  coc-json
-  coc-yaml
-  coc-toml
-END
+g:coc_global_extensions ={
+        "coc-snippets",
+        "coc-prettier",
+        "coc-cmake",
+        "coc-clangd",
+        "coc-tsserver",
+        "coc-pyright",
+        "coc-tailwindcss",
+        "coc-emmet",
+        "coc-sh",
+        "coc-markdownlint",
+        "coc-json",
+        "coc-yaml",
+        "coc-toml",
+}
 
 command! -nargs=0 OR
             \ g:CocActionAsync('runCommand', 'editor.action.organizeImport')
