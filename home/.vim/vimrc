@@ -50,19 +50,22 @@ g:loaded_vimballPlugin = true
 ###############################################################################
 ################################### SETTINGS ##################################
 ###############################################################################
-
+# Enable plugins and indentation rules based on file type.
 filetype on
 filetype indent on
 filetype plugin on
 
 syntax enable
 
+# Line numbers.
 set number
 set relativenumber
 
+# Vim command-line menu.
 set wildmenu
 set wildoptions=pum,tagfile
 
+# Pop up menu.
 set pumwidth=10
 set pumheight=15
 
@@ -74,12 +77,13 @@ set ttimeout
 set timeoutlen=1000
 set ttimeoutlen=50
 
+# Backup.
 set undofile
 set noswapfile
 
+# Search.
 set ignorecase
 set smartcase
-
 set incsearch
 set hlsearch
 
@@ -290,29 +294,30 @@ command! -nargs=0 Buffers fzf#vim#buffers(
             \ fzf#vim#with_preview({ options: fzf_options })
             \ )
 
-nnoremap <Leader>f   <Cmd>Files<CR>
+nnoremap <Leader>f    <Cmd>Files<CR>
 nnoremap <Leader>gf   <Cmd>GitFiles<CR>
-nnoremap <Leader>b   <Cmd>Buffers<CR>
+nnoremap <Leader>b    <Cmd>Buffers<CR>
+nnoremap <Leader>m    <Cmd>Maps<CR>
 
 # Conqueror of completion:
 g:coc_snippet_next = "<C-j>"
 g:coc_snippet_prev = "<C-k>"
 
-g:coc_global_extensions ={
-        "coc-snippets",
-        "coc-prettier",
-        "coc-cmake",
-        "coc-clangd",
-        "coc-tsserver",
-        "coc-pyright",
-        "coc-tailwindcss",
-        "coc-emmet",
-        "coc-sh",
-        "coc-markdownlint",
-        "coc-json",
-        "coc-yaml",
-        "coc-toml",
-}
+g:coc_global_extensions = [
+    "coc-snippets",
+    "coc-prettier",
+    "coc-cmake",
+    "coc-clangd",
+    "coc-tsserver",
+    "coc-pyright",
+    "coc-tailwindcss",
+    "coc-emmet",
+    "coc-sh",
+    "coc-markdownlint",
+    "coc-json",
+    "coc-yaml",
+    "coc-toml",
+]
 
 command! -nargs=0 OR
             \ g:CocActionAsync('runCommand', 'editor.action.organizeImport')
