@@ -6,8 +6,8 @@ padding.y = 2
 TERM = "alacritty"
 
 [font]
+# size = 11.7
 size = 10
-offset.x = 0
 offset.y = 1
 
 [font.normal]
