@@ -5,22 +5,24 @@
 
 # Start tmux.
 if command -v tmux &>/dev/null && [ -n "$PS1" ] &&
-  [[ ! "$TERM" =~ screen ]] &&
-  [[ ! "$TERM" =~ tmux ]] &&
-  [ -z "$TMUX" ]; then
-  exec tmux
+    [[ ! "$TERM" =~ screen ]] &&
+    [[ ! "$TERM" =~ tmux ]] &&
+    [ -z "$TMUX" ]; then
+    exec tmux
 fi
 
 # Append "$1" to $PATH when not already in.
 append_path() {
-  case ":$PATH:" in
-  *:"$1":*) ;;
-  *) PATH="${PATH:+$PATH:}$1" ;;
-  esac
+    case ":$PATH:" in
+    *:"$1":*) ;;
+    *) PATH="${PATH:+$PATH:}$1" ;;
+    esac
 }
 
+PNPM_HOME="$HOME/.local/bin"
+
 append_path "$HOME/.local/share/pnpm"
-append_path "$HOME/.local/bin"
+append_path "$PNPM_HOME"
 
 unset -f append_path
 
@@ -32,7 +34,7 @@ CC="/usr/bin/gcc"
 CXX="/usr/bin/clang++"
 
 # Ibus:
-GTK_MODULE="ibus"
+GTK_IM_MODULE="ibus"
 XMODIFIERS="@im=ibus"
 QT_IM_MODULE="ibus"
 
@@ -102,19 +104,22 @@ alias sb='source $HOME/.bashrc'
 alias mkdir="mkdir -pv"
 alias rm="rm -fv"
 alias cf="cf -p -v"
+alias grep="grep --color=auto"
+alias wimi="curl -s https://checkip.amazonaws.com"
 
 # Export environment variables.
 export BAT_THEME
 export CC
 export CXX
 export EDITOR
-export FZF_DEFAULT_OPTS
 export FZF_DEFAULT_COMMAND
-export GTK_MODULE
+export FZF_DEFAULT_OPTS
+export GTK_IM_MODULE
 export HISTCONTROL
 export HISTFILESIZE
 export HISTSIZE
 export PATH
+export PNPM_HOME
 export PS1
 export QT_IM_MODULE
 export SUDO_PROMPT
