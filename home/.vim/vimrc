@@ -9,30 +9,30 @@ g:development = ($VIM_DEV_MODE == "1")
 ###############################################################################
 
 if g:development
-  plug#begin("~/.cache/vim/plugins")
-    Plug "morhetz/gruvbox"
-    Plug "machakann/vim-highlightedyank"
-    Plug "romainl/vim-cool"
-    Plug "markonm/traces.vim"
-    Plug "ap/vim-css-color", { "for": [
-          \ "css",
-          \ "scss",
-          \ "typescript",
-          \ "typescriptreact",
-          \ "vim"
-          \ ]}
+    plug#begin("~/.cache/vim/plugins")
+        Plug "morhetz/gruvbox"
+        Plug "machakann/vim-highlightedyank"
+        Plug "romainl/vim-cool"
+        Plug "markonm/traces.vim"
+        Plug "ap/vim-css-color", { "for": [
+                    \ "css",
+                    \ "scss",
+                    \ "typescript",
+                    \ "typescriptreact",
+                    \ "vim"
+                    \ ]}
 
-    Plug "neoclide/coc.nvim", { "branch": "release" }
-    Plug "tpope/vim-fugitive",
-    Plug "airblade/vim-gitgutter"
-    Plug "cohama/lexima.vim"
-    Plug "tpope/vim-surround"
-    Plug "tpope/vim-commentary"
-    Plug "tpope/vim-dispatch"
-    Plug "junegunn/fzf"
-    Plug "junegunn/fzf.vim"
-    Plug "mbbill/undotree", { "on": "UndotreeToggle" }
-  plug#end()
+        Plug "neoclide/coc.nvim", { "branch": "release" }
+        Plug "tpope/vim-fugitive"
+        Plug "airblade/vim-gitgutter"
+        Plug "cohama/lexima.vim"
+        Plug "tpope/vim-surround"
+        Plug "tpope/vim-commentary"
+        Plug "tpope/vim-dispatch"
+        Plug "junegunn/fzf"
+        Plug "junegunn/fzf.vim"
+        Plug "mbbill/undotree", { "on": "UndotreeToggle" }
+    plug#end()
 endif
 
 # Disable unwanted built-in plugins.
@@ -125,8 +125,8 @@ set signcolumn=yes
 # set spell
 
 augroup fix_format_options
-  autocmd!
-  autocmd FileType * set formatoptions-=o
+    autocmd!
+    autocmd FileType * set formatoptions-=o
 augroup END
 
 
@@ -196,9 +196,9 @@ nnoremap # #zzzv
 
 # Clear search highlight.
 nnoremap <C-l> <Cmd>nohlsearch
-      \ <bar>diffupdate
-      \ <bar>Notify "Cleared!" 
-      \ <CR>
+            \ <bar>diffupdate
+            \ <bar>Notify "Cleared!" 
+            \ <CR>
 
 # Conveniently macros.
 nnoremap Q @q
@@ -216,24 +216,24 @@ nnoremap Q @q
 
 # Color scheme:
 if g:development
-  g:gruvbox_bold = false
-  g:gruvbox_italic = true
-  g:gruvbox_contrast_dark = "hard"
-  g:gruvbox_contrast_light = "hard"
-  g:gruvbox_sign_column = "bg0"
+    g:gruvbox_bold = false
+    g:gruvbox_italic = true
+    g:gruvbox_contrast_dark = "hard"
+    g:gruvbox_contrast_light = "hard"
+    g:gruvbox_sign_column = "bg0"
 
-  colorscheme gruvbox
+    colorscheme gruvbox
 
-  # highlight! link TabLine     StatusLine
-  highlight! link TabLineSel  Normal
-  # highlight! link TabLineFill GruvboxBg2
+    # highlight! link TabLine     StatusLine
+    highlight! link TabLineSel  Normal
+    # highlight! link TabLineFill GruvboxBg2
 
-  hi! link CocSemTypeClass CocSemTypeType
-  hi! link CocSemTypeModifier CocSemTypeKeyword
+    hi! link CocSemTypeClass CocSemTypeType
+    hi! link CocSemTypeModifier CocSemTypeKeyword
 
 else
-  colorscheme habamax
-  finish
+    colorscheme habamax
+    finish
 endif
 
 # Color scheme overrides:
@@ -266,29 +266,29 @@ var fzf_options = [ '--prompt= ', '--pointer=', '--layout=reverse' ]
 g:fzf_history_dir = $'{$HOME}/.local/share/fzf-history'
 g:fzf_layout = { window: { width: 0.9, height: 0.8, yoffset: 0.4 } }
 g:fzf_colors = {
-  fg:      [ "fg", "Normal" ],
-  bg:      [ "bg", "Normal" ],
-  hl:      [ "fg", "Comment" ],
-  "fg+":   [ "fg", "CursorLine", "CursorColumn", "Normal" ],
-  "bg+":   [ "bg", "CursorLine", "CursorColumn" ],
-  "hl+":   [ "fg", "Statement" ],
-  info:    [ "fg", "PreProc" ],
-  border:  [ "fg", "Ignore" ],
-  prompt:  [ "fg", "Conditional" ],
-  pointer: [ "fg", "Exception" ],
-  marker:  [ "fg", "Keyword" ],
-  spinner: [ "fg", "Label" ],
-  header:  [ "fg", "Comment" ]
+    fg:      [ "fg", "Normal" ],
+    bg:      [ "bg", "Normal" ],
+    hl:      [ "fg", "Comment" ],
+    "fg+":   [ "fg", "CursorLine", "CursorColumn", "Normal" ],
+    "bg+":   [ "bg", "CursorLine", "CursorColumn" ],
+    "hl+":   [ "fg", "Statement" ],
+    info:    [ "fg", "PreProc" ],
+    border:  [ "fg", "Ignore" ],
+    prompt:  [ "fg", "Conditional" ],
+    pointer: [ "fg", "Exception" ],
+    marker:  [ "fg", "Keyword" ],
+    spinner: [ "fg", "Label" ],
+    header:  [ "fg", "Comment" ]
 }
 
 command! -bang -nargs=? -complete=dir Files
-      \ fzf#vim#files(<q-args>,
-      \   fzf#vim#with_preview({ options: fzf_options }),
-      \   <bang>0
-      \ )
+            \ fzf#vim#files(<q-args>,
+            \   fzf#vim#with_preview({ options: fzf_options }),
+            \   <bang>0
+            \ )
 command! -nargs=0 Buffers fzf#vim#buffers(
-      \ fzf#vim#with_preview({ options: fzf_options })
-      \ )
+            \ fzf#vim#with_preview({ options: fzf_options })
+            \ )
 
 nnoremap <Leader>f   <Cmd>Files<CR>
 nnoremap <Leader>gf   <Cmd>GitFiles<CR>
@@ -315,10 +315,10 @@ g:coc_global_extensions =<< trim END
 END
 
 command! -nargs=0 OR
-      \ g:CocActionAsync('runCommand', 'editor.action.organizeImport')
+            \ g:CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 command! -nargs=0 F
-      \ g:CocActionAsync('runCommand', 'editor.action.formatDocument')
+            \ g:CocActionAsync('runCommand', 'editor.action.formatDocument')
 
 inoremap <expr> <Tab>     utils.OnTab()
 inoremap <expr> <S-Tab>   utils.OnShiftTab()

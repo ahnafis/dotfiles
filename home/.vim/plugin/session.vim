@@ -1,13 +1,13 @@
 vim9script noclear
 
 if !g:development
-  finish
+    finish
 endif
 
 import autoload "utils.vim"
 
 if utils.IsLoaded("session")
-  finish
+    finish
 endif
 g:loaded_session = true
 
@@ -19,41 +19,41 @@ var session_file = getcwd()->substitute("\/", "__", 'g')
 var session = $"{g:session_cache_dir}/{session_file}.vim"
 
 if !isdirectory(g:session_cache_dir)
-  mkdir(g:session_cache_dir)
-  Notify $"Created session directory at {g:session_cache_dir}"
+    mkdir(g:session_cache_dir)
+    Notify $"Created session directory at {g:session_cache_dir}"
 endif
 
 def SaveSession(): void
-  var choice = confirm("Save this session?", "&Yes\n&No")
-  if choice != 1
-    return
-  endif
+    var choice = confirm("Save this session?", "&Yes\n&No")
+    if choice != 1
+        return
+    endif
 
-  execute $"mksession! {session}"
+    execute $"mksession! {session}"
 enddef
 
 def RestoreSession(): void
-  if filereadable(session)
-    execute $"source {session}"
-  endif
+    if filereadable(session)
+        execute $"source {session}"
+    endif
 enddef
 
 def DeleteSession()
-  execute $"Rm {session}"
+    execute $"Rm {session}"
 enddef
 
 augroup sessionize
-  autocmd!
-  autocmd VimLeave * SaveSession()
-  autocmd VimEnter * ++nested RestoreSession()
+    autocmd!
+    autocmd VimLeave * SaveSession()
+    autocmd VimEnter * ++nested RestoreSession()
 
-  # Remembers last cursor position.
-  autocmd BufReadPost * {
-    if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# 'commit'
-        && index(['xxd', 'gitrebase'], &filetype) == -1
-      execute "normal! g`\""
-    endif
-  }
+    # Remembers last cursor position.
+    autocmd BufReadPost * {
+        if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# 'commit'
+                && index(['xxd', 'gitrebase'], &filetype) == -1
+            execute "normal! g`\""
+        endif
+    }
 augroup END
 
 command! SaveSession    SaveSession()

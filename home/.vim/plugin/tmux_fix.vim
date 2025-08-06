@@ -1,12 +1,12 @@
 vim9script
 
 if has('gui_running') # && &term !~ '^\%(screen\|tmux\)'
-  finish
+    finish
 endif
 
 # Better mouse support, see  :help 'ttymouse'
 if &mouse != ''
-  set ttymouse=sgr
+    set ttymouse=sgr
 endif
 
 # Cursor:
@@ -47,14 +47,14 @@ execute "silent! set <xLeft>=\e[@;*D"
 
 # Map alt keys, see  :help map-alt-keys
 var keys = [
-  'a', 'b', 'c', 'd', 'e',
-  'f', 'g', 'h', 'i', 'j',
-  'k', 'l', 'm', 'n', 'o',
-  'p', 'q', 'r', 's', 't',
-  'u', 'v', 'w', 'x', 'y',
-  'z', ';'
+    'a', 'b', 'c', 'd', 'e',
+    'f', 'g', 'h', 'i', 'j',
+    'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't',
+    'u', 'v', 'w', 'x', 'y',
+    'z', ';'
 ]
 
 for key in keys
-  execute $"silent! set <A-{key}>=\e{key}"
+    execute $"silent! set <A-{key}>=\e{key}"
 endfor
