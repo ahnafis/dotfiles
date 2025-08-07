@@ -294,7 +294,7 @@ if g:development
     colorscheme gruvbox
 
     # Color scheme overrides:
-    highlight! link TabLineSel  StatusLine
+    highlight! link TabLineSel StatusLine
 
     highlight! link Structure GruvboxRed
     highlight! link StorageClass GruvboxRed
