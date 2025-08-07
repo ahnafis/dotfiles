@@ -20,7 +20,7 @@ var session = $"{g:session_cache_dir}/{session_file}.vim"
 
 if !isdirectory(g:session_cache_dir)
     mkdir(g:session_cache_dir)
-    Notify $"Created session directory at {g:session_cache_dir}"
+    echom $"Created session directory at {g:session_cache_dir}"
 endif
 
 def SaveSession(): void
@@ -39,7 +39,7 @@ def RestoreSession(): void
 enddef
 
 def DeleteSession()
-    execute $"Rm {session}"
+    delete(session)
 enddef
 
 augroup sessionize
