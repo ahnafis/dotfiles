@@ -1,4 +1,4 @@
-vim9script 
+vim9script
 
 import autoload "utils.vim"
 import autoload "icons.vim"

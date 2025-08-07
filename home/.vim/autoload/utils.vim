@@ -34,7 +34,7 @@ export def OnShiftTab(): string
 enddef
 
 export def OnEnter(): string
-    if IsCocLoaded() 
+    if IsCocLoaded()
         if coc#pum#visible()
             return coc#pum#confirm()
         else
@@ -58,7 +58,7 @@ enddef
 export def ScrollDocumentationNext(): string
     if coc#float#has_scroll()
         return coc#float#scroll(1)
-    endif       
+    endif
 
     return "\<C-f>"
 enddef
@@ -66,7 +66,7 @@ enddef
 export def ScrollDocumentationPrev(): string
     if coc#float#has_scroll()
         return coc#float#scroll(0)
-    endif       
+    endif
 
     return "\<C-b>"
 enddef
