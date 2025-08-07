@@ -87,6 +87,7 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+nohlsearch  # Clears search highlights when sourcing a file.
 
 # Vim command-line history.
 set history=500
@@ -266,7 +267,7 @@ nnoremap # #zzzv
 # Clear search highlight.
 nnoremap <C-l> <Cmd>nohlsearch
             \ <bar>diffupdate
-            \ <bar>Notify "Cleared!"
+            \ <bar>echom "Cleared search highlights."
             \ <CR>
 
 # Conveniently macros.
