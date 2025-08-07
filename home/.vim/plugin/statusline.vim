@@ -1,12 +1,12 @@
 vim9script noclear
 
-import autoload "utils.vim"
-
-if utils.IsLoaded("statusline")
+if utils#IsLoaded("statusline")
     finish
 endif
 
 g:loaded_statusline = true
+
+import autoload "utils.vim"
 
 def StatusLine(): string
     var line = ' '

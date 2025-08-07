@@ -1,4 +1,10 @@
-vim9script
+vim9script noclear
+
+if utils#IsLoaded("tabline")
+    finish
+endif
+
+g:loaded_tabline = true
 
 import autoload "utils.vim"
 import autoload "icons.vim"

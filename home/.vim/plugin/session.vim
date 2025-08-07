@@ -1,14 +1,9 @@
 vim9script noclear
 
-if !g:development
+if utils#IsLoaded("session")
     finish
 endif
 
-import autoload "utils.vim"
-
-if utils.IsLoaded("session")
-    finish
-endif
 g:loaded_session = true
 
 # set sessionoptions-=options

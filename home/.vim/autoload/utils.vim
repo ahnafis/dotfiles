@@ -1,11 +1,11 @@
-vim9script noclear
+vim9script
 
 export def IsLoaded(plugin_name: string): bool
     var plugin = $"loaded_{plugin_name}"
     return g:->get(plugin, false)
 enddef
 
-export def IsCocLoaded(): bool
+def IsCocLoaded(): bool
     return g:->get("did_coc_loaded", false)
 enddef
 
