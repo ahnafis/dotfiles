@@ -4,9 +4,9 @@
 bash ~/.config/autostart/autostart.sh
 
 bspc monitor -d \
-  Primary \
-  Browser \
-  Terminal \
+  Primary   \
+  Browser   \
+  Terminal  \
   Files
 
 bspc config border_width 0
