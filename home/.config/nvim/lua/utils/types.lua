@@ -1,3 +1,0 @@
----@alias utils.map.args fun(lhs: string, rhs: string|function, opts: vim.keymap.set.Opts)
----@alias utils.highlight.args fun(group_name: string, options: vim.api.keyset.highlight)
----@alias utils.command.args fun(name: string, commands: string | fun(args: vim.api.keyset.create_user_command.command_args), opts?:  vim.api.keyset.user_command)
