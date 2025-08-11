@@ -7,7 +7,7 @@ local session_file_exists = vim.fn.filereadable(session_file) == 1
 
 if not session_dir_exists then
     vim.fn.mkdir(session_path)
-    require("notify")("Ceated session directory at " .. session_path)
+    vim.print("Ceated session directory at " .. session_path)
 end
 
 -- Do not store current options.
