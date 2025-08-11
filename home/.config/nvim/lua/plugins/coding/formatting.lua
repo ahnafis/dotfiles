@@ -17,6 +17,7 @@ return {
         typescriptreact = { "prettierd" },
         json = { "prettierd" },
         jsonc = { "prettierd" },
+        python = { "autopep8" },
         markdown = { "prettierd" },
     },
 }

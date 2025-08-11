@@ -1,5 +1,10 @@
 ---@diagnostic disable-next-line: missing-fields
-require("nvim-treesitter").setup({
+
+require("nvim-treesitter.configs").setup({
+    auto_install = true,
+    highlight = {
+        enable = true,
+    },
     ensure_installed = {
         "asm",
         "bash",
@@ -12,6 +17,7 @@ require("nvim-treesitter").setup({
         "make",
         "markdown",
         "markdown_inline",
+        "python",
         "regex",
         "sql",
         "tsx",
