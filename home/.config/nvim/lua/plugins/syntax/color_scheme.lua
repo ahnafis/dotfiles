@@ -24,7 +24,7 @@ gruvbox.setup({
         DiagnosticSignError = { link = "GruvboxRed" },
         DiagnosticSignWarn = { link = "GruvboxYellow" },
         DiagnosticSignInfo = { link = "GruvboxBlue" },
-        DiagnosticSignHint = { link = "GruvboxAqua" },
+        DiagnosticSignHint = { link = "GruvboxBlue" },
 
         TabLineSel = { link = "Normal" },
 

@@ -1,7 +1,7 @@
 return {
     error = "",
     warning = "",
-    circle = "",
+    circle = "",
     info = "",
 
     lsp_kinds = {

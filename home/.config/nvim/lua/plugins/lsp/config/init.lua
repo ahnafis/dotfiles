@@ -29,3 +29,6 @@ end
 
 ---@type MasonLspconfigSettings
 mason_lspconfig.setup({ setup_lsp })
+
+-- Diagnostics config:
+require("plugins.lsp.config.core")
