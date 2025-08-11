@@ -285,34 +285,36 @@ nnoremap Q @q
 set background=dark
 
 # Color scheme:
-if g:development
-    g:gruvbox_bold = false
-    g:gruvbox_italic = true
-    g:gruvbox_contrast_dark = "hard"
-    g:gruvbox_contrast_light = "hard"
-    g:gruvbox_sign_column = "bg0"
-
-    colorscheme gruvbox
-
-    # Color scheme overrides:
-    highlight! link TabLineSel StatusLine
-
-    highlight! link Structure GruvboxRed
-    highlight! link StorageClass GruvboxRed
-    highlight! link cStructure GruvboxRed
-    highlight! link cppModifier GruvboxRed
-
-    highlight! link Function GruvboxYellow
-
-    highlight! link Type GruvboxOrange
-    highlight! link TypeDef Type
-    highlight! link CocSemTypeClass Type
-
-    highlight! link HighlightedyankRegion Visual
-else
+if !g:development
     colorscheme habamax
+
+    # This is where it ends for simple mode.
     finish
 endif
+
+g:gruvbox_bold = false
+g:gruvbox_italic = true
+g:gruvbox_contrast_dark = "hard"
+g:gruvbox_contrast_light = "hard"
+g:gruvbox_sign_column = "bg0"
+
+colorscheme gruvbox
+
+# Color scheme overrides:
+highlight! link TabLineSel StatusLine
+
+highlight! link Structure GruvboxRed
+highlight! link StorageClass GruvboxRed
+highlight! link cStructure GruvboxRed
+highlight! link cppModifier GruvboxRed
+
+highlight! link Function GruvboxYellow
+
+highlight! link Type GruvboxOrange
+highlight! link TypeDef Type
+highlight! link CocSemTypeClass Type
+
+highlight! link HighlightedyankRegion Visual
 
 # Lexima:
 g:lexima_no_default_rules = v:true
