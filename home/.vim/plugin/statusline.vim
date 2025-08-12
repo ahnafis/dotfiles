@@ -7,20 +7,43 @@ endif
 g:loaded_statusline = true
 
 import autoload "utils.vim"
+import autoload "icons.vim"
 
 def StatusLine(): string
-    var line = ' '
-        .. (g:development ? g:FugitiveHead() : "%t")
-        .. ' '
-        .. "%m"
-        .. "%="
-        .. $"{g:development ? CocDiagnostics() : ""}"
-        .. '  '
-        .. $"{utils.GetFileType(&filetype)}"
-        .. '  '
-        .. "%l:%v"
+    var line = ""
 
-    return line .. ' '
+    var git_branch = g:FugitiveHead()
+    var file_name = expand("%t")
+
+    var diagnostics = CocDiagnostics()
+    var file_type = utils.GetFileType(&filetype)
+
+    var line_nr = "%l"
+    var column_nr = "%v"
+
+    var spacing = "  "
+
+    line ..= spacing
+
+    if g:development
+        line ..= git_branch
+    else
+        line ..= file_name
+    endif
+
+    line ..= "%="
+
+    line ..= diagnostics
+    line ..= spacing
+
+    line ..= file_type
+    line ..= spacing
+
+    line ..= $"{line_nr}:{column_nr}"
+
+    line ..= spacing
+
+    return line
 enddef
 
 def CocDiagnostics(): string
@@ -28,9 +51,10 @@ def CocDiagnostics(): string
     var errors = info->get("error", 0)
     var warnings = info->get("warnings", 0)
 
-    return $" {errors}  {warnings}"
+    return $"{icons.Get("error")} {errors} {icons.Get("warning")} {warnings}"
 enddef
 
+# Always show status line.
 set laststatus=2
 
 augroup setup_status_line
@@ -38,4 +62,4 @@ augroup setup_status_line
     autocmd BufEnter,BufWrite * &l:statusline = StatusLine()
     autocmd filetypedetect FileType * &l:statusline = StatusLine()
 augroup END
-autocmd User CocDiagnosticChange &l:statusline = StatusLine()
+autocmd User CocDiagnosticChange :redrawstatus
