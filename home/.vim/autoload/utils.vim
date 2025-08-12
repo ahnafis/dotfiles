@@ -1,5 +1,7 @@
 vim9script
 
+import autoload "icons.vim"
+
 export def IsLoaded(plugin_name: string): bool
     var plugin = $"loaded_{plugin_name}"
     return g:->get(plugin, false)
@@ -69,4 +71,25 @@ export def ScrollDocumentationPrev(): string
     endif
 
     return "\<C-b>"
+enddef
+
+export def CocDiagnostics(): string
+    var info = b:->get("coc_diagnostic_info", {})
+    var errors = info->get("error", 0)
+    var warnings = info->get("warnings", 0)
+
+    return $"{icons.Get("error")} {errors} {icons.Get("warning")} {warnings}"
+enddef
+
+export def GitBranch(): string
+    var branch = system("git rev-parse --abbrev-ref HEAD")
+    branch = branch->substitute("\n", "", "")
+
+    var is_git_repo = matchstr(branch, "fatal") == ""
+
+    if !is_git_repo
+        branch = ""
+    endif
+
+    return branch
 enddef
