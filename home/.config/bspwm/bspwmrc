@@ -7,7 +7,8 @@ bspc monitor -d \
   Primary   \
   Browser   \
   Terminal  \
-  Files
+  Files     \
+  Media
 
 bspc config border_width 0
 
@@ -26,6 +27,10 @@ bspc config gapless_monocle true
 #     follow=on/off
 #     manage=on/off
 
+# Media players:
+bspc rule -a vlc desktop='^1' follow=off
+bspc rule -a amberol desktop='^1' follow=off
+
 # Web browsers:
 bspc rule -a Brave-browser desktop='^2' follow=off
 bspc rule -a Google-chrome desktop='^2' follow=off
@@ -37,9 +42,6 @@ bspc rule -a Alacritty desktop='^3' state=fullscreen
 
 # File Manager:
 bspc rule -a Thunar desktop='^4'
-
-# Music player:
-bspc rule -a amberol desktop='^1' follow=off
 
 # Misc:
 bspc rule -a Blueman-manager state=floating
