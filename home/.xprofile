@@ -1,0 +1,14 @@
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
+# Horizontal scrolling:
+xinput set-prop 10 313 1 1 &
+
+# Swap escape key with the caps lock key.
+setxkbmap -option caps:swapescape &
+
+# Policykit agent:
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# System-wide autostart scripts:
+dex --autostart --search-paths "/etc/xdg/autostart:$HOME/.config/autostart" &
