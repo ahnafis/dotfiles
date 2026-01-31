@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IBus
+Comment=IBus input method.
+Type=Application
+Exec=ibus-daemon -rxRd
+StartupNotify=false
+Terminal=false
+Hidden=false

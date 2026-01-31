@@ -1,35 +1,43 @@
 #!/usr/bin/env bash
 
-redshift -x
-redshift &
+# Redshift:
+# redshift -x
+# redshift &
 
-killall -q blueman-applet
-blueman-applet &
+# Bluetooth manager:
+# killall -q blueman-applet
+# blueman-applet &
 
-killall -q ibus-daemon
-ibus-daemon &
+# I-Bus input method:
+# killall -q ibus-daemon
+# ibus-daemon -rxRd &
 
-setxkbmap -option caps:swapescape &
+# Keyswap:
+# setxkbmap -option caps:swapescape &
 
-killall -q flameshot
-flameshot &
+# Flameshot:
+# killall -q flameshot
+# flameshot &
 
-# XFCE specific auto start commands.
-if [ "$XDG_SESSION_DESKTOP" == "xfce" ]; then
-  plank
-fi
+# Notification daemon:
+# killall -q xfce4-notifyd
+# /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
-# BSPWM specific auto start commands.
-if [ "$XDG_SESSION_DESKTOP" == "bspwm" ]; then
-  pgrep -x sxhkd > /dev/null || sxhkd &
+# Syncthing:
+# killall -q syncthing
+# syncthing serve --no-browser --logfile=default &
 
-  bash ~/.config/polybar/launch.sh &
+# KDE Connect:
+# killall -q kdeconnectd
+# kdeconnectd &
 
-  killall -q walgen
-  walgen > /dev/null &
+# killall -q resolve_kc_fs
+# resolve_kc_fs &
 
-  killall -q nm-applet
-  nm-applet &
+# Wallpaper generator:
+# killall -q walgen
+# walgen >/dev/null &
 
-  xinput set-prop 10 313 1 1 &
-fi
+# Network management applet:
+# killall -q nm-applet
+# nm-applet &

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Redshift
+Comment=Blue light filter.
+Type=Application
+Exec=redshift
+StartupNotify=false
+Terminal=false
+Hidden=false
