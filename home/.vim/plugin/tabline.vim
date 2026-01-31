@@ -11,7 +11,13 @@ import autoload "icons.vim"
 
 def g:TabLine(): string
     var tabline = ""
-    var buffer_modified_button = icons.Get("dot") .. " "
+    var buffer_modified_button = ""
+
+    if g:development
+        buffer_modified_button = icons.Get("dot") .. " "
+    else
+        buffer_modified_button = "+" .. " "
+    endif
 
     for tab_nr in range(tabpagenr("$"))
         var selected_tab = tab_nr + 1
@@ -56,6 +62,9 @@ def g:TabLine(): string
     tabline ..= "%#TabLineFill#"
     return tabline
 enddef
+
+# Always show tabs.
+set showtabline=2
 
 augroup setup_tab_line
     autocmd!

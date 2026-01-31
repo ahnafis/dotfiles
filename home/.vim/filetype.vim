@@ -15,6 +15,7 @@ g:file_types = {
     typescript: "TypeScript",
     typescriptreact: "TypeScript React",
     vim: "Vim",
+    "": "Unknown"
 }
 
 augroup setup_file_types
