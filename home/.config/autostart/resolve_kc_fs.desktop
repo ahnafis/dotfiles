@@ -2,7 +2,7 @@
 Name=Filesystem resolver
 Comment=KDE Connect filesystem resolver.
 Type=Application
-Exec=/a/bin/resolve_kc_fs
+Exec=resolve_kc_fs
 StartupNotify=false
 Terminal=false
 Hidden=false

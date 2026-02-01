@@ -2,7 +2,7 @@
 Name=Wallpaper setter
 Comment=A simple script to set wallpapers.
 Type=Application
-Exec=/a/bin/walset
+Exec=walset
 StartupNotify=false
 Terminal=false
 Hidden=false
