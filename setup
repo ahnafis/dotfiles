@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+from os import symlink
+from pathlib import Path
+
+HOME = Path.home()
+
+entries = {
+    "home/.bashrc": f"{HOME}/.bashrc",
+    "home/.gitconfig": f"{HOME}/.gitconfig",
+    "home/.inputrc": f"{HOME}/.inputrc",
+    "home/.xprofile": f"{HOME}/.xprofile",
+
+    "home/.vim": f"{HOME}/.vim",
+    "home/.config/kitty": f"{HOME}/.config/kitty",
+    "home/.config/tmux": f"{HOME}/.config/tmux",
+
+    "home/.config/autostart": f"{HOME}/.config/autostart",
+    "home/.config/fontconfig": f"{HOME}/.config/fontconfig",
+    "home/.config/picom": f"{HOME}/.config/picom",
+    "home/.config/yay": f"{HOME}/.config/yay",
+    "home/.config/redshift.conf": f"{HOME}/.config/redshift.conf",
+
+    "home/.config/bspwm": f"{HOME}/.config/bspwm",
+    "home/.config/polybar": f"{HOME}/.config/polybar",
+    "home/.config/rofi": f"{HOME}/.config/rofi",
+    "home/.config/sxhkd": f"{HOME}/.config/sxhkd",
+}
+
+
+def backup_existing() -> None:
+    for _, dest in entries.items():
+        # print(f"{Path(dest)} -> {dest}.bak")
+        Path.rename(Path(dest), f"{dest}.bak")
+
+
+def link() -> None:
+    for src, dest in entries.items():
+        # src = Path(src)
+        # dest = Path(dest)
+        symlink(src, dest, Path.is_dir(Path(src)))
+
+
+# backup_existing()
+# link()

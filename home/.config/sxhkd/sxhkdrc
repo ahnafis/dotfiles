@@ -1,47 +1,8 @@
-# Launch terminal emulator:
-super + Return
-	terminal
-
-# Launch program launcher:
-alt + p
-	dmenu_run -p "Run:" -fn "Rec Mono SemiCasual-13"
-
-# File manager:
-super + e
-    thunar
-
-# Control volume:
-XF86Audio{RaiseVolume,LowerVolume}
-  pactl set-sink-volume @DEFAULT_SINK@ {+,-}5%
-
-XF86AudioMute
-  pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-# Control audio player:
-XF86Audio{Play,Next,Prev}
-  playerctl {play-pause,next,previous}
-
-# Control brightness:
-XF86MonBrightness{Up,Down}
-  xbacklight -{inc,dec} 10
-
-# Take screenshot:
-Print
-  flameshot gui
-
-# Open web browser:
-XF86HomePage
-   browser
-
-# Reload SXHKD configuration files:
+# Reload sxhkd configuration:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
-# bspwm
-#
-
-# Quit/restart:
+# Quit and reload bspwm configuration:
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
@@ -61,10 +22,6 @@ super + y
 super + g
 	bspc node -s biggest.window
 
-#
-# state/flags
-#
-
 # Set the window state
 super + {t,shift + t,s}
 	bspc node -t {tiled,pseudo_tiled,floating}
@@ -76,10 +33,6 @@ super + f
 # Set the node flags:
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
-
-#
-# focus/swap
-#
 
 # Focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -111,10 +64,6 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
-
 # Preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -131,10 +80,6 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
-
 # Expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
@@ -146,3 +91,52 @@ super + alt + shift + {h,j,k,l}
 # Move a floating window:
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Launch terminal emulator:
+super + Return
+	terminal
+
+# Launch program launcher:
+alt + p
+	dmenu_run -p "Run:" -fn "Rec Mono SemiCasual-13"
+
+super + r
+    run_launcher
+
+# File manager:
+super + e
+    file_manager
+
+# Control volume:
+XF86Audio{RaiseVolume,LowerVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {+,-}5%
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Control audio player:
+XF86AudioPlay
+  play_audio
+
+XF86Audio{Next,Prev}
+  playerctl {next,previous}
+
+# Control brightness:
+XF86MonBrightness{Up,Down}
+  xbacklight -{inc,dec} 10
+
+# Take screenshot:
+Print
+  flameshot gui
+
+# Emoji picker:
+super + period
+    pick_emoji
+
+# Open web browser:
+XF86HomePage
+   browser
+
+# Reload Polybar configurations:
+alt + shift + r
+    ~/.config/polybar/launch.sh

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Horizontal scrolling
+Comment=Enable horizontal scrolling.
+Type=Application
+Exec=xinput set-prop 10 313 1 1
+StartupNotify=false
+Terminal=false
+Hidden=false

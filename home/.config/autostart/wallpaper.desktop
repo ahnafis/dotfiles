@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Wallpaper setter
-Comment=A simple script to set wallpapers.
+Name=Feh
+Comment=A simple tool to set wallpapers.
 Type=Application
-Exec=walset
+Exec=feh --bg-fill /a/Photos/Wallpapers/Useless/0040.jpg
 StartupNotify=false
 Terminal=false
 Hidden=false

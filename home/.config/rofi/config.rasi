@@ -1,0 +1,56 @@
+configuration {
+    modes: "window,drun,run";
+    case-sensitive: false;
+    cycle: true;
+    filter: "";
+    scroll-method: 0;
+    normalize-match: true;
+    steal-focus: false;
+
+    show-icons: true;
+    icon-theme: "Colloid-Dark";
+
+    matching: "normal";
+    tokenize: true;
+
+    drun-categories: "";
+    drun-match-fields: "name,generic,exec,categories,keywords";
+    drun-display-format: "{name}";
+    drun-show-actions: false;
+    drun-url-launcher: "xdg-open";
+    drun-use-desktop-cache: false;
+    drun-reload-desktop-cache: false;
+
+    drun {
+        parse-user: true;
+        parse-system: true;
+    }
+
+    run-command: "{cmd}";
+    run-list-command: "";
+    run-shell-command: "{terminal} -e {cmd}";
+
+    run,drun {
+        fallback-icon: "application-x-addon";
+    }
+
+    disable-history: false;
+	sorting-method: "normal";
+	max-history-size: 25;
+
+    display-drun: "Apps";
+
+    font: "Roboto 11";
+    display-drun: "";
+
+
+    timeout {
+      action: "kb-cancel";
+      delay:  0;
+    }
+
+    filebrowser {
+      directories-first: true;
+      sorting-method:  "name";
+    }
+}

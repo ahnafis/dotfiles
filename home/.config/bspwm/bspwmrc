@@ -1,15 +1,9 @@
-#! /bin/sh
+#!/bin/sh
 
-# Auto start scripts:
-bash ~/.config/autostart/autostart.sh
+# Monitor:
+bspc monitor -d 1 2 3 4 5
 
-bspc monitor -d \
-  Primary   \
-  Browser   \
-  Terminal  \
-  Files     \
-  Media
-
+# Window:
 bspc config border_width 0
 
 # Binary space layout configs:
@@ -20,30 +14,32 @@ bspc config split_ratio 0.52
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 
-# Rules:
+# Window rules:
 # bspc rule -a <CLASS>
 #     desktop=<DESKTOP_NUMBER>
 #     state=<WINDOW_STATE>
 #     follow=on/off
 #     manage=on/off
 
-# Media players:
-bspc rule -a vlc desktop='^1' follow=off
-bspc rule -a amberol desktop='^1' follow=off
+bspc rule -a obsidian           desktop='^1'
+bspc rule -a libreoffice        desktop='^1'
+bspc rule -a GParted            desktop='^1'
+bspc rule -a transmission-gtk   desktop='^1'
+bspc rule -a Brave-browser      desktop='^2'
+bspc rule -a kitty              desktop='^3'
+bspc rule -a Thunar             desktop='^4'
+bspc rule -a File_manager       desktop='^4'
+bspc rule -a loupe              desktop='^4'
+bspc rule -a vlc                desktop='^5'
 
-# Web browsers:
-bspc rule -a Brave-browser desktop='^2' follow=off
-bspc rule -a Google-chrome desktop='^2' follow=off
-bspc rule -a Firefox desktop='^2' follow=off
+bspc rule -a Blueman-manager        state=floating
+bspc rule -a pavucontrol            state=floating
+bspc rule -a nm-connection-editor   state=floating
+bspc rule -a Lxappearance           state=floating
+bspc rule -a kdeconnect.app         state=floating
 
-# Terminal:
-bspc rule -a kitty desktop='^3' state=fullscreen
-bspc rule -a Alacritty desktop='^3' state=fullscreen
+# Keymap daemon:
+pgrep -x sxhkd > /dev/null || sxhkd &
 
-# File Manager:
-bspc rule -a Thunar desktop='^4'
-
-# Misc:
-bspc rule -a Blueman-manager state=floating
-bspc rule -a pavucontrol state=floating
-bspc rule -a libreoffice desktop='^1' follow=off
+# Panel:
+bash ~/.config/polybar/launch.sh &

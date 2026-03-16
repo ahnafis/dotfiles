@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=IBus
-Comment=IBus input method
+Name=Plank Dock
+Comment=A stupidly simple dock.
 Type=Application
-Exec=ibus-daemon -rxRd
+Exec=plank
 StartupNotify=false
 Terminal=false
 Hidden=false

@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=IBus
-Comment=IBus input method
+Name=Notification daemon
+Comment=Xfce's notification daemon
 Type=Application
-Exec=ibus-daemon -rxRd
+Exec=xfce4-notifyd
 StartupNotify=false
 Terminal=false
 Hidden=false

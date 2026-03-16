@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Keyswap
+Comment=Swap escape key with capslock.
+Type=Application
+Exec=setxkbmap -option caps:swapescape
+StartupNotify=false
+Terminal=false
+Hidden=false
