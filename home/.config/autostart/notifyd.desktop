@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Notification daemon
-Comment=Xfce's notification daemon
-Type=Application
-Exec=xfce4-notifyd
-StartupNotify=false
-Terminal=false
-Hidden=false

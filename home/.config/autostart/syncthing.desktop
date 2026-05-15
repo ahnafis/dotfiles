@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Syncthing
 Comment=A tool to sync files across various platforms.
+Icon=syncthing
 Type=Application
 Exec=syncthing serve --no-browser --logfile=default
 StartupNotify=false

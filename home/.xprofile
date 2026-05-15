@@ -1,5 +1,6 @@
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_QPA_PLATFORMTHEME="qt6ct"
+export GTK_THEME="adw-gtk3-dark"
 
 # System-wide autostart scripts:
-dex --autostart --search-paths "/etc/xdg/autostart:$HOME/.config/autostart" &
+#dex --autostart --search-paths "/etc/xdg/autostart:$HOME/.config/autostart" &

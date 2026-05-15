@@ -230,12 +230,12 @@ vnoremap <A-k> :move '< -2<CR>gv
 vnoremap <A-j> :move '> +1<CR>gv
 
 # Buffer navigation:
-nnoremap <Tab>    <Cmd>bnext<CR>
-nnoremap <S-Tab>  <Cmd>bprevious<CR>
+nnoremap <PageUp>    <Cmd>bnext<CR>
+nnoremap <PageDown>  <Cmd>bprevious<CR>
 
 # Tab navigation:
-nnoremap <PageUp>    <Cmd>tabnext<CR>
-nnoremap <PageDown>  <Cmd>tabprevious<CR>
+nnoremap <Tab>    <Cmd>tabnext<CR>
+nnoremap <S-Tab>  <Cmd>tabprevious<CR>
 
 # Reveal all of the buffers in tabs.
 nnoremap <Leader>s   <Cmd>tab ball<CR>

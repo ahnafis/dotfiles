@@ -20,9 +20,15 @@ append_path() {
 }
 
 PNPM_HOME="$HOME/.local/bin"
+ANDROID_HOME="/a/Android/Sdk"
+ANDROID_AVD_HOME="$HOME/.config/.android/avd"
 
 append_path "$HOME/.local/share/pnpm"
 append_path "$PNPM_HOME"
+append_path "$ANDROID_HOME/emulator"
+append_path "$ANDROID_HOME/emulator:$PATH"
+append_path "$ANDROID_HOME/platform-tools:$PATH"
+append_path "$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 
 unset -f append_path
 
@@ -39,7 +45,6 @@ XMODIFIERS="@im=ibus"
 QT_IM_MODULE="ibus"
 
 BAT_THEME="gruvbox-dark"
-WALLPAPERS="$HOME/Pictures/Wallpapers/Useless"
 
 # Bash history. -1 means unlimited records will be stored.
 HISTSIZE=-1
@@ -108,6 +113,8 @@ alias grep="grep --color=auto"
 alias wimi="curl -s https://checkip.amazonaws.com"
 
 # Export environment variables.
+export ANDROID_HOME
+export ANDROID_AVD_HOME
 export BAT_THEME
 export CC
 export CXX
@@ -124,5 +131,4 @@ export PS1
 export QT_IM_MODULE
 export SUDO_PROMPT
 export TERM_BACKGROUND
-export WALLPAPERS
 export XMODIFIERS
