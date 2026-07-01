@@ -13,18 +13,18 @@ g:loaded_session = true
 set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
 
 g:session_cache_dir = $"{$HOME}/.cache/vim/session"
-var session_file = getcwd()->substitute("\/", "__", 'g')
-var session = $"{g:session_cache_dir}/{session_file}.vim"
+
+def GetSessionFile(cache_dir: string): string
+    var session_file = getcwd()->substitute("\/", "__", 'g')
+    return $"{cache_dir}/{session_file}.vim"
+enddef
+
+var session = GetSessionFile(g:session_cache_dir)
 
 def SaveSession(): void
     if !isdirectory(g:session_cache_dir)
         mkdir(g:session_cache_dir)
         echom $"Created session directory at {g:session_cache_dir}"
-    endif
-
-    var choice = confirm("Save this session?", "&Yes\n&No")
-    if choice != 1
-        return
     endif
 
     execute $"mksession! {session}"
@@ -60,7 +60,7 @@ enddef
 
 augroup sessionize
     autocmd!
-    autocmd VimLeave * SaveSession()
+    autocmd VimLeavePre * SaveSession()
     autocmd VimEnter * ++nested RestoreSession()
     autocmd BufReadPost * GotoLastPosition()
 augroup END
