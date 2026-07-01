@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Flameshot
+Comment=A tool to take screenshots.
+Type=Application
+Exec=flameshot
+StartupNotify=false
+Terminal=false
+Hidden=false

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Picom
+Comment=
+Type=Application
+Exec=picom -b
+StartupNotify=false
+Terminal=false
+Hidden=false

@@ -19,8 +19,8 @@ append_path() {
     esac
 }
 
-PNPM_HOME="$HOME/.local/bin"
-ANDROID_HOME="/a/Android/Sdk"
+readonly PNPM_HOME="$HOME/.local/bin"
+ANDROID_HOME="$HOME/Android/Sdk"
 ANDROID_AVD_HOME="$HOME/.config/.android/avd"
 
 append_path "$HOME/.local/share/pnpm"
@@ -30,9 +30,13 @@ append_path "$ANDROID_HOME/emulator:$PATH"
 append_path "$ANDROID_HOME/platform-tools:$PATH"
 append_path "$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
 
+append_path "$ANDROID_HOME/emulator"
+append_path "$ANDROID_HOME/platform-tools"
+append_path "$ANDROID_HOME/cmdline-tools/latest/bin"
+
 unset -f append_path
 
-EDITOR="$(which vim)"
+EDITOR="/usr/bin/vim"
 SUDO_PROMPT="Password 🔑: "
 
 # Set compilers for C/C++.
@@ -50,8 +54,15 @@ BAT_THEME="gruvbox-dark"
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTCONTROL="erasedups:ignoreboth"
-HISTIGNORE="clear:exit:cd:pwd:ls:la:ll:gs"
-shopt -s histappend
+HISTIGNORE="clear:exit:pwd:ls:la:ll:gs"
+HISTTIMEFORMAT="%F %T "
+
+shopt -s histappend checkwinsize autocd cdspell
+# shopt -s dirspell globstar extglob nocaseglob
+
+PROMPT_COMMAND="history -a; history -n"
+
+set -o notify
 
 # Fzf:
 FZF_DEFAULT_OPTS="--layout=reverse --prompt= "
@@ -102,7 +113,7 @@ alias gb="git branch"
 alias gco="git checkout"
 
 # Vim:
-alias vim='VIM_DEV_MODE=1 $EDITOR'
+alias vim='VIM_DEV_MODE=1 vim'
 
 # Misc:
 alias sb='source $HOME/.bashrc'
@@ -122,13 +133,7 @@ export EDITOR
 export FZF_DEFAULT_COMMAND
 export FZF_DEFAULT_OPTS
 export GTK_IM_MODULE
-export HISTCONTROL
-export HISTFILESIZE
-export HISTSIZE
-export PATH
 export PNPM_HOME
-export PS1
 export QT_IM_MODULE
 export SUDO_PROMPT
-export TERM_BACKGROUND
 export XMODIFIERS

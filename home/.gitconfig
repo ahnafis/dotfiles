@@ -13,4 +13,10 @@
   helper = store
 
 [init]
-  defaultBranch = master
+  defaultBranch = main
+
+[rerere]
+	enabled = true
+
+[pager]
+    diff = less -FRX
