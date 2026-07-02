@@ -24,7 +24,7 @@ def g:TabLine(): string
         var window_nr = tabpagewinnr(selected_tab)
         var buffer_list = tabpagebuflist(selected_tab)
         var buffer_nr = buffer_list[window_nr - 1]
-        var buffer_name = bufname(buffer_list[window_nr - 1])
+        var buffer_name = bufname(buffer_nr)
         var is_buffer_modified = getbufvar(buffer_nr, "&modified")
         var file_type = getbufvar(buffer_nr, "&filetype")
 

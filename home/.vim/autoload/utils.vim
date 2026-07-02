@@ -82,13 +82,10 @@ export def CocDiagnostics(): string
 enddef
 
 export def GitBranch(): string
-    var branch = system("git rev-parse --abbrev-ref HEAD")
-    branch = branch->substitute("\n", "", "")
+    var branch = system("git branch --show-current")->trim()
 
-    var is_git_repo = matchstr(branch, "fatal") == ""
-
-    if !is_git_repo
-        branch = ""
+    if v:shell_error != 0
+        return ""
     endif
 
     return branch

@@ -28,7 +28,6 @@ if g:development
         Plug "cohama/lexima.vim"
         Plug "tpope/vim-surround"
         Plug "tpope/vim-commentary"
-        Plug "tpope/vim-dispatch"
         Plug "junegunn/fzf"
         Plug "junegunn/fzf.vim"
         Plug "mbbill/undotree", { "on": "UndotreeToggle" }
