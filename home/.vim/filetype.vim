@@ -22,4 +22,5 @@ augroup setup_file_types
     autocmd!
     autocmd BufRead,BufNewFile coc-settings.json setlocal filetype=jsonc
     autocmd FileType c,cpp &l:commentstring = "// %s"
+    autocmd FileType scss &l:commentstring = "/* %s */"
 augroup END
