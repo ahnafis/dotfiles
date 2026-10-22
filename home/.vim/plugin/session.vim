@@ -37,7 +37,9 @@ def RestoreSession(): void
 enddef
 
 def DeleteSession()
-    delete(session)
+    if filereadable(session)
+        delete(session)
+    endif
 enddef
 
 def GotoLastPosition()

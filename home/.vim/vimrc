@@ -12,7 +12,7 @@ if g:development
     plug#begin("~/.cache/vim/plugins")
         Plug "morhetz/gruvbox"
         Plug "machakann/vim-highlightedyank"
-        Plug "romainl/vim-cool"
+        # Plug "romainl/vim-cool"
         Plug "markonm/traces.vim"
         Plug "ap/vim-css-color", { "for": [
                     \ "css",
@@ -90,7 +90,6 @@ nohlsearch  # Clears search highlights when sourcing a file.
 
 # Vim command-line history.
 set history=500
-set viminfo=!,'20,<50,s10,h
 
 # Use system clipboard.
 set clipboard^=unnamedplus
@@ -135,7 +134,7 @@ augroup fix_format_options
 augroup END
 
 if !has('gui_running')
-    # Better mouse support, see  :help 'ttymouse'
+    # Mouse support for tmux in visual mode, see  :help 'ttymouse'
     if &mouse != ''
         set ttymouse=sgr
     endif
@@ -153,28 +152,7 @@ if !has('gui_running')
     &t_Ds = "\e[4:5m"  # Dashed underline
 
     # Enable true colors, see  :help xterm-true-color
-    set t_Co=256
     set termguicolors
-    &t_8f = "\e[38;2;%lu;%lu;%lum"
-    &t_8b = "\e[48;2;%lu;%lu;%lum"
-
-    # Enable bracketed paste mode, see  :help xterm-bracketed-paste
-    &t_BE = "\e[?2004h"
-    &t_BD = "\e[?2004l"
-    &t_PS = "\e[200~"
-    &t_PE = "\e[201~"
-
-    # Enable focus event tracking, see  :help xterm-focus-event
-    &t_fe = "\e[?1004h"
-    &t_fd = "\e[?1004l"
-    execute "set <FocusGained>=\e[I"
-    execute "set <FocusLost>=\e[O"
-
-    # Enable modified arrow keys, see  :help arrow_modifiers
-    execute "silent! set <xUp>=\e[@;*A"
-    execute "silent! set <xDown>=\e[@;*B"
-    execute "silent! set <xRight>=\e[@;*C"
-    execute "silent! set <xLeft>=\e[@;*D"
 endif
 
 ###############################################################################
