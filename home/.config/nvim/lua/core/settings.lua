@@ -23,7 +23,7 @@ opt.splitbelow = true
 opt.mouse = ""
 
 -- Messages shown in the nice command line.
-opt.shortmess = "cfilnsxIT"
+-- opt.shortmess = "cFilnsxT"
 
 -- 80 character long lines. Break lines after that.
 opt.textwidth = 80
