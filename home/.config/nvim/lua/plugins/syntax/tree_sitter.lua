@@ -1,27 +1,32 @@
----@diagnostic disable-next-line: missing-fields
+local api = require("utils.api")
 
-require("nvim-treesitter.configs").setup({
-    auto_install = true,
-    highlight = {
-        enable = true,
-    },
-    ensure_installed = {
-        "asm",
-        "bash",
-        "c",
-        "cmake",
-        "cpp",
-        "html",
-        "lua",
-        "luadoc",
-        "make",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "regex",
-        "sql",
-        "tsx",
-        "typescript",
-        "yaml",
-    },
+local parsers = {
+	asm = "asm",
+	bash = "bash",
+	c = "c",
+	cmake = "cmake",
+	cpp = "cpp",
+	html = "html",
+	lua = "lua",
+	luadoc = "luadoc",
+	make = "make",
+	markdown = "markdown",
+	markdown_inline = "markdown_inline",
+	python = "python",
+	regex = "regex",
+	sql = "sql",
+	typescript = "typescript",
+	typescriptreact = "tsx",
+	yaml = "yaml",
+}
+
+local treesitter = require("nvim-treesitter")
+
+treesitter.install(vim.tbl_values(parsers))
+
+api.autocmd("FileType", {
+	pattern = vim.tbl_keys(parsers),
+	callback = function(args)
+		vim.treesitter.start(args.buf, parsers[vim.bo[args.buf].filetype])
+	end,
 })

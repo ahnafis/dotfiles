@@ -3,22 +3,22 @@ local auto_pairs_options = require("plugins.coding.auto_pairs")
 
 ---@type LazySpec
 return {
-    "tpope/vim-surround",
+	"tpope/vim-surround",
 
-    {
-        "tpope/vim-commentary",
-        config = function()
-            require("plugins.coding.commenting")
-        end,
-    },
+	{
+		"tpope/vim-commentary",
+		config = function()
+			require("plugins.coding.commenting")
+		end,
+	},
 
-    {
-        "stevearc/conform.nvim",
-        opts = formatter_options,
-    },
+	{
+		"stevearc/conform.nvim",
+		opts = formatter_options,
+	},
 
-    {
-        "windwp/nvim-autopairs",
-        opts = auto_pairs_options,
-    },
+	{
+		"windwp/nvim-autopairs",
+		opts = auto_pairs_options,
+	},
 }

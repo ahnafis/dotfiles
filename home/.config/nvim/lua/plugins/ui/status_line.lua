@@ -1,4 +1,5 @@
 local utils = require("utils")
+local api = require("utils.api")
 
 vim.opt.laststatus = 3
 
@@ -31,8 +32,8 @@ local function status_line()
     return string.format(" %s ", line)
 end
 
-autocmd("VimEnter", {
-    group = augroup("setup_status_line"),
+api.autocmd({"BufEnter", "BufWrite"}, {
+    group = api.augroup("setup_status_line"),
     callback = function()
         vim.opt.statusline = status_line()
     end,

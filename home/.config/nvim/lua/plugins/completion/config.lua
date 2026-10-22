@@ -4,6 +4,13 @@ local cmp_auto_pairs = require("nvim-autopairs.completion.cmp")
 local helpers = require("plugins.completion.helpers")
 local icons = require("utils.icons")
 
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+-- Add nvim-cmp capabilities to all LSP servers.
+vim.lsp.config("*", {
+    capabilities = cmp_nvim_lsp.default_capabilities(),
+})
+
 cmp.event:on("confirm_done", cmp_auto_pairs.on_confirm_done())
 
 cmp.setup({
@@ -17,7 +24,6 @@ cmp.setup({
         end,
     },
 
-    ---@diagnostic disable-next-line: missing-fields
     formatting = {
         fields = { "kind", "abbr" },
 

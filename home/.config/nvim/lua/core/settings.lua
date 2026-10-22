@@ -37,17 +37,17 @@ opt.pumwidth = 50
 
 -- Misc
 opt.updatetime = 500
-opt.nrformats = "alpha"
+opt.nrformats:append("alpha")
 opt.signcolumn = "yes"
 opt.formatoptions:remove("o")
-opt.fillchars:append(",eob: ")
+opt.fillchars:append({ eob = " " })
 
 -- stylua: ignore start
 -- Indentation stuff
 opt.tabstop = 4      -- Tabs be 2 character wide
 opt.shiftwidth = 0   -- Follow the size of tabstop
-opt.smarttab = true  -- Inserts spaces when <Tab> is pressed
+-- opt.smarttab = true  -- Inserts spaces when <Tab> is pressed
 opt.softtabstop = -1 -- Follow the size of shiftwidth
 opt.expandtab = true -- Convert tabs into spaces
-opt.autoindent = true
+-- opt.autoindent = true
 opt.copyindent = true

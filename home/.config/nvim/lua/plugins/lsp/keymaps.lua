@@ -1,3 +1,4 @@
+local api = require("utils.api")
 local telescope = require("telescope.builtin")
 
 local function lsp_hover()
@@ -14,7 +15,7 @@ local function on_lsp_attach(event)
     ---@param rhs function|string
     ---@param desc string
     local function lsp_map(lhs, rhs, desc)
-        nnoremap(lhs, rhs, {
+        api.nmap(lhs, rhs, {
             desc = desc,
             buffer = event.buf,
             silent = true,
@@ -40,11 +41,12 @@ local function on_lsp_attach(event)
     -- Diagnostics:
     lsp_map("gD", vim.diagnostic.open_float, "Code diagnostics")
     lsp_map("gwd", telescope.diagnostics, "Code diagnostics")
-    lsp_map("d]", vim.diagnostic.goto_next, "Go to next diagnostic report")
-    lsp_map("d[", vim.diagnostic.goto_prev, "Go to previous diagnostic report")
+
+    -- lsp_map("d]", vim.diagnostic.goto_next, "Go to next diagnostic report")
+    -- lsp_map("d[", vim.diagnostic.goto_prev, "Go to previous diagnostic report")
 end
 
-autocmd("LspAttach", {
-    group = augroup("lsp_setup"),
+api.autocmd("LspAttach", {
+    group = api.augroup("lsp_setup"),
     callback = on_lsp_attach,
 })

@@ -1,3 +1,5 @@
+local api = require("utils.api")
+
 local session_path = vim.fn.stdpath("state") .. "/session"
 local session_file_name = vim.fn.getcwd():gsub("/", "__") .. ".vim"
 local session_file = string.format("%s/%s", session_path, session_file_name)
@@ -21,12 +23,6 @@ vim.opt.sessionoptions = {
 }
 
 local function save_session()
-    local choice = vim.fn.confirm("Save this session?", "&Yes\n&No")
-
-    if choice ~= 1 then
-        return
-    end
-
     vim.cmd.mksession({
         args = { session_file },
         bang = true,
@@ -39,27 +35,18 @@ local function restore_session()
     end
 end
 
-local function delete_session()
-    vim.uv.fs_rmdir(session_file)
-end
-
 -- Setting up auto commands.
-local sesseionize = augroup("sesseionize")
+local sesseionize = api.augroup("sesseionize")
 
-autocmd("VimEnter", {
+api.autocmd("VimEnter", {
     group = sesseionize,
     pattern = "*",
     callback = restore_session,
     nested = true,
 })
 
-autocmd("VimLeave", {
+api.autocmd("VimLeave", {
     group = sesseionize,
     pattern = "*",
     callback = save_session,
 })
-
--- Convenient commands.
-command("SaveSession", save_session)
-command("RestoreSession", restore_session)
-command("DeleteSession", delete_session)
