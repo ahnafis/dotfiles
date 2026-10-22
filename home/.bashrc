@@ -20,16 +20,12 @@ append_path() {
 }
 
 readonly PNPM_HOME="$HOME/.local/bin"
-ANDROID_HOME="$HOME/Android/Sdk"
-ANDROID_AVD_HOME="$HOME/.config/.android/avd"
+ANDROID_HOME="$HOME/.var/app/com.google.AndroidStudio/data/Android/Sdk"
+ANDROID_USER_HOME="$HOME/.var/app/com.google.AndroidStudio/config/.android"
+ANDROID_AVD_HOME="$ANDROID_USER_HOME/avd"
 
 append_path "$HOME/.local/share/pnpm"
 append_path "$PNPM_HOME"
-append_path "$ANDROID_HOME/emulator"
-append_path "$ANDROID_HOME/emulator:$PATH"
-append_path "$ANDROID_HOME/platform-tools:$PATH"
-append_path "$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
-
 append_path "$ANDROID_HOME/emulator"
 append_path "$ANDROID_HOME/platform-tools"
 append_path "$ANDROID_HOME/cmdline-tools/latest/bin"
@@ -69,7 +65,7 @@ FZF_DEFAULT_OPTS="--layout=reverse --prompt= "
 FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude=.git"
 
 # Load Fzf key-bindings.
-source /usr/share/fzf/key-bindings.bash
+eval "$(fzf --bash)"
 
 # Colors:
 reset='\[\033[00m\]'
@@ -125,6 +121,7 @@ alias wimi="curl -s https://checkip.amazonaws.com"
 
 # Export environment variables.
 export ANDROID_HOME
+export ANDROID_USER_HOME
 export ANDROID_AVD_HOME
 export BAT_THEME
 export CC
