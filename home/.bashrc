@@ -67,6 +67,9 @@ FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude=.git"
 # Load Fzf key-bindings.
 eval "$(fzf --bash)"
 
+# Load nvm scripts.
+source /usr/share/nvm/init-nvm.sh
+
 # Colors:
 reset='\[\033[00m\]'
 green='\[\033[00;32m\]'
